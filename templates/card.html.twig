@@ -1,0 +1,55 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <h1>About Card game</h1>
+    {% include "deckNavbar.html.twig" %}
+    <div class="cardholder">
+        <div class="card">&#127149;</div>
+        <div class="intro">
+            <p>
+                Jag har använt mig av 4 klasser i denna uppgift.
+                </p>
+                <p>
+                Card klassen skapar ett objekt, ett spelkort, som har ett namn, värde, färg och svit. 
+                Klassen har även några metoder för att få fram de olika värderna objektet kan ha.
+                CardGraphic är en barnklass till föräldrar klassen Card som tilldelar objekten en utf-8 tecken 
+                representation baserat på kortets namn.
+                </p>
+                <p>
+                I klassen DeckOfCards och klassen Hand har vi en komposition kontruktion 
+                där DeckOfCards är uppbyggd av flera Card objekt och Hand har i sin tur ett DeckOfCards objekt 
+                (som innehåller 52 Card objekt).
+                DeckOfCards skickar in valör och värde till Card klassen som sätter namn, 
+                värde, färg och svit på objektet. DeckOfCards sparar dessa objekt i en array. 
+                Klassen har, utöver att skapa en hel kortlek, två metoder för att hämta en 
+                oblandad kortlek och en blandad kortlek.
+                </p>
+                
+                <p>
+                I klassen Hand har vi två attribut som är arrayer. En som håller en kortlek 
+                och en som sparar kort som har dragits från kortleken. Här har vi en massa metoder 
+                för att kommunicera med klassen.
+                Vi kan dra ett kort och spara undan det, vi kan slänga kort, 
+                vi kan se hur många kort vi har dragit och hur många vi har kvar i leken, 
+                vi kan slänga översta kortet i leken, vi kan hämta kort med hjälp av index etc.
+                </p>
+                
+                <p>
+                Vi sparar undan det mesta i sessioner. card/deck sparas inte undan i session 
+                då jag tolkade det som att man bara skulle visa up kortleken.
+                card/deck/shuffle, card/deck/draw och card/deck/draw/:number sparas i sessionen. 
+                I card/deck/draw kan du också resetta och få en oblandad kortlek. 
+                Försöker du dra ett kort till efter att du har noll kort kvar att dra så får du en ny 
+                oblandad lek.
+                I card/deck/draw/:number däremot så måste du hämta en ny lek från shuffle eller draw.
+                </p>
+                <p>Man kan också hovra över korten för att se deras namn.</p>
+                <p>
+                    Nedan har jag försökt att göra ett uml-diagram för att representera detta.
+                </p>
+                <img src="{{ asset('img/phpUML.png') }}" alt="phpUML"></div>
+        </div>
+    </div>
+{% endblock %}

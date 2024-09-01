@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card{% endblock %}
+
+{% block body %}
+    <h1>Cards in the deck</h1>
+    <h3>Here you can look at all the cards without resetting the session.</h3>
+    {% include "deckNavbar.html.twig" %}
+    <div class="cardholder">
+        {% for card in deck %}
+        <div title='{{ card.getName }}'class='{{ card.getColor }}'> &#{{ card.getUnicode }};</div>
+        {% endfor %}
+    </div>
+{% endblock %}

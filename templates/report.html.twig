@@ -1,0 +1,93 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <h1>/REPORT</h1>
+    <aside class="aside">
+        <h1>Innehållsförteckning</h1>
+        <ul>
+            <li><a href="#kmom01">kmom01</a></li>
+            <li><a href="#kmom02">kmom02</a></li>
+            <li><a href="#kmom03">kmom03</a></li>
+            <li><a href="#kmom03">kmom04</a></li>
+            <li><a href="#kmom05">kmom05</a></li>
+            <li><a href="#kmom06">kmom06</a></li>
+        </ul>
+        </aside>
+        <h2 id="kmom01">Kmom01</h2>
+        <h3>Skriven VT23</h3>
+        <p>Har inte programmerat innan jag började på BTH.
+            Den lilla erfarenhet jag har av objektorienterad programmering kommer ifrån tidigare kurser.
+            Det känns lite lättare att hoppa in i oophp efter att ha arbetat med oopython och objektorienterad JS.
+            Det är intressant att se hur de olika programmerings språken är ganska lika, men ändå rätt olika.
+            Det är mycket att lära sig, men det är väldigt roligt när det 'klickar'.</p>
+        <p>Klasser är mallar som kan skapa nya objekt. Att skapa ett objekt kallas även för 'instans av klassen'.
+            Ett objekt har properties (medlemsvariabler) och funktioner (metoder). 
+            Properties används för att lagra ett läge/state av ett objekt och man kan interagera med dessa med hjälp av funktioner.
+            Objekt kan vara mutable (som vi kan redigera) eller immutable (oredigerbara). Piloperatorn är helt ny för mig.</p>
+        <p>Först hade jag problem med att updatera composer, fick ta bort och installera om composer och starta om datorn för att det skulle fungera.
+            Jag blev lite förvirrad över Github och om jag behövde använda SASS, vilket jag inte använt på länge. 
+            I kmom01 fungerade symfony bra, men i raport blev det diverse problem.
+            Fick spendera en hel förmiddag att felsöka och installera om symfony många gånger innan det fungerade. 
+            Blev jätteglad när det gick att få lite random bilder och citat i lucky.</p>
+        <p>Jag gillade The-Basics delen från artikeln PHP the right way. 
+            Perfekt för mig som verkar ha en hjärna som använder clear cache mellan kurser.
+            Relativt kortfattat, rak på sak. "Så här gör du vill göra det här". Mycket trevlig artikel med mycket användbar information.
+        </p>
+        <p>TIL att jag är dålig på github.</p>
+        <h2 id="kmom02">Kmom02</h2>
+        <h3>Skriven VT23</h3>
+        <h3>Förklara kort - '(arv, komposition, interface och trait)'</h3>
+        <p>
+        När man vill speciallicera en basklass/superklass/parentclass så kan man använda sig av Arv, som är en av de vanligaste oo-konstruktionerna.
+        Barnklassen, eller subklassen, ärver de egenskaper föräldrarklassen har. Vi kan även lägga till nya funktioner och updatera existerande funktioner i föräldrarklassen utan att påverka/ändra föräldrarklassen.
+        Det är som en expansion. I den här uppgiften så är CardGraphic, som lägger till en utf-8 kod till objekten, en barnklass till Card.
+        </p>
+        
+        <p>
+        När ett objekt består av andra objekt kallas detta komposition. 
+        En komposition kan ha ett starkare eller svagare koppling mellan objekten. När koppligen är svagare kallas detta aggregat.
+        När vi pratar om starkare koppling så innebär det att om den ena klassen förstörs så kan inte den andra klassen fungera, eftersom den var starkt kopplad till den första klassen.
+        Om klassen däremot hade en svagare koppling mellan varandra så kan den 'överleva' även om den första klassen försvinner. 
+        Hus har Rum, Hus har Inneboende är det exempel vi får här -länk-. Om Hus förstörs så förvinner Rum, men Inneboende kan leva vidare.
+        https://dbwebb.se/guide/kom-igang-med-objektorienterad-programmering-i-php/komposition-med-en-tarningshand#komp
+        </p>
+        
+        <p>
+        Interface är en oo-konstruktion. Ett interface är som ett kontrakt, ett löfte om vilket API, vilka metoder klassen kommer ha att erbjuda. 
+        </p>
+        
+        <p>
+        I PHP så finns inte stöd för multipla arv, det vill säga att en klass kan ärva från flera föräldrarklasser, däremot har vi Trait.
+        Trait liknar Arv, men konstruktionen är skiljer sig. Trait använder sig av metoder och medlemsvariabler vilka kan användas för att expandera funktionaliteten hos en klass.
+        Klassen använder ett eller flera Traits. Exempelvis hade metoderna för att shuffla kortleken i DeckOfCars kunnat användas som ett Trait i Hand istället för att skriva en egen funktion.
+        Man kan tänka sig att Trait implementerar en redan existerande funktion från en annan klass. Dock, om man behöver ändra eller updatera koden så kan det både vara positivt och negativt.
+        Det positiva är att man behöver bara ändra koden på ett ställe, det negativa är att man måste vara medveten om att detta kommer påverka alla som använder sig av detta trait - vilket kan i sin tur förstöra en hel del.
+        </p>
+    
+        <h3>Hur löste du uppgiften, är du nöjd/missnöjd, vilken förbättringspotential?</h3>
+        <p>
+            Jag är besviken både över hur lång tid det tog för mig att göra klart allt, fastnade rätt ordentligt i kodstrukturen, sessionerna och det eviga felsökandet.
+            Jag är nöjd över att jag äntligen fick till arvet CardGraphic, missnöjd med att jag inte kunde ha med '&#' och ';' i klassen utan att det blev problem /skrevs ut som en string/.
+            Nöjd med DeckOfCards, missnöjd med hur många olika metoder jag har i Hand.
+            Det hade hjälp mig oerhört att se en 'såhär kan det se ut när det är färdigt'- video.
+            Jag vill gärna förbättra CardGraphic och Hand så det blir lite snyggare.
+        </p>
+        <h3>Vilka är dina refelktioner så här långt med att jobb i Symfony med applikationskod enligt MVC?</h3>
+        <p>
+            Svårare än vad jag förväntade mig. Jag fastnade stenhårt och jag kunde inte förstå riktigt varför det hände. Kanske beror på att jag var stressad eftersom jag har många moment att ta igen och slarvade.
+        </p>
+        <h3>TIL</h3>
+        <p>
+            TIL att a href inte skickar vidare till post så sessioner sparas inte. det är viktigt att hålla koll på vad man har i sina variablar. att jag är bättre på git.  
+        </p>
+        <h2 id="kmom03">Kmom03</h2>
+        <p>TEXT</p>
+        <h2 id="kmom04">Kmom04</h2>
+        <p>TEXT</p>
+        <h2 id="kmom05">Kmom05</h2>
+        <p>TEXT</p>
+        <h2 id="kmom06">Kmom06</h2>
+        <p>TEXT</p>
+{% endblock %}

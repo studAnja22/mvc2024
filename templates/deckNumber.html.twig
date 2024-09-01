@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card{% endblock %}
+
+{% block body %}
+    <h1>Draw MORE!</h1>
+    <h3>To get a brand new deck, go to shuffle.</h3>
+    <h4>Or you can go to draw and reset, but draw will keep the ace of hearts.</h4>
+    {% include "deckNavbar.html.twig" %}
+    <div class="cardholder">
+        <h2>Cards left: {{ number }}</h2>
+        <form method="post" action="">
+            <input type="number" name="num_cards" min="1" max="52" value="1">
+            <input type="submit" name="do_it" value="Start playing">
+        </form>
+        {% for card in card %}
+        <div title='{{ card.getName }}'class='{{ card.getColor }}'> &#{{ card.getUnicode }};</div>
+        {% endfor %}
+    </div>
+{% endblock %}

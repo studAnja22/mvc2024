@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Draw one card{% endblock %}
+
+{% block body %}
+    <h1>Draw one card from the deck.</h1>
+    <h3>When you have drawn all the cards, you get a new deck.</h3>
+    <h4>If you have drawn all the cards in draw MORE, then you get a brand new deck once you return here.</h4>
+    {% include "deckNavbar.html.twig" %}
+    <form method="post" action="">
+    <div class="cardholder">
+        <h2>Cards left: {{ message }}</h2>
+        {% if (card.getName != "") %}
+        <div title='{{ card.getName }}'class='{{ card.getColor }} drawPage'> &#{{ card.getUnicode }};</div>
+        {% endif %}
+        </div>
+        <h3>Resetting will give you a new, unshuffled deck.</h3>
+            <p>
+                <input type="submit" class="button" name="roll" value="Reset"
+                    onclick="this.form.action='{{ path('draw_init') }}';">
+            </p>
+        </form>
+{% endblock %}
