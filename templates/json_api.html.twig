@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block title %}JSON API{% endblock %}
+
+{% block body %}
+    <h1>JSON API</h1>
+
+    <a href="{{ path('quote') }}">JsonQuote</a> Ger dig ett random citat.<br>
+    <a href="{{ path('api_deck') }}">Sorted Deck</a> Visar upp alla kort i kortleken, sorterad efter färg och värde.<br>
+    <form method="post" action="">
+        <a href="{{ path('api_shuffle_post') }}">Shuffled Deck</a> Visar upp en blandad kortlek.
+    </form>
+    <form method="post" action="">
+        <input type="submit" name="draw" value="Draw one"
+        onClick="this.form.action='{{ path('api_draw_post') }}';"
+        > Dra ett kort ur kortleken. <br>
+    
+        <input type="number" name="num_cards" min="1" max="52" value="1">
+            <input type="submit" name="do_it" value="Draw more!"
+            onClick="this.form.action='{{ path('api_draw_more_post')}}';"> Dra fler kort. <br>
+
+            <input type="submit" name="do_it" value="Reset session"
+            onClick="this.form.action='{{ path('resetter')}}';"> Ger dig en ny kortlek i jsonAPI.
+
+    </form>
+    
+    
+{% endblock %}
