@@ -4,10 +4,10 @@ namespace App\Cards;
 
 class Cards
 {
-    protected $cardValue;
-    protected $suit;
-    protected $color;
-    protected $name;
+    protected ?string $cardValue;
+    protected ?string $suit;
+    protected ?string $color;
+    protected ?string $name;
 
     public function __construct()
     {
@@ -17,51 +17,59 @@ class Cards
         $this->name = null;
     }
 
-    public function setCard($cardValue, $suit)
+    public function setCard(string $value, string $suit): void
     {
-        $this->cardValue = $cardValue;
+        $this->cardValue = $value;
         $this->suit = $suit;
         $this->setColor();
         $this->setName();
     }
 
-    public function setColor()
+    public function setColor(): void
     {
-        if ($this->suit == 'Hearts' or $this->suit == 'Diamonds') {
-            $this->color = "card red";
-        } else {
-            $this->color = "card black";
-        };
-    }
-
-    public function setName()
-    {
-        if ($this->cardValue == 1 or $this->cardValue > 10) {
-            if ($this->cardValue == 1) {
-                $this->name = "Ace of " . $this->suit;
-            } elseif ($this->cardValue == 11) {
-                $this->name = "Jack of " . $this->suit;
-            } elseif ($this->cardValue == 12) {
-                $this->name = "Queen of " . $this->suit;
-            } elseif ($this->cardValue == 13) {
-                $this->name = "King of " . $this->suit;
-            }
-        } else {
-            $this->name = $this->cardValue . " of " . $this->suit;
+        switch ($this->suit) {
+            case 'Hearts':
+            case 'Diamonds':
+                $this->color = "card red";
+                break;
+            case 'Clubs':
+            case 'Spades':
+                $this->color = "card black";
+                break;
         }
     }
 
-    public function getColor()
+    public function setName(): void
+    {
+        switch ($this->cardValue) {
+            case 1:
+                $this->name = "Ace of " . $this->suit;
+                break;
+            case 11:
+                $this->name = "Jack of " . $this->suit;
+                break;
+            case 12:
+                $this->name = "Queen of " . $this->suit;
+                break;
+            case 13:
+                $this->name = "King of " . $this->suit;
+                break;
+            default:
+                $this->name = $this->cardValue . " of " . $this->suit;
+        }
+    }
+
+    public function getColor(): ?string
     {
         return $this->color;
     }
 
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function getCardValue(): int
+    public function getCardValue(): ?string
     {
         return $this->cardValue;
     }

@@ -6,9 +6,20 @@ use App\Cards\CardGraphic;
 
 class DeckOfCards
 {
-    private $allSuits;
-    private $allValues;
-    public $deck;
+    /**
+     * @var string[] An array of 4 suits.
+     */
+    private array $allSuits;
+
+    /**
+     * @var string[] An array of values 1-13.
+     */
+    private array $allValues;
+
+    /**
+     * @var CardGraphic[] An array of CardGraphic objects.
+     */
+    public array $deck;
 
     public function __construct()
     {
@@ -33,13 +44,13 @@ class DeckOfCards
             '12',
             '13',
         ];
-        $this->deck = array();
+        $this->deck = [];
         $this->buildDeck();
     }
     /**
      * Create new cards and add them to the deck.
      */
-    public function buildDeck()
+    public function buildDeck(): void
     {
         foreach ($this->allSuits as $suit) {
             foreach ($this->allValues as $value) {
@@ -49,13 +60,17 @@ class DeckOfCards
             }
         }
     }
-
-    public function getDeck()
+    /**
+     * @return CardGraphic[] An array of CardGraphic objects.
+     */
+    public function getDeck(): ?array
     {
         return $this->deck;
     }
-
-    public function shuffleDeck()
+    /**
+     * @return CardGraphic[] An array of shuffled CardGraphic objects.
+     */
+    public function shuffleDeck(): ?array
     {
         shuffle($this->deck);
         return $this->deck;

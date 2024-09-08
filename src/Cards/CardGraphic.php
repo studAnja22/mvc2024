@@ -4,8 +4,9 @@ namespace App\Cards;
 
 class CardGraphic extends Cards
 {
-    protected $unicode = "";
-    protected $unicodeArray = [
+    protected ?int $unicode = null;
+    /** @var array<string, int> */
+    protected array $unicodeArray = [
         "Ace of Clubs" => 127185,
         "2 of Clubs" => 127186,
         "3 of Clubs" => 127187,
@@ -65,7 +66,7 @@ class CardGraphic extends Cards
         parent::__construct();
     }
 
-    public function getUnicode()
+    public function getUnicode(): int
     {
         return $this->unicode = $this->unicodeArray[$this->name];
     }
