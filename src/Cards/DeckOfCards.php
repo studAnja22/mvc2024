@@ -75,5 +75,4 @@ class DeckOfCards
         shuffle($this->deck);
         return $this->deck;
     }
-
 }

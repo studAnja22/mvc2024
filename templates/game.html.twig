@@ -3,12 +3,19 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
-    <h1>21 card game</h1>
-    {% include "deckNavbar.html.twig" %}
+    <h1>Om kortspelet 21</h1>
+    {% include "gameNavbar.html.twig" %}
     <div class="cardholder">
         <div class="card">&#127149;</div>
         <div class="intro">
-            <h2>Hello game!</h2>
+            <h2>Spela 21</h2>
+            <h>Poängen med spelet är att komma så nära 21 poäng som möjligt utan att överstiga 21 poäng.
+                Ess är värda 1 eller 14. Värdet är dynamiskt och kommer ändras till 1 om 14 skulle överstiga 21.
+                Du drar ett kort i taget tills du är nöjd och avslutar din runda. Därefter är det bankens tur att dra kort. 
+                Banken kommer dra kort tills den har en summa på minst 17, därefter slutar banken dra kort.<br>
+                Du vinner om du är närmast 21 poäng eller om banken har mer än 21 poäng. 
+                Banken vinner om ni har lika många poäng eller om du har mer poäng än 21. Banken är inte medveten om vad spelaren har på hand.
+            </h>
         </div>
     </div>
 {% endblock %}

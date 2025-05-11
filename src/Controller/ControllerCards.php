@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Cards\Cards;
 use App\Cards\DeckOfCards;
 use App\Cards\Hand;
-use App\SessionHandler\DrawCardsSession;
+// use App\SessionHandler\DrawCardsSession;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -68,7 +68,7 @@ class ControllerCards extends AbstractController
         /** @var Hand $hand */
         $hand = $session->get('hand');
 
-        if ($hand->howManyLeft() == 0) {
+        if ($hand == null || $hand->howManyLeft() == 0) {
             $hand = new Hand();
             $session->set('hand', $hand);
         }

@@ -70,5 +70,4 @@ class CardGraphic extends Cards
     {
         return $this->unicode = $this->unicodeArray[$this->name];
     }
-
 }

@@ -43,7 +43,7 @@ class Hand
     }
 
     /**
-     * Draws the top card and discards it.
+     * Draws the top card and discards it from the deck.
      *
      * @return CardGraphic
      */
