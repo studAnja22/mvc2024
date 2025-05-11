@@ -31,8 +31,7 @@ class ControllerGame extends AbstractController
     public function newGame(
         Request $request,
         SessionInterface $gameSession
-    ): Response
-    {
+    ): Response {
         $action = $request->request->get('game');
 
         switch ($action) {
@@ -78,15 +77,13 @@ class ControllerGame extends AbstractController
                 return $this->redirectToRoute('gamePlay');
             default:
                 return $this->redirectToRoute('gamePlay');
-            }
-        
+        }
     }
 
     #[Route("/game/play", name: "gamePlay", methods: ['GET'])]
     public function gamePlay(
         SessionInterface $gameSession
-    ): Response
-    {
+    ): Response {
         if (!$gameSession->has('21_deck')) {
             $hand = new Hand();
             $hand->shuffle();

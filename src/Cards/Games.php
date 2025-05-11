@@ -2,17 +2,18 @@
 
 namespace App\Cards;
 
-
 use App\Cards\CardGraphic;
 use App\Cards\DeckOfCards;
 use App\Cards\Hand;
+
 /**
  * The game class helps with calculating and comparing values
  * as well as checking winning conditions of a game
  */
 class Games
 {
-    private function game21CalculatePoints($data) {
+    private function game21CalculatePoints($data)
+    {
         //Returns the arrays ($data) sum. Checks if there's an ACE and changes the value from 1 to 14
         //If the sum remains equal to or lower than 21.
         if (in_array(1, $data) && (array_sum($data) + 13) <= 21) {
@@ -21,7 +22,8 @@ class Games
         return array_sum($data);
     }
 
-    public function getPoints($data): int {
+    public function getPoints($data): int
+    {
         $points = [];
 
         //No cards have been drawn yet, return 0.
@@ -37,7 +39,8 @@ class Games
         return $this->game21CalculatePoints($points);
     }
 
-    public function determineWinner($bank, $player): string {
+    public function determineWinner($bank, $player): string
+    {
         if ($player == 0 && $bank == 0) {
             return "";
         }
@@ -53,7 +56,8 @@ class Games
         return "Player Wins!";
     }
 
-    public function getGameData($data) {
+    public function getGameData($data)
+    {
         /** @var Hand $hand */
         $hand = $data['hand'];
         $player = $data['player'];
