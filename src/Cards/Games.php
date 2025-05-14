@@ -12,17 +12,28 @@ use App\Cards\Hand;
  */
 class Games
 {
-    private function game21CalculatePoints($data)
+    /**
+     * The function takes an array of integers. 
+     * Checks if there's a 1 and if adding 13 would keep the sum under or equal to 21.
+     * Then returns the array sum as an integer.
+     * @param int[] $data - an array with integers
+     * @return int
+     */
+    private function game21CalculatePoints($data): int
     {
-        //Returns the arrays ($data) sum. Checks if there's an ACE and changes the value from 1 to 14
-        //If the sum remains equal to or lower than 21.
         if (in_array(1, $data) && (array_sum($data) + 13) <= 21) {
             return array_sum($data) + 13;
         }
         return array_sum($data);
     }
 
-    public function getPoints($data): int
+    /**
+     * Function takes an array with card objects, collects the cards value as an integer in another array
+     * and returns the points calculated for game 21
+     * @param Cards[] $data - array holding card objects
+     * @return int
+     */
+    public function getPoints(array $data)
     {
         $points = [];
 
@@ -39,6 +50,12 @@ class Games
         return $this->game21CalculatePoints($points);
     }
 
+    /**
+     * Returns a string declaring the winner of the game
+     * @param int $bank - banks points
+     * @param int $player - players points
+     * @return string
+     */
     public function determineWinner($bank, $player): string
     {
         if ($player == 0 && $bank == 0) {
@@ -55,15 +72,21 @@ class Games
         }
         return "Player Wins!";
     }
-
-    public function getGameData($data)
+    /**
+     * Function creates and updates variables used on the html.twig using session data.
+     * Once the bank has played the function checks for a winner.
+     * @param  array<string,Hand|Cards[]> $data - holds array with session data for deck of cards(hand), player and bank.
+     * @return array<string,Cards[]|bool|int|string> $data - holds variables needed for rendering the html.twig
+     */
+    public function getGameData(array $data): array
     {
         /** @var Hand $hand */
         $hand = $data['hand'];
+        /** @var Cards[] $player */
         $player = $data['player'];
+        /** @var Cards[] $bank */
         $bank = $data['bank'];
         $winner = "";
-        /** @var Games $game */
 
         $playerPoints = $this->getPoints($player);
         $bankPoints = $this->getPoints($bank);
