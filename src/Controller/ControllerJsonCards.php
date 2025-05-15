@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Cards\Cards;
 use App\Cards\DeckOfCards;
+use App\Cards\Games;
 use App\Cards\Hand;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -206,5 +207,59 @@ class ControllerJsonCards extends AbstractController
         $sessionJson->set('deck', $deck);
         $sessionJson->set('amount', 0);
         return $this->render('json_api.html.twig');
+    }
+
+
+    #[Route("/api/game", name: "game_21", methods: ['GET'])]
+    public function jsonGame21(
+        SessionInterface $gameSession
+    ): Response {
+        if (!$gameSession->has('21_deck')) {
+            $hand = new Hand();
+            $hand->shuffle();
+            $gameSession->set('21_deck', $hand);
+            $gameSession->set('player', []);
+            $gameSession->set('bank', []);
+        }
+        $game = new Games();
+        /** @var array<string,Hand|Cards[]> $gameData */
+        $gameData = [
+            'hand' => $gameSession->get('21_deck'),
+            'player' => $gameSession->get('player'),
+            'bank' => $gameSession->get('bank'),
+        ];
+
+        $data = $game->getGameData($gameData);
+        /** @var Cards[] $playerCards */
+        $playerCards = $data['player'];
+        /** @var Cards[] $bankCards */
+        $bankCards = $data['bank'];
+        $player = [];
+        $bank = [];
+
+        foreach ($playerCards as $card) {
+            $player[] = $card->getName();
+        }
+        foreach ($bankCards as $card) {
+            $bank[] = $card->getName();
+        }
+
+        $jsonData = [
+            'player' => $player,
+            'bank' => $bank,
+            'playerScore' => $data['playerScore'],
+            'bankScore' => $data['bankScore'],
+            'playersTurn' => $data['playersTurn'],
+            'playerGotMoreThan21' => $data['playerGotMoreThan21'],
+            'gameOngoing' => $data['gameOngoing'],
+            'winner' => $data['winner'],
+        ];
+
+        $responseJson = new JsonResponse($jsonData);
+        $responseJson->setEncodingOptions(
+            $responseJson->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+
+        return $responseJson;
     }
 }

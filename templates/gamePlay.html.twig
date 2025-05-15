@@ -33,7 +33,7 @@
             </div>
             <div class="game21">
                 <div class="playerBox">
-                    {% for card in card %}
+                    {% for card in player %}
                         <div title='{{ card.getName }}'class='{{ card.getColor }}'> &#{{ card.getUnicode }};</div>
                     {% endfor %}
                 </div>

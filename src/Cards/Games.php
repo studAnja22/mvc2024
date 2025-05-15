@@ -94,7 +94,7 @@ class Games
         /** The players turn. */
         if (count($bank) == 0) {
             $data = [
-                'card' => $player,//Holds players card object in an array - to be displayed
+                'player' => $player,//Holds players card object in an array - to be displayed
                 'bank' => $bank,//currently empty array
                 'playerScore' => $playerPoints,
                 'bankScore' => $bankPoints,//should be 0 because the bank hasn't played yet.
@@ -110,7 +110,7 @@ class Games
         $winner = $this->determineWinner($bankPoints, $playerPoints);//returns string with winner
 
         $data = [
-                'card' => $player,//Holds players card object in an array - to be displayed
+                'player' => $player,//Holds players card object in an array - to be displayed
                 'bank' => $bank,//Holds banks card object in an array - to be displayed
                 'playerScore' => $playerPoints,
                 'bankScore' => $bankPoints,
