@@ -13,7 +13,7 @@ use App\Cards\Hand;
 class Games
 {
     /**
-     * The function takes an array of integers. 
+     * The function takes an array of integers.
      * Checks if there's a 1 and if adding 13 would keep the sum under or equal to 21.
      * Then returns the array sum as an integer.
      * @param int[] $data - an array with integers

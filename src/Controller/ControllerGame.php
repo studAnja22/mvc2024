@@ -45,7 +45,9 @@ class ControllerGame extends AbstractController
                 return $this->redirectToRoute('gamePlay');
             case "Draw":
                 //Player draws cards;
+                /** @var Hand $hand */
                 $hand = $gameSession->get('21_deck');
+                /** @var Cards[] $player */
                 $player = $gameSession->get('player');
                 $player[] = $hand->drawTopCard();
                 $hand->removeTopCard();
@@ -54,8 +56,10 @@ class ControllerGame extends AbstractController
                 return $this->redirectToRoute('gamePlay');
             case "Hold":
                 // Bank draws cards.
-                $bank = $gameSession->get('bank');
+                /** @var Hand $hand */
                 $hand = $gameSession->get('21_deck');
+                /** @var Cards[] $bank */
+                $bank = $gameSession->get('bank');
                 $game = new Games();
                 $continueDrawingCards = true;
                 /**
@@ -64,7 +68,10 @@ class ControllerGame extends AbstractController
                  * We do not save the updated deck in session because the game has ended after the bank has drawn cards.
                  */
                 while ($continueDrawingCards) {
-                    $bank[] = $hand->drawTopCard();
+                    /** @var Cards $card */
+                    $card = $hand->drawTopCard();
+                    $bank[] = $card;
+
                     $hand->removeTopCard();
 
                     $bankPoints = $game->getPoints($bank);
@@ -92,6 +99,7 @@ class ControllerGame extends AbstractController
             $gameSession->set('bank', []);
         }
         $game = new Games();
+        /** @var array<string,Hand|Cards[]> $gameData */
         $gameData = [
             'hand' => $gameSession->get('21_deck'),
             'player' => $gameSession->get('player'),
