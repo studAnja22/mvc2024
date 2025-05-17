@@ -9,6 +9,7 @@ use App\Cards\Hand;
 /**
  * The game class helps with calculating and comparing values
  * as well as checking winning conditions of a game
+ * and gets the values needed to render the game page.
  */
 class Games
 {
@@ -72,6 +73,7 @@ class Games
         }
         return "Player Wins!";
     }
+
     /**
      * Function creates and updates variables used on the html.twig using session data.
      * Once the bank has played the function checks for a winner.

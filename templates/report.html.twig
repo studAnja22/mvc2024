@@ -83,7 +83,37 @@
             TIL att a href inte skickar vidare till post så sessioner sparas inte. det är viktigt att hålla koll på vad man har i sina variablar. att jag är bättre på git.  
         </p>
         <h2 id="kmom03">Kmom03</h2>
-        <p>TEXT</p>
+        <h3>Intro</h3>
+        <p>
+        Då var det dags att dyka ner i mvc kursen igen! Att återbesöka kod man skrev VT22 när man var ‘super ny’ på att koda var lärorikt. Det är så viktigt att kommentera vad poängen med vissa funktioner är, vad olika variabler innehåller och dess syfte. Jag försökte vara bättre på att kommentera min kod den här gången så det är betydligt lättare att hoppa in i.
+        </p>
+        <h3>Hur det kändes att modellera ett kortspel med flödesdiagram och psuedokod. Var det något som du tror stödjer dig i din problemlösning och tankearbete för att strukturera koden kring en applikation?</h3>
+        <p>
+        Jag valde att göra flödesdiagrammet och pseudokod med papper och penna för att lättare få en uppfattning av hur spelflödet skulle vara. Jag fick göra om det några gånger och försöka förenkla min första lösning. Det hjälpte mig en hel del med att visualisera hur ‘slutprodukten’ skulle bli. 
+        </p>
+        <h3>Hur löste du uppgiften, är du nöjd/missnöjd, vilken förbättringspotential ser du i din koden, dina klasser och applikationen som helhet?
+        </h3>
+        <p>
+        Jag är nöjd med hur jag löste uppgiften. Den ser snygg ut och den fungerar som tänkt.<br>
+        Jag valde att spara undan 3 saker i session. Kortleken, spelarens hand och bankens hand.
+        När man startar ett nytt spel eller för första gången besöker spelsidan så blir du tilldelad en blandad kortlek. Spelaren har tre knappar att välja bland, <b>‘new game’</b>, <b>’draw’</b> och <b>’hold’</b>. Dessa val hanteras med en switch case i post routern.<br>
+        Startar du ett nytt spel med ‘new game’ rensas sessionen och du blir tilldelad en ny blandad kortlek. Drar du ett kort med ‘draw’ så får du det första kort objektet i kortleken som sparas till spelarens hand. Om spelaren drar kort så de får över 21 så förlorar spelaren. Knapparna för draw och hold tas bort så spelaren kan endast välja att börja ett nytt spel. När spelaren vill så kan de trycka på <b>‘hold’</b> och då är det bankens tur. Banken drar kort tills den fått minst 17 poäng och slutar dra kort därefter. Bankens kort sparas i sessionen men kortleken sparas inte i sessionen eftersom den inte kommer användas igen. Knapparna för draw och hold försvinner när det är bankens tur. Även om spelaren väljer att inte dra några kort alls och trycker på ‘hold’ så hanterar spelet bankens vinst eller bägges förlust.<br>
+        Spel klassen håller en samling funktioner som hjälper spelflödet. Just nu har den 4 funktioner. getPoints() tar emot en array med kort objekt, hämtar kortets värde och skickar dessa vidare till game21CalculatePoints() som dels räknar ihop poängen och dels kollar om det finns ett ess bland korten. Om det finns ett ess och om dess högre värde (14) inte överstiger 21 så lägger vi till + 13 i uträkningen (vi ‘ändrar om’ 1 till 14), annars behåller vi 1an (essets default värde). I determineWinner() så kollar vi om spelaren eller banken vann.
+        getGameData() sköter spelflödet och de variabler vi behöver för att rendera html sidan. 
+        <b>Förbättrings potential.</b> Absolut. De variabler som används för att styra html sidan kan säkert bantas ner för att göra det mindre komplicerat. playerTurn, playerGotMoreThan21 och gameOngoing kanske kan tas bort helt om man funderar lite extra på hur html logiken ska hanteras. Kanske är det bättre att låta ‘winner’ styra knapparna. Så länge det är en tom sträng så är ju spelet igång. Och efter att banken har haft sin omgång så är spelet slut ändå så då behöver jag inte individuella variabler för att ta bort en knapp i taget.<br>
+        Jag har en funktion i Hand() (som är det kortleks objekt vi sparar i sessionen) som heter drawAndDiscard() som jag inte använde, istället använde jag drawTopCard() och removeTopCard() - drawAndDiscard() gör samma sak. Kanske hade varit bra att använda den funktionen istället. I klassen Deck så finns det av någon anledning möjligheten till att blanda kortleken. Hand klassen har också möjlighet till att blanda kortleken…Vet inte hur jag tänkte där för två år sedan, just nu ser det ganska onödigt ut att ha två funktioner som gör samma sak. Många routes som skrevs förra året är ganska ‘tjocka’. De borde bantas ner för att förbättra läsbarheten och lättare hantera felsökningar.<br>
+        Templates mappen börjar bli ganska rörig, kanske vore det bra att dela upp den i flera sektioner.
+        </p>
+        <h3>Vilken är din känsla för att koda i ett ramverk som Symfony, så här långt in i kursen?</h3>
+        <p>
+        Jag började med kursen VT22 och hann göra kmom01 och kmom02. VT23 skulle jag hoppa in i kursen igen och upptäckte att saker som fungerade ett år tidigare inte fungerade nu. PHP, Symphony och flera paket behövde uppdateras. Samma nu VT24, många uppdateringar behövdes göras - men nu när man har kunskapen om att saker behöver vara uppdateras så blir man inte förtvivlad iallafall ;P. Det var väldigt lärorikt ändå (om något som är ganska självklart egentligen - saker behöver vara uppdaterade för att fungera!).<br>
+        Det är roligt och lite knepigt att hoppa mellan olika ramverk i olika programmeringsspråk. Ganska lika, men ändå olika. Det tog ett tag att hitta var mina echo(), var_dump() och print_r() tog vägen när jag fick symphonys red ghost of doom. Men det är kul med symphony :).
+        </p>
+        <h3>Vilken är din TIL för detta kmom?</h3>
+        <p>
+        Mina första lösningar brukar vara överkomplicerade. Det är viktigt att ta ett steg tillbaka och se helheten. Att skriva med papper och penna och förklara för en programmerings anka (eller katten) kan hjälpa till att reda ut hur man ska gå tillväga på lättaste, simplaste, smidigaste sättet (KISS!).<br>
+        Det är sååå viktigt att kommentera sin kod så att ditt framtida jag inte behöver reda ut ett överkomplicerat garnnystan med kod och variabler som du inte vet är nödvändiga eller vad de används till. 
+        </p>
         <h2 id="kmom04">Kmom04</h2>
         <p>TEXT</p>
         <h2 id="kmom05">Kmom05</h2>
