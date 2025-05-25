@@ -59,9 +59,6 @@ class Games
      */
     public function determineWinner($bank, $player): string
     {
-        if ($player == 0 && $bank == 0) {
-            return "";
-        }
         if ($player == 0 && $bank > 21) {
             return "No winners here, just losers!";
         }
