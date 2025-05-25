@@ -10,16 +10,32 @@ use PHPUnit\Framework\TestCase;
 class DeckOfCardsTest extends TestCase
 {
     /**
-     * Constructs a DeckOfCards object and verify the values are null
+     * Constructs a DeckOfCards object and verifies:
+     * That we have properties 'allSuits', 'allValues' and 'deck'.
      */
     public function testCreateDeckOfCardObject()
     {
         $deck = new DeckOfCards();
+
         $this->assertInstanceOf("App\Cards\DeckOfCards", $deck);
-        //CHeck if there's 52 cards in the deck.
-        
-        // $this->assertEquals($deck->getDeck(), null);
-        // assertObjectHasProperty()
+
+        $this->assertObjectHasProperty('allSuits', $deck);
+        $this->assertObjectHasProperty('allValues', $deck);
+        $this->assertObjectHasProperty('deck', $deck);
+    }
+    /**
+     * We check the functions getDeck() and shuffleDeck()
+     * We check if we have 52 objects in the deck of cards.
+     * We check (in a soon to be deprecated method) that it only contains objects.
+     */
+    public function testDeckOfCardsMethods() 
+    {
+        $deck = new DeckOfCards();
+
+        //assertContainsOnly() will be deprecated and method removed in PHPUnit 13.
         $this->assertContainsOnlyObject($deck->getDeck());
+        
+        $this->assertCount(52, $deck->getDeck());
+        $this->assertCount(52, $deck->shuffleDeck());
     }
 }

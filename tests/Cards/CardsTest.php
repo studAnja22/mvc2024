@@ -5,12 +5,14 @@ namespace App\Cards;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Test cases for class Cards
+ * Test cases for Card class
  */
 class CardsTest extends TestCase
 {
     /**
-     * Constructs a card object and verify the values are null
+     * Constructs a card object and verify:
+     * That we have property 'color', 'suit', 'name' and 'cardValue' and
+     * that these properties have the value null.
      */
     public function testCreateCardObject()
     {
@@ -20,10 +22,16 @@ class CardsTest extends TestCase
         $color = $card->getColor();
         $name = $card->getName();
         $value = $card->getCardValue();
+        $stringValue = $card->getAsString();
 
+        $this->assertObjectHasProperty('color', $card);
+        $this->assertObjectHasProperty('suit', $card);
+        $this->assertObjectHasProperty('name', $card);
+        $this->assertObjectHasProperty('cardValue', $card);
         $this->assertEquals($color, null);
         $this->assertEquals($name, null);
         $this->assertEquals($value, null);
+        $this->assertEquals($stringValue, "[]");
     }
     /**
      * Constructs a card object,
@@ -40,9 +48,11 @@ class CardsTest extends TestCase
         $color = $card->getColor();
         $name = $card->getName();
         $value = $card->getCardValue();
+        $stringValue = $card->getAsString();
 
         $this->assertEquals($color, "card black");
         $this->assertEquals($name, "7 of Spades");
         $this->assertEquals($value, "7");
+        $this->assertEquals($stringValue, "[7]");
     }
 }
