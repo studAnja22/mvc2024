@@ -14,7 +14,7 @@ class CardsTest extends TestCase
      * That we have property 'color', 'suit', 'name' and 'cardValue' and
      * that these properties have the value null.
      */
-    public function testCreateCardObject()
+    public function testCreateCardObject(): void
     {
         $card = new Cards();
         $this->assertInstanceOf("App\Cards\Cards", $card);
@@ -38,7 +38,7 @@ class CardsTest extends TestCase
      * set card to 7 of spades,
      * verify the values
      */
-    public function testCreateCardObject7OfSpades()
+    public function testCreateCardObject7OfSpades(): void
     {
         $card = new Cards();
         $this->assertInstanceOf("App\Cards\Cards", $card);

@@ -3,12 +3,12 @@ Search.appendIndex(
                 {
             "fqsen": "\\App\\Cards\\CardGraphic",
             "name": "CardGraphic",
-            "summary": "",
+            "summary": "Card\u0020class\u0020is\u0020used\u0020to\u0020create\u0020a\u0020singular\u0020card\u0020object\u0020\u002D\u0020which\u0020is\u0020a\u0020card\u0020from\u0020a\u0020french\u002Dsuited,\u0020standard\u002052\u002Dcard\u0020pack\u0020type\u0020of\u0020card.",
             "url": "classes/App-Cards-CardGraphic.html"
         },                {
             "fqsen": "\\App\\Cards\\CardGraphic\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "The\u0020constructor\u0020creates\u0020the\u0020base\u0020for\u0020the\u0020card\u0020object.",
             "url": "classes/App-Cards-CardGraphic.html#method___construct"
         },                {
             "fqsen": "\\App\\Cards\\CardGraphic\u003A\u003AgetUnicode\u0028\u0029",
@@ -28,47 +28,47 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Cards\\Cards",
             "name": "Cards",
-            "summary": "",
+            "summary": "Card\u0020class\u0020is\u0020used\u0020to\u0020create\u0020a\u0020singular\u0020card\u0020object\u0020\u002D\u0020which\u0020is\u0020a\u0020card\u0020from\u0020a\u0020french\u002Dsuited,\u0020standard\u002052\u002Dcard\u0020pack\u0020type\u0020of\u0020card.",
             "url": "classes/App-Cards-Cards.html"
         },                {
             "fqsen": "\\App\\Cards\\Cards\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "The\u0020constructor\u0020creates\u0020the\u0020base\u0020for\u0020the\u0020card\u0020object.",
             "url": "classes/App-Cards-Cards.html#method___construct"
         },                {
             "fqsen": "\\App\\Cards\\Cards\u003A\u003AsetCard\u0028\u0029",
             "name": "setCard",
-            "summary": "",
+            "summary": "Method\u0020sets\u0020the\u0020cards\u0020values.",
             "url": "classes/App-Cards-Cards.html#method_setCard"
         },                {
             "fqsen": "\\App\\Cards\\Cards\u003A\u003AsetColor\u0028\u0029",
             "name": "setColor",
-            "summary": "",
+            "summary": "Method\u0020sets\u0020the\u0020card\u0020objects\u0020color\u0020based\u0020on\u0020it\u0027s\u0020suit.",
             "url": "classes/App-Cards-Cards.html#method_setColor"
         },                {
             "fqsen": "\\App\\Cards\\Cards\u003A\u003AsetName\u0028\u0029",
             "name": "setName",
-            "summary": "",
+            "summary": "Method\u0020sets\u0020the\u0020card\u0020objects\u0020name\u0020based\u0020on\u0020it\u0027s\u0020value.",
             "url": "classes/App-Cards-Cards.html#method_setName"
         },                {
             "fqsen": "\\App\\Cards\\Cards\u003A\u003AgetColor\u0028\u0029",
             "name": "getColor",
-            "summary": "",
+            "summary": "Method\u0020returns\u0020the\u0020card\u0020objects\u0020color.",
             "url": "classes/App-Cards-Cards.html#method_getColor"
         },                {
             "fqsen": "\\App\\Cards\\Cards\u003A\u003AgetName\u0028\u0029",
             "name": "getName",
-            "summary": "",
+            "summary": "Method\u0020returns\u0020the\u0020card\u0020objects\u0020name.",
             "url": "classes/App-Cards-Cards.html#method_getName"
         },                {
             "fqsen": "\\App\\Cards\\Cards\u003A\u003AgetCardValue\u0028\u0029",
             "name": "getCardValue",
-            "summary": "",
+            "summary": "Method\u0020returns\u0020the\u0020card\u0020objects\u0020value\u0020as\u0020a\u0020string.",
             "url": "classes/App-Cards-Cards.html#method_getCardValue"
         },                {
             "fqsen": "\\App\\Cards\\Cards\u003A\u003AgetAsString\u0028\u0029",
             "name": "getAsString",
-            "summary": "",
+            "summary": "Method\u0020returns\u0020the\u0020cards\u0020value\u0020as\u0020a\u0020string\u0020in\u0020json\u002Dformat.",
             "url": "classes/App-Cards-Cards.html#method_getAsString"
         },                {
             "fqsen": "\\App\\Cards\\Cards\u003A\u003A\u0024cardValue",
@@ -143,7 +143,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Cards\\Games\u003A\u003AgetPoints\u0028\u0029",
             "name": "getPoints",
-            "summary": "Function\u0020takes\u0020an\u0020array\u0020with\u0020card\u0020objects,\u0020collects\u0020the\u0020cards\u0020value\u0020as\u0020an\u0020integer\u0020in\u0020another\u0020array\nand\u0020returns\u0020the\u0020points\u0020calculated\u0020for\u0020game\u002021",
+            "summary": "Method\u0020takes\u0020an\u0020array\u0020with\u0020card\u0020objects,\u0020collects\u0020the\u0020cards\u0020value\u0020as\u0020an\u0020integer\u0020in\u0020another\u0020array\nand\u0020returns\u0020the\u0020points\u0020calculated\u0020for\u0020game\u002021",
             "url": "classes/App-Cards-Games.html#method_getPoints"
         },                {
             "fqsen": "\\App\\Cards\\Games\u003A\u003AdetermineWinner\u0028\u0029",
@@ -153,7 +153,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Cards\\Games\u003A\u003AgetGameData\u0028\u0029",
             "name": "getGameData",
-            "summary": "Function\u0020creates\u0020and\u0020updates\u0020variables\u0020used\u0020on\u0020the\u0020html.twig\u0020using\u0020session\u0020data.",
+            "summary": "Method\u0020creates\u0020and\u0020updates\u0020variables\u0020used\u0020on\u0020the\u0020html.twig\u0020using\u0020session\u0020data.",
             "url": "classes/App-Cards-Games.html#method_getGameData"
         },                {
             "fqsen": "\\App\\Cards\\Hand",

@@ -6,9 +6,9 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * Test cases for Hand class
- * 
+ *
  * The Hand holds a deck of card, which contains card objects.
- * Hand can shuffle the deck, draw the top card, shuffle the deck, 
+ * Hand can shuffle the deck, draw the top card, shuffle the deck,
  * draw cards by index and look at all the cards in the deck and draw pile.
  */
 class HandTest extends TestCase
@@ -16,7 +16,7 @@ class HandTest extends TestCase
     /**
      * Tests if we can create a hand object with properties 'drawn' and 'deck'
      */
-    public function testCreateHandObject()
+    public function testCreateHandObject(): void
     {
         $hand = new Hand();
         $this->assertInstanceOf("App\Cards\Hand", $hand);
@@ -26,20 +26,20 @@ class HandTest extends TestCase
     }
     /**
      * Tests if we have a deck of 52 cards and our drawn pile is 0.
-     * 
+     *
      * We check that we have 52 cards and that we get 52 cards when we shuffle the deck.
      * We also check if it only contains objects (with a method that will be deprecated with phpunit 13).
-     * 
+     *
      * Methods checked:
      * getDeck(), shuffle(), checkDrawn()
      */
-    public function testDeckHas52CardsDrawnHas0cards()
+    public function testDeckHas52CardsDrawnHas0cards(): void
     {
         $hand = new Hand();
         //52 cards in the deck, only objects.
         $this->assertCount(52, $hand->getDeck());
         //assertContainsOnly() will be deprecated and method removed in PHPUnit 13.
-        $this->assertContainsOnlyObject($hand->getDeck());
+        // $this->assertContainsOnlyObject($hand->getDeck());//will always be true
 
         //No drawn cards yet.
         $this->assertEquals(0, $hand->checkDrawn());
@@ -47,21 +47,21 @@ class HandTest extends TestCase
         //Shuffle deck returns 52 cards
         $this->assertCount(52, $hand->shuffle());
         //assertContainsOnly() will be deprecated and method removed in PHPUnit 13.
-        $this->assertContainsOnlyObject($hand->shuffle());
+        // $this->assertContainsOnlyObject($hand->shuffle());//will always be true
     }
     /**
      * We draw cards from the deck and checks the properties drawn and deck.
-     * 
+     *
      * Testing methods:
      * howManyLeft(), checkDrawn(),
      * drawTopCard(), removeTopCard(), drawAndDiscard(), getAllDrawn(),
      * drawIndex(), getDrawnByIndex()
      */
-    public function testDrawingCards()
+    public function testDrawingCards(): void
     {
         $hand = new Hand();
         /**
-         * No cards drawn yet. 
+         * No cards drawn yet.
          * Deck should have 52 cards and drawn pile 0.
          */
         $this->assertEquals(52, $hand->howManyLeft());

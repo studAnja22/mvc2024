@@ -11,12 +11,12 @@ class GamesTest extends TestCase
 {
     /**
      * Checks if we get the variables we need to properly rendering the html page.
-     * getGameData() takes an array with the keys 'hand', 'player', 'bank'. 
+     * getGameData() takes an array with the keys 'hand', 'player', 'bank'.
      * hand contains the deck of cards, player and bank holds their respective drawn cards.
-     * 
+     *
      * In this test case we have no drawn cards.
      */
-    public function testVariablesForHTMLPage()
+    public function testVariablesForHTMLPage(): void
     {
         $game = new Games();
         /** @var array<string,Hand|Cards[]> $gameData */
@@ -37,24 +37,30 @@ class GamesTest extends TestCase
         $this->assertEquals($data['winner'], "");
     }
     /**
-     * Player wins by having more than the bank, 
+     * Player wins by having more than the bank,
      * or the bank draws more than 21.
      */
-    public function testPlayerWinsGame()
+    public function testPlayerWinsGame(): void
     {
         $game = new Games();
         $hand = new Hand();
         //Player: (Ace of Hearts, 2 of Hearts, 3 of Hearts)
-        $cardOne = $hand->drawAndDiscard();
-        $cardTwo = $hand->drawAndDiscard();
-        $cardThree = $hand->drawAndDiscard();
-        $playerCards = [$cardOne, $cardTwo, $cardThree];
+        $playerCards = [];
+        for ($i = 0; $i < 3; $i++) {
+            $card = $hand->drawAndDiscard();
+            if ($card != false) {
+                array_push($playerCards, $card);
+            }
+        }
 
         //Bank: (4 of Hearts, 5 of hearts, 6 of Hearts)
-        $cardOne = $hand->drawAndDiscard();
-        $cardTwo = $hand->drawAndDiscard();
-        $cardThree = $hand->drawAndDiscard();
-        $bankCards = [$cardOne, $cardTwo, $cardThree];
+        $bankCards = [];
+        for ($i = 0; $i < 3; $i++) {
+            $card = $hand->drawAndDiscard();
+            if ($card != false) {
+                array_push($bankCards, $card);
+            }
+        }
 
         $gameData = [
             'hand' => $hand,
@@ -76,9 +82,12 @@ class GamesTest extends TestCase
          * Player wins if the bank gets more than 21.
          * We add two more cards to the banks hand. (7 and 8 of hearts)
          */
-        $cardFour = $hand->drawAndDiscard();
-        $cardFive = $hand->drawAndDiscard();
-        array_push($bankCards, $cardFour, $cardFive);
+        for ($i = 0; $i < 2; $i++) {
+            $card = $hand->drawAndDiscard();
+            if ($card != false) {
+                array_push($bankCards, $card);
+            }
+        }
 
         $gameData = [
                     'hand' => $hand,
@@ -96,21 +105,27 @@ class GamesTest extends TestCase
      * Bank wins if it has higher value than the player,
      * or if the player get more than 21.
      */
-    public function testBankWinsGame()
+    public function testBankWinsGame(): void
     {
         $game = new Games();
         $hand = new Hand();
         //Bank: (Ace of Hearts, 2 of Hearts, 3 of Hearts)
-        $cardOne = $hand->drawAndDiscard();
-        $cardTwo = $hand->drawAndDiscard();
-        $cardThree = $hand->drawAndDiscard();
-        $bankCards = [$cardOne, $cardTwo, $cardThree];
+        $bankCards = [];
+        for ($i = 0; $i < 3; $i++) {
+            $card = $hand->drawAndDiscard();
+            if ($card != false) {
+                array_push($bankCards, $card);
+            }
+        }
 
         //Player: (4 of Hearts, 5 of hearts, 6 of Hearts)
-        $cardOne = $hand->drawAndDiscard();
-        $cardTwo = $hand->drawAndDiscard();
-        $cardThree = $hand->drawAndDiscard();
-        $playerCards = [$cardOne, $cardTwo, $cardThree];
+        $playerCards = [];
+        for ($i = 0; $i < 3; $i++) {
+            $card = $hand->drawAndDiscard();
+            if ($card != false) {
+                array_push($playerCards, $card);
+            }
+        }
 
         $gameData = [
             'hand' => $hand,
@@ -128,9 +143,12 @@ class GamesTest extends TestCase
         /**
          * Bank wins if player gets more than 21
          */
-        $cardFour = $hand->drawAndDiscard();
-        $cardFive = $hand->drawAndDiscard();
-        array_push($playerCards, $cardFour, $cardFive);
+        for ($i = 0; $i < 2; $i++) {
+            $card = $hand->drawAndDiscard();
+            if ($card != false) {
+                array_push($playerCards, $card);
+            }
+        }
 
         $gameData = [
                     'hand' => $hand,
@@ -149,22 +167,21 @@ class GamesTest extends TestCase
      * The player can choose not to draw any cards.
      * The bank will play as normal.
      * The bank will win unless it draws more than 21.
-     * 
+     *
      * We check what happens when bank draws more than 21.
      */
-    public function testPlayersDrawsNoCards()
+    public function testPlayersDrawsNoCards(): void
     {
         $game = new Games();
         $hand = new Hand();
         //Bank: (Ace of Hearts, 2 of Hearts, 3 of Hearts)
-        $cardOne = $hand->drawAndDiscard();
-        $cardTwo = $hand->drawAndDiscard();
-        $cardThree = $hand->drawAndDiscard();
-        $cardFour = $hand->drawAndDiscard();
-        $cardFive = $hand->drawAndDiscard();
-        $cardSix = $hand->drawAndDiscard();
-        $cardSeven = $hand->drawAndDiscard();
-        $bankCards = [$cardOne, $cardTwo, $cardThree, $cardFour, $cardFive, $cardSix, $cardSeven];
+        $bankCards = [];
+        for ($i = 0; $i < 7; $i++) {
+            $card = $hand->drawAndDiscard();
+            if ($card != false) {
+                array_push($bankCards, $card);
+            }
+        }
 
         //Player: draws no cards
         $playerCards = [];

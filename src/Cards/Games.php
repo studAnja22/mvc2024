@@ -29,7 +29,7 @@ class Games
     }
 
     /**
-     * Function takes an array with card objects, collects the cards value as an integer in another array
+     * Method takes an array with card objects, collects the cards value as an integer in another array
      * and returns the points calculated for game 21
      * @param Cards[] $data - array holding card objects
      * @return int
@@ -53,6 +53,9 @@ class Games
 
     /**
      * Returns a string declaring the winner of the game
+     *
+     * This method takes the banks points and the players points and compare them to determine who won the game 21.
+     * Method returns a string declaring who won the game.
      * @param int $bank - banks points
      * @param int $player - players points
      * @return string
@@ -72,7 +75,7 @@ class Games
     }
 
     /**
-     * Function creates and updates variables used on the html.twig using session data.
+     * Method creates and updates variables used on the html.twig using session data.
      * Once the bank has played the function checks for a winner.
      * @param  array<string,Hand|Cards[]> $data - holds array with session data for deck of cards(hand), player and bank.
      * @return array<string,Cards[]|bool|int|string> $data - holds variables needed for rendering the html.twig
