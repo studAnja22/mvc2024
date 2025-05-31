@@ -85,37 +85,86 @@
         <h2 id="kmom03">Kmom03</h2>
         <h3>Intro</h3>
         <p>
-        Då var det dags att dyka ner i mvc kursen igen! Att återbesöka kod man skrev VT22 när man var ‘super ny’ på att koda var lärorikt. Det är så viktigt att kommentera vad poängen med vissa funktioner är, vad olika variabler innehåller och dess syfte. Jag försökte vara bättre på att kommentera min kod den här gången så det är betydligt lättare att hoppa in i.
+            Då var det dags att dyka ner i mvc kursen igen! Att återbesöka kod man skrev VT22 när man var ‘super ny’ på att koda var lärorikt. Det är så viktigt att kommentera vad poängen med vissa funktioner är, vad olika variabler innehåller och dess syfte. Jag försökte vara bättre på att kommentera min kod den här gången så det är betydligt lättare att hoppa in i.
         </p>
         <h3>Hur det kändes att modellera ett kortspel med flödesdiagram och psuedokod. Var det något som du tror stödjer dig i din problemlösning och tankearbete för att strukturera koden kring en applikation?</h3>
         <p>
-        Jag valde att göra flödesdiagrammet och pseudokod med papper och penna för att lättare få en uppfattning av hur spelflödet skulle vara. Jag fick göra om det några gånger och försöka förenkla min första lösning. Det hjälpte mig en hel del med att visualisera hur ‘slutprodukten’ skulle bli. 
+            Jag valde att göra flödesdiagrammet och pseudokod med papper och penna för att lättare få en uppfattning av hur spelflödet skulle vara. Jag fick göra om det några gånger och försöka förenkla min första lösning. Det hjälpte mig en hel del med att visualisera hur ‘slutprodukten’ skulle bli. 
         </p>
         <h3>Hur löste du uppgiften, är du nöjd/missnöjd, vilken förbättringspotential ser du i din koden, dina klasser och applikationen som helhet?
         </h3>
         <p>
-        Jag är nöjd med hur jag löste uppgiften. Den ser snygg ut och den fungerar som tänkt.<br>
-        Jag valde att spara undan 3 saker i session. Kortleken, spelarens hand och bankens hand.
-        När man startar ett nytt spel eller för första gången besöker spelsidan så blir du tilldelad en blandad kortlek. Spelaren har tre knappar att välja bland, <b>‘new game’</b>, <b>’draw’</b> och <b>’hold’</b>. Dessa val hanteras med en switch case i post routern.<br>
-        Startar du ett nytt spel med ‘new game’ rensas sessionen och du blir tilldelad en ny blandad kortlek. Drar du ett kort med ‘draw’ så får du det första kort objektet i kortleken som sparas till spelarens hand. Om spelaren drar kort så de får över 21 så förlorar spelaren. Knapparna för draw och hold tas bort så spelaren kan endast välja att börja ett nytt spel. När spelaren vill så kan de trycka på <b>‘hold’</b> och då är det bankens tur. Banken drar kort tills den fått minst 17 poäng och slutar dra kort därefter. Bankens kort sparas i sessionen men kortleken sparas inte i sessionen eftersom den inte kommer användas igen. Knapparna för draw och hold försvinner när det är bankens tur. Även om spelaren väljer att inte dra några kort alls och trycker på ‘hold’ så hanterar spelet bankens vinst eller bägges förlust.<br>
-        Spel klassen håller en samling funktioner som hjälper spelflödet. Just nu har den 4 funktioner. getPoints() tar emot en array med kort objekt, hämtar kortets värde och skickar dessa vidare till game21CalculatePoints() som dels räknar ihop poängen och dels kollar om det finns ett ess bland korten. Om det finns ett ess och om dess högre värde (14) inte överstiger 21 så lägger vi till + 13 i uträkningen (vi ‘ändrar om’ 1 till 14), annars behåller vi 1an (essets default värde). I determineWinner() så kollar vi om spelaren eller banken vann.
-        getGameData() sköter spelflödet och de variabler vi behöver för att rendera html sidan. 
-        <b>Förbättrings potential.</b> Absolut. De variabler som används för att styra html sidan kan säkert bantas ner för att göra det mindre komplicerat. playerTurn, playerGotMoreThan21 och gameOngoing kanske kan tas bort helt om man funderar lite extra på hur html logiken ska hanteras. Kanske är det bättre att låta ‘winner’ styra knapparna. Så länge det är en tom sträng så är ju spelet igång. Och efter att banken har haft sin omgång så är spelet slut ändå så då behöver jag inte individuella variabler för att ta bort en knapp i taget.<br>
-        Jag har en funktion i Hand() (som är det kortleks objekt vi sparar i sessionen) som heter drawAndDiscard() som jag inte använde, istället använde jag drawTopCard() och removeTopCard() - drawAndDiscard() gör samma sak. Kanske hade varit bra att använda den funktionen istället. I klassen Deck så finns det av någon anledning möjligheten till att blanda kortleken. Hand klassen har också möjlighet till att blanda kortleken…Vet inte hur jag tänkte där för två år sedan, just nu ser det ganska onödigt ut att ha två funktioner som gör samma sak. Många routes som skrevs förra året är ganska ‘tjocka’. De borde bantas ner för att förbättra läsbarheten och lättare hantera felsökningar.<br>
-        Templates mappen börjar bli ganska rörig, kanske vore det bra att dela upp den i flera sektioner.
+            Jag är nöjd med hur jag löste uppgiften. Den ser snygg ut och den fungerar som tänkt.<br>
+            Jag valde att spara undan 3 saker i session. Kortleken, spelarens hand och bankens hand.
+            När man startar ett nytt spel eller för första gången besöker spelsidan så blir du tilldelad en blandad kortlek. Spelaren har tre knappar att välja bland, <b>‘new game’</b>, <b>’draw’</b> och <b>’hold’</b>. Dessa val hanteras med en switch case i post routern.<br>
+            Startar du ett nytt spel med ‘new game’ rensas sessionen och du blir tilldelad en ny blandad kortlek. Drar du ett kort med ‘draw’ så får du det första kort objektet i kortleken som sparas till spelarens hand. Om spelaren drar kort så de får över 21 så förlorar spelaren. Knapparna för draw och hold tas bort så spelaren kan endast välja att börja ett nytt spel. När spelaren vill så kan de trycka på <b>‘hold’</b> och då är det bankens tur. Banken drar kort tills den fått minst 17 poäng och slutar dra kort därefter. Bankens kort sparas i sessionen men kortleken sparas inte i sessionen eftersom den inte kommer användas igen. Knapparna för draw och hold försvinner när det är bankens tur. Även om spelaren väljer att inte dra några kort alls och trycker på ‘hold’ så hanterar spelet bankens vinst eller bägges förlust.<br>
+            Spel klassen håller en samling funktioner som hjälper spelflödet. Just nu har den 4 funktioner. getPoints() tar emot en array med kort objekt, hämtar kortets värde och skickar dessa vidare till game21CalculatePoints() som dels räknar ihop poängen och dels kollar om det finns ett ess bland korten. Om det finns ett ess och om dess högre värde (14) inte överstiger 21 så lägger vi till + 13 i uträkningen (vi ‘ändrar om’ 1 till 14), annars behåller vi 1an (essets default värde). I determineWinner() så kollar vi om spelaren eller banken vann.
+            getGameData() sköter spelflödet och de variabler vi behöver för att rendera html sidan. 
+            <b>Förbättrings potential.</b> Absolut. De variabler som används för att styra html sidan kan säkert bantas ner för att göra det mindre komplicerat. playerTurn, playerGotMoreThan21 och gameOngoing kanske kan tas bort helt om man funderar lite extra på hur html logiken ska hanteras. Kanske är det bättre att låta ‘winner’ styra knapparna. Så länge det är en tom sträng så är ju spelet igång. Och efter att banken har haft sin omgång så är spelet slut ändå så då behöver jag inte individuella variabler för att ta bort en knapp i taget.<br>
+            Jag har en funktion i Hand() (som är det kortleks objekt vi sparar i sessionen) som heter drawAndDiscard() som jag inte använde, istället använde jag drawTopCard() och removeTopCard() - drawAndDiscard() gör samma sak. Kanske hade varit bra att använda den funktionen istället. I klassen Deck så finns det av någon anledning möjligheten till att blanda kortleken. Hand klassen har också möjlighet till att blanda kortleken…Vet inte hur jag tänkte där för två år sedan, just nu ser det ganska onödigt ut att ha två funktioner som gör samma sak. Många routes som skrevs förra året är ganska ‘tjocka’. De borde bantas ner för att förbättra läsbarheten och lättare hantera felsökningar.<br>
+            Templates mappen börjar bli ganska rörig, kanske vore det bra att dela upp den i flera sektioner.
         </p>
         <h3>Vilken är din känsla för att koda i ett ramverk som Symfony, så här långt in i kursen?</h3>
         <p>
-        Jag började med kursen VT22 och hann göra kmom01 och kmom02. VT23 skulle jag hoppa in i kursen igen och upptäckte att saker som fungerade ett år tidigare inte fungerade nu. PHP, Symphony och flera paket behövde uppdateras. Samma nu VT24, många uppdateringar behövdes göras - men nu när man har kunskapen om att saker behöver vara uppdateras så blir man inte förtvivlad iallafall ;P. Det var väldigt lärorikt ändå (om något som är ganska självklart egentligen - saker behöver vara uppdaterade för att fungera!).<br>
-        Det är roligt och lite knepigt att hoppa mellan olika ramverk i olika programmeringsspråk. Ganska lika, men ändå olika. Det tog ett tag att hitta var mina echo(), var_dump() och print_r() tog vägen när jag fick symphonys red ghost of doom. Men det är kul med symphony :).
+            Jag började med kursen VT22 och hann göra kmom01 och kmom02. VT23 skulle jag hoppa in i kursen igen och upptäckte att saker som fungerade ett år tidigare inte fungerade nu. PHP, Symphony och flera paket behövde uppdateras. Samma nu VT24, många uppdateringar behövdes göras - men nu när man har kunskapen om att saker behöver vara uppdateras så blir man inte förtvivlad iallafall ;P. Det var väldigt lärorikt ändå (om något som är ganska självklart egentligen - saker behöver vara uppdaterade för att fungera!).<br>
+            Det är roligt och lite knepigt att hoppa mellan olika ramverk i olika programmeringsspråk. Ganska lika, men ändå olika. Det tog ett tag att hitta var mina echo(), var_dump() och print_r() tog vägen när jag fick symphonys red ghost of doom. Men det är kul med symphony :).
         </p>
         <h3>Vilken är din TIL för detta kmom?</h3>
         <p>
-        Mina första lösningar brukar vara överkomplicerade. Det är viktigt att ta ett steg tillbaka och se helheten. Att skriva med papper och penna och förklara för en programmerings anka (eller katten) kan hjälpa till att reda ut hur man ska gå tillväga på lättaste, simplaste, smidigaste sättet (KISS!).<br>
-        Det är sååå viktigt att kommentera sin kod så att ditt framtida jag inte behöver reda ut ett överkomplicerat garnnystan med kod och variabler som du inte vet är nödvändiga eller vad de används till. 
+            Mina första lösningar brukar vara överkomplicerade. Det är viktigt att ta ett steg tillbaka och se helheten. Att skriva med papper och penna och förklara för en programmerings anka (eller katten) kan hjälpa till att reda ut hur man ska gå tillväga på lättaste, simplaste, smidigaste sättet (KISS!).<br>
+            Det är sååå viktigt att kommentera sin kod så att ditt framtida jag inte behöver reda ut ett överkomplicerat garnnystan med kod och variabler som du inte vet är nödvändiga eller vad de används till. 
         </p>
         <h2 id="kmom04">Kmom04</h2>
-        <p>TEXT</p>
+        <h3>
+            Berätta hur du upplevde att skriva kod som testar annan kod med PHPUnit och hur du upplever phpunit rent allmänt.
+        </h3>
+        <p>
+            Jag gillar verkligen phpunit, framförallt code coverage vyn där man kan se inte bara hur mycket kod som testas utan även vad som testas. Det gav mig insikt att vissa delar av min kod inte kördes under några omständigheter - så de kunde tas bort. 
+            I kombination med composer validate och composer lint så hjälpte de att refaktorera mina lösningar. Det är också väldigt kul visuellt att få feedback "nu ser allt grönt ut och det är 100%" - då blir man lite glad.
+        </p>
+        <h3>
+            Hur väl lyckades du med kodtäckningen av din kod, lyckades du nå mer än 90% kodtäckning?
+        </h3>
+        <p>
+            100%! Jag fick ta bort en if sats i "determine winner" som aldrig kördes för att uppnå 100%.
+        </p>
+        <h3>
+            Upplever du din egen kod som “testbar kod” eller finns det delar i koden som är mer eller mindre testbar och finns det saker som kan göras för att förbättra kodens testbarhet?
+        </h3>
+        <p>
+            Jag tycker att min kod är relativt testbar. När alla tester gick igenom hade composer lint en del som den tyckte att jag kunde förbättra så då fick jag gå igenom min kod och tester ytterligare en gång.
+            Det jag funderade på var framförallt "shuffle deck" funktionen. Hur ska jag kolla på enklaste, smidigaste sättet att alla kort objekt har (eventuellt) fått en ny plats i kortleken? 
+            Kollar man bara första kortet så finns det ju en chans att kortet har samma plats även efter att man blandat kortleken - vilket betyder att testet kommer faila. Kanske kolla samtliga kort? 
+            Även då finns en ytterst liten sannolikhet att alla kort har hamnat på exakt samma position som innan man blandade. Hm.
+            Att testa koden gav mig också en chans att ta en närmare titt på gammal kod jag skrivit och förundras över varför vissa saker är strukturerade som de är. DrawTopCard är egentligen inte jättebra då den bara drar ett kort och lägger den i "drawn" högen - utan att ta bort kortet från kortleken. 
+            Om man inte vet om detta så finns ju en möjlighet att dra dubbletter av detta kort. Not good.
+        </p>
+        <h3>
+            Valde du att skriva om delar av din kod för att förbättra den eller göra den mer testbar, om så berätta lite hur du tänkte.
+        </h3>
+        <p>
+            Nja. Jag ändrade Game() klassen lite (tog bort en if sats i determine winner som aldrig kördes). När alla tester passerade phpunit utan problem så hade composer lint invändningar på några tester. Men istället för att refaktorera eller ändra de äldre klasserna (som eventuellt skulle förstöra så mycket annan kod) så valde jag att anpassa testerna bättre efter de klasser jag redan har. Exempelvis så kan $hand->drawAndDiscard() ge dig ett kort objekt eller false om kortleken är slut. Eftersom vi testar att dra några kort när vi testar spelklassen blev Lint galen över att ett av de första 10 korten kunde ju faktiskt vara ‘false’ (...yeah, no), så jag fixade en if sats som kollade om kortet var false och såg till att filtrera bort false kort. Då blev lint glad. 
+        </p>
+        <h3>
+            Fundera över om du anser att testbar kod är något som kan identifiera “snygg och ren kod”.
+        </h3>
+        <p>
+            Ja och nej. Att ha en testbar kod är absolut positivt, det kan ju tyda på att koden i alla fall är uppdelad i mindre testbara sektioner. 
+            Men bara för att koden är testbar så betyder det inte nödvändigtvis att koden är vare sig snygg eller ren. Jag tittade på hur jag hade gjort mina controllers för cards och jösses vad de var tjocka och svårlästa! 
+            Jag försökte den här gången att dela upp koden snyggt så metoderna/funktionerna inte gjorde allt för mycket samtidigt - det blir så komplicerat att läsa igenom efter ett tag!
+            Så, ja och nej. Kod som inte är testbar är mycket troligen inte snygg eller ren heller. Kod som är testbar är definitivt positivt, men är inte en indikator på om koden är ren eller snygg. 
+            Man kan dock ana att den är snyggare och renare än icke-testbar kod.
+        </p>
+        <h3>
+            Vilken är din TIL för detta kmom?
+        </h3>
+        <p>
+        Jag lärde mig en hel del om phpunit och phpdoc i detta kursmoment. 
+        Jag läste också igenom phpunit dokumentationen för att se om den hade stöd för att testa det jag ville testa. 
+        Exempelvis "Det kanske är bra att kolla om alla objekt i kortleken är objekt?".
+        Hittade då “assertContainsOnly() will be deprecated and method removed in PHPUnit 13.” 
+        vilket är ett test som fungerar nu, men kommer om en tid inte fungera alls. Jag fick också reflektera mycket över vad det är jag testar och om det är ett nödvändigt test att ha med.
+        </p>
         <h2 id="kmom05">Kmom05</h2>
         <p>TEXT</p>
         <h2 id="kmom06">Kmom06</h2>
