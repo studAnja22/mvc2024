@@ -37,20 +37,12 @@ php -S localhost:8889
 
 ## Scripts
 *Some scrips in composer.json*
-- composer phpunit
-  
-Run the PHPUnit tests
-- composer phpdoc
-  
-Generate documentation of your code
-- composer validate
-- composer lint
-  
-Check your code with linter
-- composer csfix
-  
-Fix your code style with csfix
-- composer clean
+- Run the PHPUnit tests `composer phpunit`
+- Generate documentation of your code `composer phpdoc`
+- `composer validate`
+- Check your code with linter `composer lint`
+- Fix your code style with csfix `composer csfix`
+- `composer clean`
 
 ### To update CSS style:
 - npm run dev
