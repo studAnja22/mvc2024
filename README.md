@@ -2,7 +2,7 @@
 
 ## Intro  
 This is a repo for the BTH course Objektorienterade webbteknologier, a.k.a. mvc.  
-This PHP website is built in the framework symfony. The main objective of the course is to get a deeper understanding of object oriented programming techniques in PHP along with databases (Object Relational Mapping - ORM) and unit testing and documentation (PHPUnit tests, phpDocumentor...)
+This PHP website is built in the framework symfony and uses html.twig. The main objective of the course is to get a deeper understanding of object oriented programming techniques in PHP along with databases (Object Relational Mapping - ORM) and unit testing and documentation (PHPUnit tests, phpDocumentor...)
   
 ## Getting started
 Go to a directory of your choice, for example 'app/'.
@@ -45,7 +45,7 @@ php -S localhost:8889
 - `composer clean`
 
 ### To update CSS style:
-- npm run dev
+- `npm run dev`
 
 ## Requirements
 - PHP >=8.2
