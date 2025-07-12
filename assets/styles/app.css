@@ -60,7 +60,6 @@ padding: 14px 16px;
 text-decoration: none;
 }
 
-/* Change the link color to #111 (black) on hover */
 li a:hover {
 background-color: #111;
 }
@@ -152,7 +151,7 @@ footer {
 }
 
 input.button {
-    background-color: mediumseagreen; /* Green */
+    background-color: mediumseagreen;
     color: white;
     padding: 15px 32px;
     text-align: center;
@@ -161,7 +160,7 @@ input.button {
 }
 
 input.button:hover {
-    background-color: seagreen; /* Green */
+    background-color: seagreen;
 }
 /* Table styling */
 table {
