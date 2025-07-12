@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Library!{% endblock %}
+
+{% block body %}
+    <h1>Library</h1>
+    {% include "library/libraryNavbar.html.twig" %}
+    <div class="cardholder">
+        <h1>[READ ONE] book! ✅</h1>
+        <div class="grid-books">
+            <div class="item1">
+                <b>Title:</b> {{ books.getTitle|e }}<br>
+                    <b>Author:</b> {{ books.getAuthor|e }}<br>
+                    <b>ISBN:</b> {{ books.getIsbn|e }}<br>
+                    <b>ID:</b> {{ books.getId|e }}<br>
+                    <b>Description:</b>
+            </div>
+            <div class="item2">{{ books.getDescription|e }}</div>
+            <form method="get" action="{{ path('library_update_get', { id: books.getId }) }}">
+                <div class="item3"><button class="button update" >Update</button></div>
+            </form>
+            <form method="post" action="{{ path('library_delete_post') }}">
+                <div class="item3"><button class="button delete" type="submit" name="delete[]" value="{{ books.getId }}">Delete</button></div>
+            </form>
+            <div class="item5"><img class="coverImage solo" src="{{ asset('img/library/' ~ books.getCover|e) }}" alt="book cover"></div>
+        </div>
+
+    </div>
+{% endblock %}

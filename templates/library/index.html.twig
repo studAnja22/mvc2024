@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Library!{% endblock %}
+
+{% block body %}
+    <h1>Library</h1>
+    {% include "library/libraryNavbar.html.twig" %}
+    <div class="cardholder">
+        <div class="intro">
+            <h1>[INDEX] Welcome to the Library! ✅</h1>
+            <h2>About the Library</h2>
+            <p>Here you may save and edit your favorite books.<br>
+            At the library you can:<br>
+            <b>[READ MANY], [READ ONE], [CREATE], [UPDATE]</b> and <b>[DELETE]</b>.<br>
+            </p>
+            <h3>View all</h3>
+                <p>This leads you to <b>[READ MANY]</b>. Here you can see all of your books.<br>
+                    Click on one book in the list to go to <b>[READ ONE]</b> - here you can see additional information about your book.<br>
+                    There you can click on the update button to go to <b>[UPDATE]</b> where you can update your books data.<br>
+                    You can also click on the delete button to <b>[DELETE]</b> that one book.
+            </p>
+            <h3>Create</h3>
+            <p>This is <b>[CREATE]</b>.<br>
+                Here you can add a new book to the library.
+            </p>
+            <h3>Delete</h3>
+            <p>This is <b>[DELETE]</b> deluxe.<br>
+                Here you can delete <b><i>one or more books</i></b> from your library.<br>
+            </p>
+            <h3>Json</h3><p>Here you can view all books in json format. You can also access this page from the JsonAPI tab.</p>
+        </div>
+    </div>
+{% endblock %}

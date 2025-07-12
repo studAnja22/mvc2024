@@ -163,3 +163,164 @@ input.button {
 input.button:hover {
     background-color: seagreen; /* Green */
 }
+/* Table styling */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: larger;
+    font-family: sans-serif;
+    background-color: whitesmoke;
+}
+
+td:first-child,
+th:first-child,
+td:last-child,
+th:last-child {
+    width: 1%;
+    white-space: nowrap;
+    padding: 0.2em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+th {
+    text-align: left;
+}
+
+td {
+    max-width: 11em;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+tr {
+    border-bottom: 1px solid #a19d9d;
+}
+
+tr:hover {
+    background-color: #D6EEEE;
+}
+
+td a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Form styling from w3schools */
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.formStyle {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+/** All books*/
+.coverImage {
+    border-radius: 12px;
+    padding: 5px;
+    width: 150px;
+}
+
+/**One book*/
+.coverImage.solo {
+    width: 300px;
+}
+
+/** View one book*/
+.grid-books {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px;
+    background-color: whitesmoke;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.grid-books > div {
+    text-align: center;
+    padding: 10px;
+    font-size: 25px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.item1 {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+}
+
+.item2 {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+}
+
+.item3 {
+    padding-left: 6em;
+    padding-bottom: 2em;
+    padding-top: 2em;
+}
+
+.item5 {
+    grid-row: 1 / span 3;
+    grid-column: 3;
+}
+/** Update and delete single book*/
+.button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 15px;
+}
+
+.button.update {
+    background-color: #04AA6D;
+}
+
+.button.update:hover{
+    background-color: #048857;
+}
+
+.button.delete {
+    background-color: #e20505;
+}
+
+.button.delete:hover{
+    background-color: #aa0404;;
+}
+
+.textarea#description{
+    width: 100%;
+    height: 12em;
+    overflow: hidden;
+    resize: vertical;
+    font-size: large;
+}
+

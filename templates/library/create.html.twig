@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Library!{% endblock %}
+
+{% block body %}
+    <h1>Library</h1>
+    {% include "library/libraryNavbar.html.twig" %}
+    <div class="cardholder">
+        <h1>[CREATE] Add a book to your library. ✅</h1>
+        <h3>Please ensure that the ISBN is unique.<br>
+            If you've entered an already existing ISBN you'll be redirected back to this page.<br>
+            If you have successfully added the book to the library you'll be redirected to the Read Many page.</h3>
+        <div class="formStyle">
+            <form method="post" action="{{ path('library_create_post') }}">
+                Title*: <input type="text" name="title" maxlength="100" required><br>
+                Author*: <input type="text" name="author" maxlength="100" required><br>
+                ISBN*: <input type="text" name="isbn" maxlength="20" required><br>
+                Description: <br><textarea class="textarea" id="description" name="description" maxlength="700" rows="5" cols="40" placeholder="Write the books description here..."></textarea><br><br>
+                <label for="options">Choose a Cover:</label>
+                <select id="options" name="cover" required>
+                    <option value="enchantedForest.png">Enchanted Forest Cover</option>
+                    <option value="littleOwl.png">Judgemental Owl Cover</option>
+                    <option value="springStatue.png">Romantic Statue Cover</option>
+                    <option value="disconnect.png">Important message Cover</option>
+                    <option value="lovelyCake.png">Summer treat Cover</option>
+                    <option value="roadAhead.png">Life partner Cover</option>
+                    <option value="paperHearts.png">Forever entangled Cover</option>
+                    <option value="puppyDog.png">The best Cover</option>
+                </select>
+                <input type="submit">
+                * These fields are required
+            </form>
+        </div>
+    </div>
+{% endblock %}

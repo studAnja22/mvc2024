@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Library!{% endblock %}
+
+{% block body %}
+    <h1>Library</h1>
+    {% include "library/libraryNavbar.html.twig" %}
+    <div class="cardholder">
+        <h1>[UPDATE] that book! ✅</h1>
+        <div class="formStyle">
+            <form method="post" action="{{ path('library_update_post', { id: books.getId }) }}">
+                Title*: <input type="text" name="title" maxlength="100" value="{{ books.getTitle|e }}" required><br>
+                Author*: <input type="text" name="author" maxlength="100" value="{{ books.getAuthor|e }}" required><br>
+                ISBN**: <input type="text" name="isbn" maxlength="20" value="{{ books.getIsbn|e }}"required><br>
+                Description: <br><textarea class="textarea" id="description" name="description" maxlength="700" rows="5" cols="40" placeholder="Write the books description here...">{{ books.getDescription|e }}</textarea><br><br>
+                <label for="options">Choose a Cover:</label>
+                <select id="options" name="cover" required>
+                    <option value="{{ books.getCover|e }}">Keep Original Cover</option>
+                    <option value="enchantedForest.png">Enchanted Forest Cover</option>
+                    <option value="littleOwl.png">Judgemental Owl Cover</option>
+                    <option value="springStatue.png">Romantic Statue Cover</option>
+                    <option value="disconnect.png">Important message Cover</option>
+                    <option value="lovelyCake.png">Summer treat Cover</option>
+                    <option value="roadAhead.png">Life partner Cover</option>
+                    <option value="paperHearts.png">Forever entangled Cover</option>
+                    <option value="puppyDog.png">The best Cover</option>
+                </select>
+                <input type="submit">
+                * These fields are required<br>
+                ** If you update the ISBN, please ensure it's available in the library - otherwise the book won't update.
+            </form>
+            <h1>Preview the Book</h1>
+        <div class="grid-books">
+            <div class="item1">
+                <b>Title:</b> {{ books.getTitle|e }}<br>
+                    <b>Author:</b> {{ books.getAuthor|e }}<br>
+                    <b>ISBN:</b> {{ books.getIsbn|e }}<br>
+                    <b>ID:</b> {{ books.getId|e }}<br>
+                    <b>Description:</b>
+            </div>
+            <div class="item2">{{ books.getDescription|e }}</div>
+            <div class="item5"><img class="coverImage solo" src="{{ asset('img/library/' ~ books.getCover|e) }}" alt="book cover"></div>
+        </div>
+        <h2>Happy with the update?</h2>
+        <form method="get" action="{{ path('book_by_id', { id: books.getId }) }}">
+                <div class="item3"><button class="button update" >Go to the books [READ ONE] page</button></div>
+            </form>
+    </div>
+{% endblock %}

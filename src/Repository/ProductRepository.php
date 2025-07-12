@@ -36,7 +36,7 @@ class ProductRepository extends ServiceEntityRepository
 
     /**
      * Find all products having a value above the specified one with SQL.
-     * 
+     *
      *@param int $value The minimal value to filter products
      * @return array<array<string, mixed>> Returns an array of arrays (i.e. a raw data set)
      */

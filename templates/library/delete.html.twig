@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Library!{% endblock %}
+
+{% block body %}
+    <h1>Library</h1>
+    {% include "library/libraryNavbar.html.twig" %}
+    <div class="cardholder">
+        <h1>[DELETE] Select books you want to remove from the library. ✅</h1>
+        <div class="formStyle">
+            <form method="post" action="{{ path('library_delete_post') }}">
+                <table>
+                    <tr>
+                        <th>Delete</th>
+                        <th>Cover</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>ISBN</th>
+                    </tr>
+                    {% for book in books %}
+                        <tr>
+                            <td><input type="checkbox" id="{{ book.getId|e }}" name="delete[]" value="{{ book.getId|e }}"></td>
+                            <td><img class="coverImage" src="{{ asset('img/library/' ~ book.getCover|e) }}" alt="book cover"></td>
+                            <td>{{ book.getTitle|e }}</td>
+                            <td>{{ book.getAuthor|e }}</td>
+                            <td>{{ book.getIsbn|e }}</td>
+                        </tr>
+                    {% endfor %}
+                    </table>
+                <input type="submit">
+            </form>
+        </div>
+    </div>
+{% endblock %}

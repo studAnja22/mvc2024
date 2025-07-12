@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Library!{% endblock %}
+
+{% block body %}
+    <h1>Library</h1>
+    {% include "library/libraryNavbar.html.twig" %}
+    <div class="cardholder">
+        <h1>Hello! ✅</h1>
+        <ul>
+            {% for book in books %}
+                <li>{{ book.getTitle|e }} ({{ book.getAuthor|e }}) {{ book.getCover|e }} {{ book.getIsbn|e }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
