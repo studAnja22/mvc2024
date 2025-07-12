@@ -166,7 +166,41 @@
         vilket är ett test som fungerar nu, men kommer om en tid inte fungera alls. Jag fick också reflektera mycket över vad det är jag testar och om det är ett nödvändigt test att ha med.
         </p>
         <h2 id="kmom05">Kmom05</h2>
-        <p>TEXT</p>
+        <h3>
+            Gick det bra att jobba igenom övningen med Symfony och Doctrine. Något särskilt du tänkte/reagerade på under övningen?
+        </h3>
+        <p>
+            Det gick bra att följa med Mos genomgång av övningen och föreläsningen från 2021 i ORM. Jag var väldigt fascinerad att man inte behöver vara så jätteinsatt i backend världen för att kunna sätta sig in i doctrine. 
+            Det var väldigt trevligt att inte behöva manuellt göra hela Library klassen med alla setValue and getValue.
+            Jag hade lite svårt för att uppdatera Library klassen och köra migration.
+        </p>
+        <h3>
+            Berätta om din applikation och hur du tänkte när du byggde upp den. Tänkte du något speciellt på användargränssnittet?
+        </h3>
+        <p>
+            Stilmässigt ville jag att bibliotek applikationen skulle smälta in med resten av applikationen. Jag ville att det skulle vara lätt att navigera. Eftersom jag till en början bara hade titel, författare, bild och isbn 
+            - så blev READ ONE sidan lite tråkig att kolla på - så jag valde att lägga till “beskrivning” i databasen. 
+            Jag valde att presentera READ MANY böckerna i en tjusig tabell. 
+            Jag ville att man skulle klicka på en rad i tabellen för att ta sig till en bok, jag lyckades inte riktigt fylla ut hela raden så den är klickbar.
+            I [UPDATE] så hamnar man på samma sida om man lyckas (eller misslyckas) med en uppdatering. Scrollar man ner så kan man se boken man håller på att uppdatera och man kan då lätt se om uppdateringen gick igenom. 
+            Det finns även en knapp som tar användaren direkt till READ ONE sidan för den boken. Tabell font-size är “larger” så det är lättare att läsa innehållet.
+        </p>
+        <h3>
+            Gick det bra att jobba med ORM i CRUD eller vad anser du om det, jämför gärna med andra sätt att jobba med databaser?
+            <b>och</b>
+            Vad är din uppfattning om ORM så här långt och relatera gärna till andra sätt att jobba med applikationskod mot databaser?
+        </h3>
+        <p>
+            Jag tyckte det var relativt smidigt att arbeta med ORM i CRUD. Till en början var det ganska lätt att initialisera allting, det gick bra att skapa, uppdatera och radera objekt. Det stora problemet jag hade var när jag bestämde mig för att böckerna ska ha en beskrivning.
+            Jag gjorde en ny property via terminalen, gjorde bara php bin/console make:migration, sedan ändrade jag manuellt i Library klassen så den nya propertyn skulle ha #[ORM\Column(length: 255)] istället för #[ORM\Column(type: Types::TEXT, nullable: true)] och sedan körde en migration till och då blev den riktigt ledsen på mig.
+            Trots mina problem så tycker jag att det var oerhört smidigt att arbeta med doctrine. Det var ett tag sedan jag arbetade med “ren” SQL, jag vill minnas att jag tyckte det var riktigt roligt men det är svårt att komma ihåg hur SQL strukturen skulle vara - så det var nog det jag oroade mig för mest i detta kursmoment.
+        </p>
+        <h3>
+            Vilken är din TIL för detta kmom?
+        </h3>
+        <p>
+            Doctrine var väldigt trevligt att arbeta med och smidigt att den har stöd för flera olika database leverantörer. Jätteroligt att få lära sig nya användbara verktyg som man kan lägga i verktygslådan. :D
+        </p>
         <h2 id="kmom06">Kmom06</h2>
         <p>TEXT</p>
 {% endblock %}
