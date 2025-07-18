@@ -12,15 +12,15 @@
 ###> phpdoc ###
 .phpdoc/
 
-###> phpunit/phpunit ###
-/phpunit.xml
+# ###> phpunit/phpunit ###
+# /phpunit.xml
 .phpunit.result.cache
-###< phpunit/phpunit ###
+# ###< phpunit/phpunit ###
 
-###> symfony/phpunit-bridge ###
+# ###> symfony/phpunit-bridge ###
 .phpunit.result.cache
-/phpunit.xml
-###< symfony/phpunit-bridge ###
+# /phpunit.xml
+# ###< symfony/phpunit-bridge ###
 
 ###> symfony/asset-mapper ###
 /public/assets/
