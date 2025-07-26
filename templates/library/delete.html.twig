@@ -3,9 +3,9 @@
 {% block title %}Library!{% endblock %}
 
 {% block body %}
-    <h1>Library</h1>
-    {% include "library/libraryNavbar.html.twig" %}
     <div class="cardholder">
+        <h1>Library</h1>
+        {% include "library/libraryNavbar.html.twig" %}
         <h1>[DELETE] Select books you want to remove from the library. ✅</h1>
         <div class="formStyle">
             <form method="post" action="{{ path('library_delete_post') }}">

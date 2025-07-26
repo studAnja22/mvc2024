@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Cards\Cards;
 use App\Cards\DeckOfCards;
 use App\Cards\Hand;
-// use App\SessionHandler\DrawCardsSession;
+use App\SessionHandlers\CardSessionHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,15 +37,16 @@ class ControllerCards extends AbstractController
     public function deckShuffle(
         SessionInterface $session
     ): Response {
-        $session->clear();
+        $sessionHelper = new CardSessionHandler();
 
-        $hand = new Hand();
-        $hand->shuffle();
+        $sessionHelper->setNewShuffledHand($session);
+
+        /** @var Hand $hand */
+        $hand = $session->get('hand');
 
         $data = [
-            'shuffle' => $hand->shuffle(),
+            'shuffle' => $hand->getDeck(),
         ];
-        $session->set('hand', $hand);
 
         return $this->render('deckShuffle.html.twig', $data);
     }
@@ -54,10 +55,9 @@ class ControllerCards extends AbstractController
     public function initDraw(
         SessionInterface $session
     ): Response {
-        $session->clear();
+        $sessionHelper = new CardSessionHandler();
+        $sessionHelper->setNewHand($session);
 
-        $hand = new Hand();
-        $session->set('hand', $hand);
         return $this->redirectToRoute('draw_part2');
     }
 
@@ -65,13 +65,9 @@ class ControllerCards extends AbstractController
     public function drawPart2(
         SessionInterface $session
     ): Response {
-        /** @var Hand $hand */
-        $hand = $session->get('hand');
+        $sessionHelper = new CardSessionHandler();
 
-        if ($hand == null || $hand->howManyLeft() == 0) {
-            $hand = new Hand();
-            $session->set('hand', $hand);
-        }
+        $sessionHelper->ensureHandIsAvailable($session);
 
         /** @var Hand $hand */
         $hand = $session->get('hand');
@@ -81,18 +77,7 @@ class ControllerCards extends AbstractController
             'message' => $hand->howManyLeft() - 1,
         ];
 
-        $cardsLeftInDeck = $hand->howManyLeft();
-
-        switch ($cardsLeftInDeck) {
-            case 0:
-            case 1:
-                $newHand = new Hand();
-                $session->set('hand', $newHand);
-                break;
-            default:
-                $hand->removeTopCard();
-                $session->set('hand', $hand);
-        }
+        $sessionHelper->setHandAfterUserDrewACard($session);
 
         return $this->render('deckDraw.html.twig', $data);
     }
@@ -102,31 +87,14 @@ class ControllerCards extends AbstractController
         Request $request,
         SessionInterface $session
     ): Response {
-        /** @var Hand $hand*/
-        $hand = $session->get('hand');
+        $sessionHelper = new CardSessionHandler();
 
-        /** @var int $numCards*/
-        $numCards = (int) $request->request->get('num_cards');
+        $sessionHelper->ensureHandIsAvailable($session);
 
-        /** @var int $cardsLeftInDeck*/
-        $cardsLeftInDeck = $hand->howManyLeft();
+        /** @var int $drawThisManyCards*/
+        $drawThisManyCards = (int) $request->request->get('num_cards');
 
-        switch ($cardsLeftInDeck) {
-            case 0:
-                $hand = new Hand();
-                $session->set('hand', $hand);
-                break;
-            default:
-                break;
-        }
-        /** @var Hand $hand*/
-        $hand = $session->get('hand');
-
-        if ($hand->howManyLeft() < $numCards) { // om det är fler kort i numcard än i leken så drar vi de sista korten.
-            $numCards = $hand->howManyLeft();
-        }
-
-        $session->set('amount', $numCards);
+        $sessionHelper->setAmountOfCardsToBeDrawn($session, $drawThisManyCards);
 
         return $this->redirectToRoute('deckNumber');
     }
@@ -143,7 +111,7 @@ class ControllerCards extends AbstractController
         $card = [];
 
         if ($amount > 0) {
-            for ($x = 0; $x < $amount; $x++) {
+            for ($i = 0; $i < $amount; $i++) {
                 $hand->drawAndDiscard();
             }
             $card = $hand->getDrawnByIndex($amount);

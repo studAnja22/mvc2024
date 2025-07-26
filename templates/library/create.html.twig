@@ -3,9 +3,9 @@
 {% block title %}Library!{% endblock %}
 
 {% block body %}
-    <h1>Library</h1>
-    {% include "library/libraryNavbar.html.twig" %}
     <div class="cardholder">
+        <h1>Library</h1>
+        {% include "library/libraryNavbar.html.twig" %}
         <h1>[CREATE] Add a book to your library. ✅</h1>
         <h3>Please ensure that the ISBN is unique.<br>
             If you've entered an already existing ISBN you'll be redirected back to this page.<br>
@@ -27,8 +27,10 @@
                     <option value="paperHearts.png">Forever entangled Cover</option>
                     <option value="puppyDog.png">The best Cover</option>
                 </select>
-                <input type="submit">
+                <input type="submit"><br>
+                <p>
                 * These fields are required
+                </p>
             </form>
         </div>
     </div>

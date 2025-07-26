@@ -3,15 +3,17 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
-    <h1>Spela kortspelet 21</h1>
-    {% include "gameNavbar.html.twig" %}
     <div class="cardholder">
+        <h1>Spela kortspelet 21</h1>
+        {% include "gameNavbar.html.twig" %}
         <div class="intro">
             <h2>Flödesschema</h2>
-            <img src="/img/kmom03/flodesdiagramMvc03.png" alt="flowchart">
+            {# <img src="/img/kmom03/flodesdiagramMvc03.png" alt="flowchart"> #}
+            <img src="{{ asset('img/kmom03/flodesdiagramMvc03.png') }}" alt="flowchart">
             <br>
             <h2>Pseudokod: Dynamiskt Ess</h2>
-            <img src="/img/kmom03/pseudokodmvc03.png" alt="pseudocode">
+            {# <img src="/img/kmom03/pseudokodmvc03.png" alt="pseudocode"> #}
+            <img src="{{ asset('img/kmom03/pseudokodmvc03.png') }}" alt="pseudocode">
             <br>
             <h2>Klasser</h2>
             <h3>Card</h3><p>Skapar ett kort.</p>

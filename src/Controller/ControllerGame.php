@@ -6,6 +6,7 @@ use App\Cards\Cards;
 use App\Cards\DeckOfCards;
 use App\Cards\Games;
 use App\Cards\Hand;
+use App\SessionHandlers\GameSessionHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,54 +34,19 @@ class ControllerGame extends AbstractController
         SessionInterface $gameSession
     ): Response {
         $action = $request->request->get('game');
+        $gameSessionHandler = new GameSessionHandler();
 
         switch ($action) {
             case "New Game":
-                $gameSession->clear();
-                $hand = new Hand();
-                $hand->shuffle();
-                $gameSession->set('21_deck', $hand);
-                $gameSession->set('player', []);
-                $gameSession->set('bank', []);
+                $gameSessionHandler->setNewGame($gameSession);
                 return $this->redirectToRoute('gamePlay');
             case "Draw":
                 //Player draws cards;
-                /** @var Hand $hand */
-                $hand = $gameSession->get('21_deck');
-                /** @var Cards[] $player */
-                $player = $gameSession->get('player');
-                $player[] = $hand->drawTopCard();
-                $hand->removeTopCard();
-                $gameSession->set('21_deck', $hand);
-                $gameSession->set('player', $player);
+                $gameSessionHandler->setDrawCard($gameSession);
                 return $this->redirectToRoute('gamePlay');
             case "Hold":
                 // Bank draws cards.
-                /** @var Hand $hand */
-                $hand = $gameSession->get('21_deck');
-                /** @var Cards[] $bank */
-                $bank = $gameSession->get('bank');
-                $game = new Games();
-                $continueDrawingCards = true;
-                /**
-                 * Bank draws cards until it has 17 or more in value.
-                 * We save the drawn cards in 'bank' session.
-                 * We do not save the updated deck in session because the game has ended after the bank has drawn cards.
-                 */
-                while ($continueDrawingCards) {
-                    /** @var Cards $card */
-                    $card = $hand->drawTopCard();
-                    $bank[] = $card;
-
-                    $hand->removeTopCard();
-
-                    $bankPoints = $game->getPoints($bank);
-
-                    if ($bankPoints >= 17) {
-                        $continueDrawingCards = false;
-                    }
-                }
-                $gameSession->set('bank', $bank);
+                $gameSessionHandler->setBankPlays($gameSession);
                 return $this->redirectToRoute('gamePlay');
             default:
                 return $this->redirectToRoute('gamePlay');
@@ -92,16 +58,12 @@ class ControllerGame extends AbstractController
         SessionInterface $gameSession
     ): Response {
         if (!$gameSession->has('21_deck')) {
-            $hand = new Hand();
-            $hand->shuffle();
-            $gameSession->set('21_deck', $hand);
-            $gameSession->set('player', []);
-            $gameSession->set('bank', []);
+            $gameSessionHandler = new GameSessionHandler();
+            $gameSessionHandler->setNewGame($gameSession);
         }
         $game = new Games();
-        /** @var array<string,Hand|Cards[]> $gameData */
+        /** @var array<string,Cards[]> $gameData */
         $gameData = [
-            'hand' => $gameSession->get('21_deck'),
             'player' => $gameSession->get('player'),
             'bank' => $gameSession->get('bank'),
         ];

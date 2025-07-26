@@ -5,6 +5,11 @@ body {
 
 main {
     margin: 0 auto;
+    /* max-width: 60em; */
+}
+
+.middle {
+    margin: 0 auto;
     max-width: 60em;
 }
 
@@ -96,6 +101,8 @@ footer {
     width: auto;
     margin-bottom: 6em;
     min-height: 300px;
+    margin: 1em auto 6em;
+    max-width: 60em;
 }
 
 .card {
@@ -219,13 +226,14 @@ input[type=text], select {
 
 input[type=submit] {
     width: 100%;
-    background-color: #4CAF50;
+    background-color: green;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    max-width: 8em;
 }
 
 input[type=submit]:hover {
@@ -323,3 +331,27 @@ input[type=submit]:hover {
     font-size: large;
 }
 
+/**Metrics styling*/
+.metrics {
+    background-color: whitesmoke;
+    margin: 0 8em 7em 8em;
+    padding: 1em 2em;
+    font-family: sans-serif;
+    display: grid;
+}
+
+.metrics.images {
+    margin: auto;
+    padding: 2em 0;
+}
+
+table.complex td:first-child,
+table.complex th:first-child,
+table.complex td:last-child,
+table.complex th:last-child {
+    width: auto;
+}
+
+table.complex tr:hover {
+    background-color: #c5fad2;
+}

@@ -1,0 +1,217 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Metrics!{% endblock %}
+
+{% block body %}
+<div class="metrics">
+    <h1>Metrics rapport</h1>
+    <h2>Introduktion</h2>
+    <p>
+        Denna rapport ämnar att analysera denna webbapplikations kodkvalitet utifrån de 7-C:na med hjälp av phpmetrics och scrutinizer.
+    </p>
+
+    <h2>Codestyle</h2>
+    <p>
+        Bra kod är snygg och ren. Vad innebär det? Kod stil handlar om att man formaterar sin kod enligt en standard som gör att koden blir lättare att läsa och underhålla. Att vara konsekvent i sina intentioner, placeringen av sina klammerparenteser, mellanslag etc. är viktigt för att upprätthålla en ren snygg kodstil. 
+
+        Som tur är så har vi verktyget PHP Coding Standards Fixer (phpcsfixer) som inte bara hittar våra slarvfel utan även fixar dem automatiskt. 
+    </p>
+
+    <h2>Coverage</h2>
+    <p>
+        Detta mätvärde visar oss hur stor del av koden är testad med enhetstester. Ju högre värde desto större täckning. 
+        Dock så säger detta mätvärde inte om testerna är bra eller dåliga - bara att de existerar. 
+    <br>
+        Att enhetstesta sin kod är viktigt för att testa om koden faktiskt gör det den är förväntad att göra vilket kan förebygga uppkomsten av buggar och kraschar. 
+    <br><br>
+        I denna applikation har vi en kodtäckning på 100% för cards/. 
+    <br>
+        Däremot har vi 0% kodtäckning för Controller/, Entity/ och Repository/. 
+    <br>
+        Det innebär att vi har en total coverage på 23% - vilket är lågt. 
+    <img class="metrics images" src="{{ asset('img/metrics/Coverage1.png') }}" alt="Coverage Before">
+    </p>
+
+    <h2>Complexity</h2>
+    <p>
+        Komplexitet är ett mått på antalet beslutspunkter din kod har. 
+        En beslutspunkt kan exempelvis vara en if sats. 
+        Varje gång metoden kan ta olika vägar så ökar komplexiteten med 1. 
+        Ju fler beslutspunkter desto mer komplicerad är metoden. 
+        En metod med komplexiteten 1 är lättare att förstå vad den gör än en metod med komplexiteten 16.
+        Metoder med låg komplexitet är lättare att förstå, testa och underhålla. 
+        <br>
+        Enligt CC guideline så är det bra att inte överstiga 10.
+        <br><br>
+        I PhpMetrics kan vi se en visuell representation av Cyclomatic Complexity där grönt är klasser med låg CC och rött är klasser med högt CC.
+        <br>
+        I bilden och tabellen nedan ser vi PhpMetrics analys av min applikation. 
+    </p>
+    <img class="metrics images" src="{{ asset('img/metrics/complexity1.png') }}" alt="Coplexity Before">
+    <table class="complex">
+        <tr>
+            <th>Klass</th>
+            <th>Cyclomatic Complexity</th>
+            <th>Maintainability Index</th>
+        <th>Färg</th>
+        </tr>
+        <tr>
+            <td>App\Controller\ControllerJsonCards</td>
+            <td>13</td>
+            <td>55.48</td>
+        <td>Röd</td>
+        </tr>
+        <tr>
+            <td>App\Cards\Games</td>
+            <td>10</td>
+            <td>80.76</td>
+            <td>Gul</td>
+        </tr>
+        <tr>
+            <td>App\Controller\ControllerCards</td>
+            <td>9</td>
+            <td>64.06</td>
+            <td>Röd</td>
+        </tr>
+        <tr>
+            <td>App\Cards\Cards</td>
+            <td>9</td>
+            <td>82.69</td>
+            <td>Gul</td>
+        </tr>
+        <tr>
+            <td>App\Controller\LibraryController</td>
+            <td>8</td>
+            <td>61.24</td>
+            <td>Röd</td>
+        </tr>
+        <tr>
+            <td>App\Controller\ControllerGame</td>
+            <td>7</td>
+            <td>71.69</td>
+            <td>Gul</td>
+        </tr>
+    </table>
+    <img class="metrics images" src="{{ asset('img/metrics/WMC1.png') }}" alt="Complexity before">
+
+    <h2>Cohesion</h2>
+    <p>
+        Detta mätvärde visar oss hur bra koden i klassen hänger ihop. 
+        Det bästa värdet här är en 1 - vilket innebär att klassen har ett ansvarsområde.
+        <br>
+        Om man har en cohesive klass så gör den en sak. 
+        Om en klass gör för många saker kan det vara svårt att testa, förstå och underhålla.
+        <br> 
+        Varför ha en jack of all trades när man kan ha en super snygg specialist?
+    </p>
+    <img class="metrics images" src="{{ asset('img/metrics/LCOM1.png') }}" alt="Cohesion before">
+
+    <h2>Coupling</h2>
+    <p>
+        Detta visar vilken grad av klasser som är beroende/kopplade till varandra. 
+        Om min klass använder andra klasser eller om min klass används av andra klasser. 
+        <br>
+        Om en klass är beroende av en annan klass kan den vara känslig för ändringar - vilket kanske inte är så bra. 
+        Löst kopplade eller fristående klasser är lättare att testa och underhålla. 
+        <br>
+        Om man har lågt coupling och hög cohesion så brukar det tyda på ett välstrukturerat system som är lätt och enkelt att förstå och underhålla.
+    </p>
+    <img class="metrics images" src="{{ asset('img/metrics/coupling01.png') }}" alt="Coupling before">
+
+    <h2>CRAP</h2>
+    <p>
+        Står för Change Risk Anti Pattern som visar oss en uppskattning av hur skräp är metoden utifrån metodens storlek, komplexiteten och hur vältestad den är. 
+        <br>
+        Ett lågt värde är bra, medan ett högt värde är dåligt. 
+        Ett värde över 31 betyder i princip att metoden är en riktig sophög som du bör överväga att kasta bort. 
+        <br><br>
+        Controller\ControllerGame::newGame() har ett CRAP värde på 42 med en komplexitet på 6. Den kanske vi borde ta en närmare titt på.
+    </p>
+    <img class="metrics images" src="{{ asset('img/metrics/CRAP1.png') }}" alt="CRAP before">
+
+    <h2>CodeSmells</h2>
+    <p>
+        Enligt <b>refactoring guru</b> så handlar code smells om kod som <i>stinker</i>! 
+        Eller ja, kod som kan orsaka problem i framtiden för oss.
+        <br>
+        Det kan handla om stora klasser som kan bli ohanterbara, misshantering av objekt orienterade klasser, 
+        duplicering av kod, riklig och stark coupling mellan många klasser, kod som behöver en mindre c- uppsats i kommentarer för att bli förstådd etc.
+        <br><br>
+        Koden kanske fungerar, för tillfället. Men code smell visar varningsflaggor för vad som kan komma att bli ett jobbigt problem i framtiden. 
+        <br>
+        Exempel på kod som stinker i min applikation är:
+    </p>
+    <img class="metrics images" src="{{ asset('img/metrics/smells1.png') }}" alt="smelly code">
+    <p>
+        Här har vi en for loop som använder sig av den inbyggda funktionen count() som kollar hur många saker som finns i $data. 
+        <br>
+        Utöver att det är väldigt oklart vad $data ska innehålla så finns det ett performance problem i att count() kallas för varje iteration. 
+        <br>
+        Det är oerhört onödigt att spendera tid och kraft på att räkna samma hög med kort bara för att konstatera att ja, det är fortfarande 5. 
+        Detta ska vi fixa!
+    </p>
+
+    <h2>Phpmetrics</h2>
+    <p>
+        Utifrån phpmetrics rapport (se bilder ovan) kan vi identifiera följande problematiska områden:
+        <br><br>
+    </p>
+        
+    <h3>App\Controller\ControllerJsonCards</h3>
+    <p>
+        Hög komplexitet (CC 13), hög relativ system och struktur komplexitet (RSC 361.59), 
+        många ansvarsområden (LCOM 7), använder sig av många klasser (efferent coupling 8), 
+        stort innehåll (Volume 2002.39) och inga enhetstester. 
+        Den representeras i rapporten som den största röda bollen med maintainability index 55.48. 
+        ControllerJsonCards flaggas även för violations - god object / blob och probably bugged. 
+        <br><br>
+        En stor klass som gör mycket och är beroende av många andra klasser och som dessutom är otestad. Ajaj, det får vi ta oss en titt på.
+    </p>
+    <h3>App\Controller\ControllerCards</h3>
+    <p>
+        Ganska hög komplexitet (CC 9), ganska hög relativ och struktur komplexitet (RSC 169.56), 
+        få ansvarsområden (LCOM 2), använder sig av en del klasser (efferent coupling 5), 
+        medelstort innehåll (Volume 1027.38) och inga enhetstester. 
+        Den representeras i rapporten som den näst största röda bollen med maintainability index 64.06.
+    </p>
+    <h3>App\Controller\LibraryController</h3>
+    <p>
+        Ganska hög komplexitet (CC 8), skyhögt relativ system och struktur komplexitet (RSC 484,64), 
+        några ansvarsområden (LCOM 3), använder sig av en del klasser (efferent coupling 6), 
+        relativt litet innehåll (Volume 159.41) och inga enhetstester. 
+        Denna representeras av den tredje största röda bollen och har ett maintainability på 61.24. 
+        <br>
+        Även LibraryController flaggas för violations - probably bugged.
+    </p>
+    <img class="metrics images" src="{{ asset('img/metrics/complexity1.png') }}" alt="Coplexity Before">
+    <br>
+    <p>
+        Maintainability är ett mått på hur hållbar din kod är utifrån faktorer som komplexitet, coupling, kod volym etc.
+        <br>
+        De röda bollarna visualiserar områden som har fått ett lågt maintainability index, vilket tyder på att de är eventuella problemområden.
+    </p>
+    <h2>Scrutinizer</h2>
+    <a href="https://scrutinizer-ci.com/g/studAnja22/mvc2024/?branch=main">
+        <img src="https://scrutinizer-ci.com/g/studAnja22/mvc2024/badges/quality-score.png?b=main" alt="Scrutinizer Code Quality" />
+        <img src="https://scrutinizer-ci.com/g/studAnja22/mvc2024/badges/coverage.png?b=main" alt="Code Coverage" />
+        <img src="https://scrutinizer-ci.com/g/studAnja22/mvc2024/badges/build.png?b=main" alt="Build Status" />
+        <img src="https://scrutinizer-ci.com/g/studAnja22/mvc2024/badges/code-intelligence.svg?b=main" alt="Code Intelligence Status" />
+    </a>
+    <br><br>
+    <p>
+        Scrutinizers analys gav betyget 9.89 av 10 vilket är väldigt bra. 
+        94.71% av klasserna fick betyget A och 5.29% fick betyget B (3 klasser). 
+    <br>
+        1. En av dessa 3 B klasser har ett CRAP värde på 42, vilket är högt. Det betyder troligen att metoden är komplex, otestad och ganska skräp.
+    <br>
+        Coverage, som vi gick igenom tidigare, är 23% vilket är lågt. Det är bara cards/ som har 100% kodtäckning. 
+    <br>
+        Analysen visade även 7 issues. Det borde vi kunna åtgärda.
+    </p>
+    <img class="metrics images" src="{{ asset('img/metrics/scrutinizer01.png') }}" alt="Scrutinizer Before">
+
+    <h2>Förbättringar</h2>
+
+    <h2>Diskussion</h2>
+</div>
+{% endblock %}

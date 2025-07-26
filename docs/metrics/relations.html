@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2025-07-16 19:35:40        , with PHPMetrics v2.9.0 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2025-07-26 22:53:59        , with PHPMetrics v2.9.0 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -269,7 +269,9 @@
     {
         "name": "\\App\\Cards\\DeckOfCards",
         "size": 3000,
-        "relations": []
+        "relations": [
+            "\\App\\Cards\\CardGraphic"
+        ]
     },
     {
         "name": "\\App\\Cards\\Cards",
@@ -292,11 +294,12 @@
         "relations": [
             "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
             "\\Symfony\\Component\\HttpFoundation\\Response",
-            "\\App\\Cards\\DeckOfCards",
-            "\\Symfony\\Component\\HttpFoundation\\JsonResponse",
             "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
             "\\App\\Cards\\Hand",
+            "\\App\\JsonHelper\\JsonHelper",
             "\\Symfony\\Component\\HttpFoundation\\Request",
+            "\\App\\SessionHandlers\\CardSessionJsonHandler",
+            "\\App\\SessionHandlers\\GameSessionHandler",
             "\\App\\Cards\\Games"
         ]
     },
@@ -311,19 +314,37 @@
         "relations": []
     },
     {
-        "name": "\\Symfony\\Component\\HttpFoundation\\JsonResponse",
-        "size": 3000,
-        "relations": []
-    },
-    {
         "name": "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
         "size": 3000,
         "relations": []
     },
     {
+        "name": "\\App\\JsonHelper\\JsonHelper",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Component\\HttpFoundation\\JsonResponse"
+        ]
+    },
+    {
         "name": "\\Symfony\\Component\\HttpFoundation\\Request",
         "size": 3000,
         "relations": []
+    },
+    {
+        "name": "\\App\\SessionHandlers\\CardSessionJsonHandler",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface"
+        ]
+    },
+    {
+        "name": "\\App\\SessionHandlers\\GameSessionHandler",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\App\\Cards\\Hand",
+            "\\App\\Cards\\Games"
+        ]
     },
     {
         "name": "\\App\\Controller\\ControllerGame",
@@ -333,7 +354,7 @@
             "\\Symfony\\Component\\HttpFoundation\\Response",
             "\\Symfony\\Component\\HttpFoundation\\Request",
             "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
-            "\\App\\Cards\\Hand",
+            "\\App\\SessionHandlers\\GameSessionHandler",
             "\\App\\Cards\\Games"
         ]
     },
@@ -368,6 +389,17 @@
         "relations": []
     },
     {
+        "name": "\\App\\Controller\\ControllerJsonDeck",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\App\\Cards\\Hand",
+            "\\App\\JsonHelper\\JsonHelper",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface"
+        ]
+    },
+    {
         "name": "\\App\\Controller\\ControllerTwig",
         "size": 3000,
         "relations": [
@@ -382,6 +414,19 @@
             "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
             "\\Symfony\\Component\\HttpFoundation\\Response",
             "\\Symfony\\Component\\HttpFoundation\\JsonResponse"
+        ]
+    },
+    {
+        "name": "\\Symfony\\Component\\HttpFoundation\\JsonResponse",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Controller\\MetricsController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response"
         ]
     },
     {
@@ -416,7 +461,16 @@
             "\\Symfony\\Component\\HttpFoundation\\Response",
             "\\App\\Cards\\Hand",
             "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\App\\SessionHandlers\\CardSessionHandler",
             "\\Symfony\\Component\\HttpFoundation\\Request"
+        ]
+    },
+    {
+        "name": "\\App\\SessionHandlers\\CardSessionHandler",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\App\\Cards\\Hand"
         ]
     },
     {

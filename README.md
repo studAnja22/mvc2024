@@ -1,9 +1,14 @@
 # mvc2025
-
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/studAnja22/mvc2024/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/studAnja22/mvc2024/?branch=main) 
+[![Code Coverage](https://scrutinizer-ci.com/g/studAnja22/mvc2024/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/studAnja22/mvc2024/?branch=main) 
+[![Build Status](https://scrutinizer-ci.com/g/studAnja22/mvc2024/badges/build.png?b=main)](https://scrutinizer-ci.com/g/studAnja22/mvc2024/build-status/main) 
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/studAnja22/mvc2024/badges/code-intelligence.svg?b=main)](https://scrutinizer-ci.com/code-intelligence)
+  
 ## Intro  
 This is a repo for the BTH course Objektorienterade webbteknologier, a.k.a. mvc.  
 This PHP website is built in the framework symfony and uses html.twig. The main objective of the course is to get a deeper understanding of object oriented programming techniques in PHP along with databases (Object Relational Mapping - ORM) and unit testing and documentation (PHPUnit tests, phpDocumentor...)
   
+
 ## Getting started
 Go to a directory of your choice, for example 'app/'.
 <pre>

@@ -2,6 +2,7 @@
 
 namespace App\Cards;
 
+use App\Tests\Helpers\DummyPlayerMaker;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -36,167 +37,159 @@ class GamesTest extends TestCase
         $this->assertEquals($data['gameOngoing'], true);
         $this->assertEquals($data['winner'], "");
     }
-    /**
-     * Player wins by having more than the bank,
-     * or the bank draws more than 21.
-     */
-    public function testPlayerWinsGame(): void
+
+    public function testPlayerWinByPoints(): void
     {
         $game = new Games();
         $hand = new Hand();
-        //Player: (Ace of Hearts, 2 of Hearts, 3 of Hearts)
-        $playerCards = [];
-        for ($i = 0; $i < 3; $i++) {
-            $card = $hand->drawAndDiscard();
-            if ($card != false) {
-                array_push($playerCards, $card);
-            }
-        }
-
-        //Bank: (4 of Hearts, 5 of hearts, 6 of Hearts)
-        $bankCards = [];
-        for ($i = 0; $i < 3; $i++) {
-            $card = $hand->drawAndDiscard();
-            if ($card != false) {
-                array_push($bankCards, $card);
-            }
-        }
+        $dummy = new DummyPlayerMaker();
+        $playerWith19Points = $dummy->createDummy(3);
+        $bankWith16Points = $dummy->createDummy(2);
 
         $gameData = [
             'hand' => $hand,
-            'player' => $playerCards,
-            'bank' => $bankCards,
+            'player' => $playerWith19Points,
+            'bank' => $bankWith16Points,
         ];
-        //Player wins by having a higher number
+
         $data = $game->getGameData($gameData);
-        $this->assertEquals($data['player'], $playerCards);
-        $this->assertEquals($data['bank'], $bankCards);
+        $this->assertEquals($data['player'], $playerWith19Points);
+        $this->assertEquals($data['bank'], $bankWith16Points);
         $this->assertEquals($data['playerScore'], 19);
-        $this->assertEquals($data['bankScore'], 15);
+        $this->assertEquals($data['bankScore'], 16);
         $this->assertEquals($data['playersTurn'], false);
         $this->assertEquals($data['playerGotMoreThan21'], false);
         $this->assertEquals($data['gameOngoing'], false);
         $this->assertEquals($data['winner'], "Player Wins!");
+    }
 
-        /**
-         * Player wins if the bank gets more than 21.
-         * We add two more cards to the banks hand. (7 and 8 of hearts)
-         */
-        for ($i = 0; $i < 2; $i++) {
-            $card = $hand->drawAndDiscard();
-            if ($card != false) {
-                array_push($bankCards, $card);
-            }
-        }
+    public function testPlayerWinBankBusted(): void
+    {
+        $game = new Games();
+        $hand = new Hand();
+        $dummy = new DummyPlayerMaker();
+        $playerWith19Points = $dummy->createDummy(3);
+        $bankWith28Points = $dummy->createDummy(7);
 
         $gameData = [
-                    'hand' => $hand,
-                    'player' => $playerCards,
-                    'bank' => $bankCards,
-                ];
+            'hand' => $hand,
+            'player' => $playerWith19Points,
+            'bank' => $bankWith28Points,
+        ];
 
         $data = $game->getGameData($gameData);
-        $this->assertEquals($data['bank'], $bankCards);
+
+        $this->assertEquals($data['player'], $playerWith19Points);
+        $this->assertEquals($data['bank'], $bankWith28Points);
         $this->assertEquals($data['playerScore'], 19);
-        $this->assertEquals($data['bankScore'], 30);
+        $this->assertEquals($data['bankScore'], 28);
+        $this->assertEquals($data['playersTurn'], false);
+        $this->assertEquals($data['playerGotMoreThan21'], false);
+        $this->assertEquals($data['gameOngoing'], false);
         $this->assertEquals($data['winner'], "Player Wins!");
     }
-    /**
-     * Bank wins if it has higher value than the player,
-     * or if the player get more than 21.
-     */
-    public function testBankWinsGame(): void
+
+    public function testBankWinIfEqualPoints(): void
     {
         $game = new Games();
         $hand = new Hand();
-        //Bank: (Ace of Hearts, 2 of Hearts, 3 of Hearts)
-        $bankCards = [];
-        for ($i = 0; $i < 3; $i++) {
-            $card = $hand->drawAndDiscard();
-            if ($card != false) {
-                array_push($bankCards, $card);
-            }
-        }
-
-        //Player: (4 of Hearts, 5 of hearts, 6 of Hearts)
-        $playerCards = [];
-        for ($i = 0; $i < 3; $i++) {
-            $card = $hand->drawAndDiscard();
-            if ($card != false) {
-                array_push($playerCards, $card);
-            }
-        }
+        $dummy = new DummyPlayerMaker();
+        $playerWith21Points = $dummy->createDummy(6);
+        $bankWith21Points = $dummy->createDummy(6);
 
         $gameData = [
             'hand' => $hand,
-            'player' => $playerCards,
-            'bank' => $bankCards,
+            'player' => $playerWith21Points,
+            'bank' => $bankWith21Points,
         ];
 
         $data = $game->getGameData($gameData);
-        $this->assertEquals($data['player'], $playerCards);
-        $this->assertEquals($data['bank'], $bankCards);
-        $this->assertEquals($data['playerScore'], 15);
-        $this->assertEquals($data['bankScore'], 19);
+
+        $this->assertEquals($data['player'], $playerWith21Points);
+        $this->assertEquals($data['bank'], $bankWith21Points);
+        $this->assertEquals($data['playerScore'], 21);
+        $this->assertEquals($data['bankScore'], 21);
+        $this->assertEquals($data['playersTurn'], false);
+        $this->assertEquals($data['playerGotMoreThan21'], false);
+        $this->assertEquals($data['gameOngoing'], false);
         $this->assertEquals($data['winner'], "Bank Wins!");
-
-        /**
-         * Bank wins if player gets more than 21
-         */
-        for ($i = 0; $i < 2; $i++) {
-            $card = $hand->drawAndDiscard();
-            if ($card != false) {
-                array_push($playerCards, $card);
-            }
-        }
-
-        $gameData = [
-                    'hand' => $hand,
-                    'player' => $playerCards,
-                    'bank' => $bankCards,
-                ];
-
-        $data = $game->getGameData($gameData);
-        $this->assertEquals($data['player'], $playerCards);
-        $this->assertEquals($data['bank'], $bankCards);
-        $this->assertEquals($data['playerScore'], 30);
-        $this->assertEquals($data['bankScore'], 19);
-        $this->assertEquals($data['winner'], "Player Wins!");
     }
-    /**
-     * The player can choose not to draw any cards.
-     * The bank will play as normal.
-     * The bank will win unless it draws more than 21.
-     *
-     * We check what happens when bank draws more than 21.
-     */
-    public function testPlayersDrawsNoCards(): void
+
+    public function testBankWinIfPlayerBust(): void
     {
         $game = new Games();
         $hand = new Hand();
-        //Bank: (Ace of Hearts, 2 of Hearts, 3 of Hearts)
-        $bankCards = [];
-        for ($i = 0; $i < 7; $i++) {
-            $card = $hand->drawAndDiscard();
-            if ($card != false) {
-                array_push($bankCards, $card);
-            }
-        }
-
-        //Player: draws no cards
-        $playerCards = [];
+        $dummy = new DummyPlayerMaker();
+        $playerWith28Points = $dummy->createDummy(7);
+        $bankWith15Points = $dummy->createDummy(5);
 
         $gameData = [
             'hand' => $hand,
-            'player' => $playerCards,
-            'bank' => $bankCards,
+            'player' => $playerWith28Points,
+            'bank' => $bankWith15Points,
         ];
 
         $data = $game->getGameData($gameData);
-        $this->assertEquals($data['player'], $playerCards);
-        $this->assertEquals($data['bank'], $bankCards);
+
+        $this->assertEquals($data['player'], $playerWith28Points);
+        $this->assertEquals($data['bank'], $bankWith15Points);
+        $this->assertEquals($data['playerScore'], 28);
+        $this->assertEquals($data['bankScore'], 15);
+        $this->assertEquals($data['playersTurn'], false);
+        $this->assertEquals($data['playerGotMoreThan21'], true);
+        $this->assertEquals($data['gameOngoing'], false);
+        $this->assertEquals($data['winner'], "Bank Wins!");
+    }
+
+    public function testPlayerDrawsZeroCards(): void
+    {
+        $game = new Games();
+        $hand = new Hand();
+        $dummy = new DummyPlayerMaker();
+        $playerWithZeroPoints = $dummy->createDummy(0);
+        $bankWith15Points = $dummy->createDummy(5);
+
+        $gameData = [
+            'hand' => $hand,
+            'player' => $playerWithZeroPoints,
+            'bank' => $bankWith15Points,
+        ];
+
+        $data = $game->getGameData($gameData);
+
+        $this->assertEquals($data['player'], $playerWithZeroPoints);
+        $this->assertEquals($data['bank'], $bankWith15Points);
+        $this->assertEquals($data['playerScore'], 0);
+        $this->assertEquals($data['bankScore'], 15);
+        $this->assertEquals($data['playersTurn'], false);
+        $this->assertEquals($data['playerGotMoreThan21'], false);
+        $this->assertEquals($data['gameOngoing'], false);
+        $this->assertEquals($data['winner'], "Bank Wins!");
+    }
+
+    public function testPlayerDrawsZeroCardsBankBust(): void
+    {
+        $game = new Games();
+        $hand = new Hand();
+        $dummy = new DummyPlayerMaker();
+        $playerWithZeroPoints = $dummy->createDummy(0);
+        $bankWith15Points = $dummy->createDummy(7);
+
+        $gameData = [
+            'hand' => $hand,
+            'player' => $playerWithZeroPoints,
+            'bank' => $bankWith15Points,
+        ];
+
+        $data = $game->getGameData($gameData);
+
+        $this->assertEquals($data['player'], $playerWithZeroPoints);
+        $this->assertEquals($data['bank'], $bankWith15Points);
         $this->assertEquals($data['playerScore'], 0);
         $this->assertEquals($data['bankScore'], 28);
+        $this->assertEquals($data['playersTurn'], false);
+        $this->assertEquals($data['playerGotMoreThan21'], false);
+        $this->assertEquals($data['gameOngoing'], false);
         $this->assertEquals($data['winner'], "No winners here, just losers!");
     }
 }

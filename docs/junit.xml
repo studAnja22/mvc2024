@@ -1,29 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="/home/anna/dbwebb-kurser/mvc/me/report/phpunit.xml" tests="13" assertions="84" errors="0" failures="0" skipped="0" time="0.050842">
-    <testsuite name="all" tests="13" assertions="84" errors="0" failures="0" skipped="0" time="0.050842">
-      <testsuite name="App\Cards\CardGraphicTest" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/CardGraphicTest.php" tests="2" assertions="9" errors="0" failures="0" skipped="0" time="0.025596">
-        <testcase name="testCreateCardGraphicObject" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/CardGraphicTest.php" line="15" class="App\Cards\CardGraphicTest" classname="App.Cards.CardGraphicTest" assertions="4" time="0.023782"/>
-        <testcase name="testCreateCardGraphicObject7OfSpades" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/CardGraphicTest.php" line="33" class="App\Cards\CardGraphicTest" classname="App.Cards.CardGraphicTest" assertions="5" time="0.001814"/>
+  <testsuite name="/home/anna/dbwebb-kurser/mvc/me/report/phpunit.xml" tests="16" assertions="105" errors="0" failures="0" skipped="0" time="0.107407">
+    <testsuite name="all" tests="16" assertions="105" errors="0" failures="0" skipped="0" time="0.107407">
+      <testsuite name="App\Cards\CardGraphicTest" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/CardGraphicTest.php" tests="2" assertions="9" errors="0" failures="0" skipped="0" time="0.028093">
+        <testcase name="testCreateCardGraphicObject" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/CardGraphicTest.php" line="15" class="App\Cards\CardGraphicTest" classname="App.Cards.CardGraphicTest" assertions="4" time="0.025579"/>
+        <testcase name="testCreateCardGraphicObject7OfSpades" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/CardGraphicTest.php" line="33" class="App\Cards\CardGraphicTest" classname="App.Cards.CardGraphicTest" assertions="5" time="0.002514"/>
       </testsuite>
-      <testsuite name="App\Cards\CardsTest" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/CardsTest.php" tests="2" assertions="14" errors="0" failures="0" skipped="0" time="0.003338">
-        <testcase name="testCreateCardObject" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/CardsTest.php" line="17" class="App\Cards\CardsTest" classname="App.Cards.CardsTest" assertions="9" time="0.001917"/>
-        <testcase name="testCreateCardObject7OfSpades" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/CardsTest.php" line="41" class="App\Cards\CardsTest" classname="App.Cards.CardsTest" assertions="5" time="0.001422"/>
+      <testsuite name="App\Cards\CardsTest" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/CardsTest.php" tests="2" assertions="14" errors="0" failures="0" skipped="0" time="0.003768">
+        <testcase name="testCreateCardObject" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/CardsTest.php" line="17" class="App\Cards\CardsTest" classname="App.Cards.CardsTest" assertions="9" time="0.002214"/>
+        <testcase name="testCreateCardObject7OfSpades" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/CardsTest.php" line="41" class="App\Cards\CardsTest" classname="App.Cards.CardsTest" assertions="5" time="0.001554"/>
       </testsuite>
-      <testsuite name="App\Cards\DeckOfCardsTest" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/DeckOfCardsTest.php" tests="2" assertions="6" errors="0" failures="0" skipped="0" time="0.004434">
-        <testcase name="testCreateDeckOfCardObject" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/DeckOfCardsTest.php" line="16" class="App\Cards\DeckOfCardsTest" classname="App.Cards.DeckOfCardsTest" assertions="4" time="0.002460"/>
-        <testcase name="testDeckOfCardsMethods" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/DeckOfCardsTest.php" line="31" class="App\Cards\DeckOfCardsTest" classname="App.Cards.DeckOfCardsTest" assertions="2" time="0.001974"/>
+      <testsuite name="App\Cards\DeckOfCardsTest" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/DeckOfCardsTest.php" tests="2" assertions="6" errors="0" failures="0" skipped="0" time="0.005139">
+        <testcase name="testCreateDeckOfCardObject" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/DeckOfCardsTest.php" line="16" class="App\Cards\DeckOfCardsTest" classname="App.Cards.DeckOfCardsTest" assertions="4" time="0.002739"/>
+        <testcase name="testDeckOfCardsMethods" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/DeckOfCardsTest.php" line="31" class="App\Cards\DeckOfCardsTest" classname="App.Cards.DeckOfCardsTest" assertions="2" time="0.002400"/>
       </testsuite>
-      <testsuite name="App\Cards\GamesTest" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/GamesTest.php" tests="4" assertions="35" errors="0" failures="0" skipped="0" time="0.009678">
-        <testcase name="testVariablesForHTMLPage" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/GamesTest.php" line="19" class="App\Cards\GamesTest" classname="App.Cards.GamesTest" assertions="8" time="0.002726"/>
-        <testcase name="testPlayerWinsGame" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/GamesTest.php" line="43" class="App\Cards\GamesTest" classname="App.Cards.GamesTest" assertions="12" time="0.002161"/>
-        <testcase name="testBankWinsGame" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/GamesTest.php" line="108" class="App\Cards\GamesTest" classname="App.Cards.GamesTest" assertions="10" time="0.001985"/>
-        <testcase name="testPlayersDrawsNoCards" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/GamesTest.php" line="173" class="App\Cards\GamesTest" classname="App.Cards.GamesTest" assertions="5" time="0.002807"/>
+      <testsuite name="App\Cards\GamesTest" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/GamesTest.php" tests="7" assertions="56" errors="0" failures="0" skipped="0" time="0.064525">
+        <testcase name="testVariablesForHTMLPage" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/GamesTest.php" line="20" class="App\Cards\GamesTest" classname="App.Cards.GamesTest" assertions="8" time="0.046879"/>
+        <testcase name="testPlayerWinByPoints" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/GamesTest.php" line="41" class="App\Cards\GamesTest" classname="App.Cards.GamesTest" assertions="8" time="0.003113"/>
+        <testcase name="testPlayerWinBankBusted" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/GamesTest.php" line="66" class="App\Cards\GamesTest" classname="App.Cards.GamesTest" assertions="8" time="0.002945"/>
+        <testcase name="testBankWinIfEqualPoints" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/GamesTest.php" line="92" class="App\Cards\GamesTest" classname="App.Cards.GamesTest" assertions="8" time="0.002992"/>
+        <testcase name="testBankWinIfPlayerBust" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/GamesTest.php" line="118" class="App\Cards\GamesTest" classname="App.Cards.GamesTest" assertions="8" time="0.002799"/>
+        <testcase name="testPlayerDrawsZeroCards" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/GamesTest.php" line="144" class="App\Cards\GamesTest" classname="App.Cards.GamesTest" assertions="8" time="0.003028"/>
+        <testcase name="testPlayerDrawsZeroCardsBankBust" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/GamesTest.php" line="170" class="App\Cards\GamesTest" classname="App.Cards.GamesTest" assertions="8" time="0.002768"/>
       </testsuite>
-      <testsuite name="App\Cards\HandTest" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/HandTest.php" tests="3" assertions="20" errors="0" failures="0" skipped="0" time="0.007795">
-        <testcase name="testCreateHandObject" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/HandTest.php" line="19" class="App\Cards\HandTest" classname="App.Cards.HandTest" assertions="3" time="0.002779"/>
-        <testcase name="testDeckHas52CardsDrawnHas0cards" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/HandTest.php" line="36" class="App\Cards\HandTest" classname="App.Cards.HandTest" assertions="3" time="0.002679"/>
-        <testcase name="testDrawingCards" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/HandTest.php" line="60" class="App\Cards\HandTest" classname="App.Cards.HandTest" assertions="14" time="0.002337"/>
+      <testsuite name="App\Cards\HandTest" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/HandTest.php" tests="3" assertions="20" errors="0" failures="0" skipped="0" time="0.005882">
+        <testcase name="testCreateHandObject" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/HandTest.php" line="19" class="App\Cards\HandTest" classname="App.Cards.HandTest" assertions="3" time="0.001983"/>
+        <testcase name="testDeckHas52CardsDrawnHas0cards" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/HandTest.php" line="36" class="App\Cards\HandTest" classname="App.Cards.HandTest" assertions="3" time="0.001976"/>
+        <testcase name="testDrawingCards" file="/home/anna/dbwebb-kurser/mvc/me/report/tests/Cards/HandTest.php" line="60" class="App\Cards\HandTest" classname="App.Cards.HandTest" assertions="14" time="0.001923"/>
       </testsuite>
     </testsuite>
   </testsuite>

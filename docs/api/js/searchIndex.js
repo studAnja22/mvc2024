@@ -141,10 +141,10 @@ Search.appendIndex(
             "summary": "The\u0020function\u0020takes\u0020an\u0020array\u0020of\u0020integers.",
             "url": "classes/App-Cards-Games.html#method_game21CalculatePoints"
         },                {
-            "fqsen": "\\App\\Cards\\Games\u003A\u003AgetPoints\u0028\u0029",
-            "name": "getPoints",
-            "summary": "Method\u0020takes\u0020an\u0020array\u0020with\u0020card\u0020objects,\u0020collects\u0020the\u0020cards\u0020value\u0020as\u0020an\u0020integer\u0020in\u0020another\u0020array\nand\u0020returns\u0020the\u0020points\u0020calculated\u0020for\u0020game\u002021",
-            "url": "classes/App-Cards-Games.html#method_getPoints"
+            "fqsen": "\\App\\Cards\\Games\u003A\u003AgetAllCardValues\u0028\u0029",
+            "name": "getAllCardValues",
+            "summary": "Method\u0020takes\u0020an\u0020array\u0020with\u0020card\u0020objects,\u0020collects\u0020the\u0020cards\u0020value\u0020as\u0020an\u0020integer\u0020in\u0020another\u0020array",
+            "url": "classes/App-Cards-Games.html#method_getAllCardValues"
         },                {
             "fqsen": "\\App\\Cards\\Games\u003A\u003AdetermineWinner\u0028\u0029",
             "name": "determineWinner",
@@ -155,6 +155,31 @@ Search.appendIndex(
             "name": "getGameData",
             "summary": "Method\u0020creates\u0020and\u0020updates\u0020variables\u0020used\u0020on\u0020the\u0020html.twig\u0020using\u0020session\u0020data.",
             "url": "classes/App-Cards-Games.html#method_getGameData"
+        },                {
+            "fqsen": "\\App\\Cards\\Games\u003A\u003AgetGameState\u0028\u0029",
+            "name": "getGameState",
+            "summary": "",
+            "url": "classes/App-Cards-Games.html#method_getGameState"
+        },                {
+            "fqsen": "\\App\\Cards\\Games\u003A\u003AgetEndGameState\u0028\u0029",
+            "name": "getEndGameState",
+            "summary": "",
+            "url": "classes/App-Cards-Games.html#method_getEndGameState"
+        },                {
+            "fqsen": "\\App\\Cards\\Games\u003A\u003AgetCurrentGameState\u0028\u0029",
+            "name": "getCurrentGameState",
+            "summary": "",
+            "url": "classes/App-Cards-Games.html#method_getCurrentGameState"
+        },                {
+            "fqsen": "\\App\\Cards\\Games\u003A\u003AgetCardNames\u0028\u0029",
+            "name": "getCardNames",
+            "summary": "",
+            "url": "classes/App-Cards-Games.html#method_getCardNames"
+        },                {
+            "fqsen": "\\App\\Cards\\Games\u003A\u003AgetPoints\u0028\u0029",
+            "name": "getPoints",
+            "summary": "",
+            "url": "classes/App-Cards-Games.html#method_getPoints"
         },                {
             "fqsen": "\\App\\Cards\\Hand",
             "name": "Hand",
@@ -446,6 +471,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-LibraryController.html#method_viewBooksWithMinimumValue"
         },                {
+            "fqsen": "\\App\\Controller\\MetricsController",
+            "name": "MetricsController",
+            "summary": "",
+            "url": "classes/App-Controller-MetricsController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\MetricsController\u003A\u003Ahome\u0028\u0029",
+            "name": "home",
+            "summary": "",
+            "url": "classes/App-Controller-MetricsController.html#method_home"
+        },                {
             "fqsen": "\\App\\Controller\\ProductController",
             "name": "ProductController",
             "summary": "",
@@ -631,6 +666,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Entity-Product.html#property_value"
         },                {
+            "fqsen": "\\App\\JsonHelper\\JsonHelper",
+            "name": "JsonHelper",
+            "summary": "",
+            "url": "classes/App-JsonHelper-JsonHelper.html"
+        },                {
+            "fqsen": "\\App\\JsonHelper\\JsonHelper\u003A\u003AgetJsonPrettyPrint\u0028\u0029",
+            "name": "getJsonPrettyPrint",
+            "summary": "",
+            "url": "classes/App-JsonHelper-JsonHelper.html#method_getJsonPrettyPrint"
+        },                {
             "fqsen": "\\App\\Kernel",
             "name": "Kernel",
             "summary": "",
@@ -681,6 +726,71 @@ Search.appendIndex(
             "summary": "Find\u0020all\u0020products\u0020having\u0020a\u0020value\u0020above\u0020the\u0020specified\u0020one\u0020with\u0020SQL.",
             "url": "classes/App-Repository-ProductRepository.html#method_findByMinimumValue2"
         },                {
+            "fqsen": "\\App\\SessionHandlers\\CardSessionHandler",
+            "name": "CardSessionHandler",
+            "summary": "",
+            "url": "classes/App-SessionHandlers-CardSessionHandler.html"
+        },                {
+            "fqsen": "\\App\\SessionHandlers\\CardSessionHandler\u003A\u003AsetNewHand\u0028\u0029",
+            "name": "setNewHand",
+            "summary": "Clears\u0020the\u0020session\u0020and\u0020sets\u0020a\u0020brand\u0020new\u0020Hand\u0020object.",
+            "url": "classes/App-SessionHandlers-CardSessionHandler.html#method_setNewHand"
+        },                {
+            "fqsen": "\\App\\SessionHandlers\\CardSessionHandler\u003A\u003AsetNewShuffledHand\u0028\u0029",
+            "name": "setNewShuffledHand",
+            "summary": "Clears\u0020session.\u0020Sets\u0020a\u0020new\u0020shuffled\u0020Hand\u0028\u0029\u0020object\u0020to\u0020session.",
+            "url": "classes/App-SessionHandlers-CardSessionHandler.html#method_setNewShuffledHand"
+        },                {
+            "fqsen": "\\App\\SessionHandlers\\CardSessionHandler\u003A\u003AensureHandIsAvailable\u0028\u0029",
+            "name": "ensureHandIsAvailable",
+            "summary": "Checks\u0020if\u0020there\u0027s\u0020session\u0020\u0027hand\u0027\u0020exists\u0020and\u0020if\u0020there\u0027s\u0020enough\u0020cards\u0020to\u0020draw.",
+            "url": "classes/App-SessionHandlers-CardSessionHandler.html#method_ensureHandIsAvailable"
+        },                {
+            "fqsen": "\\App\\SessionHandlers\\CardSessionHandler\u003A\u003AsetHandAfterUserDrewACard\u0028\u0029",
+            "name": "setHandAfterUserDrewACard",
+            "summary": "User\u0020drew\u0020a\u0020card,\u0020save\u0020the\u0020change\u0020to\u0020\u0027hand\u0027\u0020session.",
+            "url": "classes/App-SessionHandlers-CardSessionHandler.html#method_setHandAfterUserDrewACard"
+        },                {
+            "fqsen": "\\App\\SessionHandlers\\CardSessionHandler\u003A\u003AsetAmountOfCardsToBeDrawn\u0028\u0029",
+            "name": "setAmountOfCardsToBeDrawn",
+            "summary": "User\u0020wants\u0020to\u0020draw\u0020many\u0020cards.",
+            "url": "classes/App-SessionHandlers-CardSessionHandler.html#method_setAmountOfCardsToBeDrawn"
+        },                {
+            "fqsen": "\\App\\SessionHandlers\\CardSessionHandler\u003A\u003AgetDrawnCardsByName\u0028\u0029",
+            "name": "getDrawnCardsByName",
+            "summary": "",
+            "url": "classes/App-SessionHandlers-CardSessionHandler.html#method_getDrawnCardsByName"
+        },                {
+            "fqsen": "\\App\\SessionHandlers\\CardSessionHandler\u003A\u003AsetSessionJsonAmountDrawCards\u0028\u0029",
+            "name": "setSessionJsonAmountDrawCards",
+            "summary": "",
+            "url": "classes/App-SessionHandlers-CardSessionHandler.html#method_setSessionJsonAmountDrawCards"
+        },                {
+            "fqsen": "\\App\\SessionHandlers\\CardSessionHandler\u003A\u003AsetSessionJsonDeckDrawCards\u0028\u0029",
+            "name": "setSessionJsonDeckDrawCards",
+            "summary": "",
+            "url": "classes/App-SessionHandlers-CardSessionHandler.html#method_setSessionJsonDeckDrawCards"
+        },                {
+            "fqsen": "\\App\\SessionHandlers\\GameSessionHandler",
+            "name": "GameSessionHandler",
+            "summary": "",
+            "url": "classes/App-SessionHandlers-GameSessionHandler.html"
+        },                {
+            "fqsen": "\\App\\SessionHandlers\\GameSessionHandler\u003A\u003AsetNewGame\u0028\u0029",
+            "name": "setNewGame",
+            "summary": "This\u0020function\u0020initiates\u0020a\u0020new\u0020game.",
+            "url": "classes/App-SessionHandlers-GameSessionHandler.html#method_setNewGame"
+        },                {
+            "fqsen": "\\App\\SessionHandlers\\GameSessionHandler\u003A\u003AsetDrawCard\u0028\u0029",
+            "name": "setDrawCard",
+            "summary": "Handles\u0020the\u0020player\u0020drawing\u0020a\u0020card.",
+            "url": "classes/App-SessionHandlers-GameSessionHandler.html#method_setDrawCard"
+        },                {
+            "fqsen": "\\App\\SessionHandlers\\GameSessionHandler\u003A\u003AsetBankPlays\u0028\u0029",
+            "name": "setBankPlays",
+            "summary": "Handles\u0020the\u0020banks\u0020turn\u0020logic\u0020and\u0020sets\u0020its\u0020drawn\u0020cards\u0020to\u0020session",
+            "url": "classes/App-SessionHandlers-GameSessionHandler.html#method_setBankPlays"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
@@ -701,6 +811,11 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/app-entity.html"
         },                {
+            "fqsen": "\\App\\JsonHelper",
+            "name": "JsonHelper",
+            "summary": "",
+            "url": "namespaces/app-jsonhelper.html"
+        },                {
             "fqsen": "\\App",
             "name": "App",
             "summary": "",
@@ -710,5 +825,10 @@ Search.appendIndex(
             "name": "Repository",
             "summary": "",
             "url": "namespaces/app-repository.html"
+        },                {
+            "fqsen": "\\App\\SessionHandlers",
+            "name": "SessionHandlers",
+            "summary": "",
+            "url": "namespaces/app-sessionhandlers.html"
         }            ]
 );

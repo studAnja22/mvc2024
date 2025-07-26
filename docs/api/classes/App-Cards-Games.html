@@ -73,7 +73,15 @@
                 
             </li>
                     <li>
+                <a href="namespaces/app-jsonhelper.html" class="">JsonHelper</a>
+                
+            </li>
+                    <li>
                 <a href="namespaces/app-repository.html" class="">Repository</a>
+                
+            </li>
+                    <li>
+                <a href="namespaces/app-sessionhandlers.html" class="">SessionHandlers</a>
                 
             </li>
             </ul>
@@ -130,7 +138,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Cards/Games.php"><a href="files/src-cards-games.html"><abbr title="src/Cards/Games.php">Games.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">14</span>
+    <span class="phpdocumentor-element-found-in__line">15</span>
 
     </aside>
 
@@ -175,26 +183,55 @@ and gets the values needed to render the game page.</p>
 <dd>Returns a string declaring the winner of the game</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/App-Cards-Games.html#method_game21CalculatePoints">game21CalculatePoints()</a>
+    <span>
+                                &nbsp;: int    </span>
+</dt>
+<dd>The function takes an array of integers.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/App-Cards-Games.html#method_getAllCardValues">getAllCardValues()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, int&gt;    </span>
+</dt>
+<dd>Method takes an array with card objects, collects the cards value as an integer in another array</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/App-Cards-Games.html#method_getCardNames">getCardNames()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, string|null&gt;    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/App-Cards-Games.html#method_getCurrentGameState">getCurrentGameState()</a>
+    <span>
+                                &nbsp;: array&lt;string, mixed&gt;    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/App-Cards-Games.html#method_getEndGameState">getEndGameState()</a>
+    <span>
+                                &nbsp;: array&lt;string, mixed&gt;    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Cards-Games.html#method_getGameData">getGameData()</a>
     <span>
-                                &nbsp;: array&lt;string, array&lt;string|int, <a href="classes/App-Cards-Cards.html"><abbr title="\App\Cards\Cards">Cards</abbr></a>&gt;|bool|int|string&gt;    </span>
+                                &nbsp;: array&lt;string, mixed&gt;    </span>
 </dt>
 <dd>Method creates and updates variables used on the html.twig using session data.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/App-Cards-Games.html#method_getGameState">getGameState()</a>
+    <span>
+                                &nbsp;: array&lt;string, mixed&gt;    </span>
+</dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-Cards-Games.html#method_getPoints">getPoints()</a>
     <span>
                                 &nbsp;: int    </span>
 </dt>
-<dd>Method takes an array with card objects, collects the cards value as an integer in another array
-and returns the points calculated for game 21</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a class="" href="classes/App-Cards-Games.html#method_game21CalculatePoints">game21CalculatePoints()</a>
-    <span>
-                                &nbsp;: int    </span>
-</dt>
-<dd>The function takes an array of integers.</dd>
 
     </dl>
 
@@ -224,7 +261,7 @@ and returns the points calculated for game 21</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Cards/Games.php"><a href="files/src-cards-games.html"><abbr title="src/Cards/Games.php">Games.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">63</span>
+    <span class="phpdocumentor-element-found-in__line">66</span>
 
     </aside>
 
@@ -283,6 +320,259 @@ Method returns a string declaring who won the game.</p>
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_game21CalculatePoints">
+        game21CalculatePoints()
+        <a href="classes/App-Cards-Games.html#method_game21CalculatePoints" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Cards/Games.php"><a href="files/src-cards-games.html"><abbr title="src/Cards/Games.php">Games.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">24</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">The function takes an array of integers.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">game21CalculatePoints</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, int&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$cards</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>Checks if there's a 1 and if adding 13 would keep the sum under or equal to 21.
+Then returns the array sum as an integer.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$cards</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, int&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><ul>
+<li>an array with integers</li>
+</ul>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">int</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getAllCardValues">
+        getAllCardValues()
+        <a href="classes/App-Cards-Games.html#method_getAllCardValues" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Cards/Games.php"><a href="files/src-cards-games.html"><abbr title="src/Cards/Games.php">Games.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">46</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Method takes an array with card objects, collects the cards value as an integer in another array</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getAllCardValues</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, <a href="classes/App-Cards-Cards.html"><abbr title="\App\Cards\Cards">Cards</abbr></a>&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$cards</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, int&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$cards</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, <a href="classes/App-Cards-Cards.html"><abbr title="\App\Cards\Cards">Cards</abbr></a>&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><ul>
+<li>array holding card objects</li>
+</ul>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, int&gt;</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getCardNames">
+        getCardNames()
+        <a href="classes/App-Cards-Games.html#method_getCardNames" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Cards/Games.php"><a href="files/src-cards-games.html"><abbr title="src/Cards/Games.php">Games.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">195</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getCardNames</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, <a href="classes/App-Cards-Cards.html"><abbr title="\App\Cards\Cards">Cards</abbr></a>&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$cards</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, string|null&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$cards</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, <a href="classes/App-Cards-Cards.html"><abbr title="\App\Cards\Cards">Cards</abbr></a>&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, string|null&gt;</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getCurrentGameState">
+        getCurrentGameState()
+        <a href="classes/App-Cards-Games.html#method_getCurrentGameState" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Cards/Games.php"><a href="files/src-cards-games.html"><abbr title="src/Cards/Games.php">Games.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">167</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getCurrentGameState</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$gameData</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string, mixed&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$gameData</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string, mixed&gt;</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getEndGameState">
+        getEndGameState()
+        <a href="classes/App-Cards-Games.html#method_getEndGameState" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Cards/Games.php"><a href="files/src-cards-games.html"><abbr title="src/Cards/Games.php">Games.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">141</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getEndGameState</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string, array&lt;string|int, <a href="classes/App-Cards-Cards.html"><abbr title="\App\Cards\Cards">Cards</abbr></a>&gt;|int&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$gameData</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string, mixed&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$gameData</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string, array&lt;string|int, <a href="classes/App-Cards-Cards.html"><abbr title="\App\Cards\Cards">Cards</abbr></a>&gt;|int&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string, mixed&gt;</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_getGameData">
         getGameData()
         <a href="classes/App-Cards-Games.html#method_getGameData" class="headerlink"><i class="fas fa-link"></i></a>
@@ -291,7 +581,7 @@ Method returns a string declaring who won the game.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Cards/Games.php"><a href="files/src-cards-games.html"><abbr title="src/Cards/Games.php">Games.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">83</span>
+    <span class="phpdocumentor-element-found-in__line">89</span>
 
     </aside>
 
@@ -299,7 +589,7 @@ Method returns a string declaring who won the game.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getGameData</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string, <a href="classes/App-Cards-Hand.html"><abbr title="\App\Cards\Hand">Hand</abbr></a>|array&lt;string|int, <a href="classes/App-Cards-Cards.html"><abbr title="\App\Cards\Cards">Cards</abbr></a>&gt;&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string, array&lt;string|int, <a href="classes/App-Cards-Cards.html"><abbr title="\App\Cards\Cards">Cards</abbr></a>&gt;|bool|int|string&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">getGameData</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string, <a href="classes/App-Cards-Hand.html"><abbr title="\App\Cards\Hand">Hand</abbr></a>|array&lt;string|int, <a href="classes/App-Cards-Cards.html"><abbr title="\App\Cards\Cards">Cards</abbr></a>&gt;&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string, mixed&gt;</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -328,11 +618,59 @@ Method returns a string declaring who won the game.</p>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string, array&lt;string|int, <a href="classes/App-Cards-Cards.html"><abbr title="\App\Cards\Cards">Cards</abbr></a>&gt;|bool|int|string&gt;</span>
+        <span class="phpdocumentor-signature__response_type">array&lt;string, mixed&gt;</span>
                     &mdash;
                 <section class="phpdocumentor-description"><p>$data - holds variables needed for rendering the html.twig</p>
 </section>
 
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getGameState">
+        getGameState()
+        <a href="classes/App-Cards-Games.html#method_getGameState" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Cards/Games.php"><a href="files/src-cards-games.html"><abbr title="src/Cards/Games.php">Games.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">120</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">getGameState</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string, array&lt;string|int, <a href="classes/App-Cards-Cards.html"><abbr title="\App\Cards\Cards">Cards</abbr></a>&gt;|int&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$gameData</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string, mixed&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$gameData</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string, array&lt;string|int, <a href="classes/App-Cards-Cards.html"><abbr title="\App\Cards\Cards">Cards</abbr></a>&gt;|int&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string, mixed&gt;</span>
             </section>
 
 </article>
@@ -350,16 +688,14 @@ Method returns a string declaring who won the game.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Cards/Games.php"><a href="files/src-cards-games.html"><abbr title="src/Cards/Games.php">Games.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">37</span>
+    <span class="phpdocumentor-element-found-in__line">207</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Method takes an array with card objects, collects the cards value as an integer in another array
-and returns the points calculated for game 21</p>
-
+    
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getPoints</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, <a href="classes/App-Cards-Cards.html"><abbr title="\App\Cards\Cards">Cards</abbr></a>&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+                    <span class="phpdocumentor-signature__name">getPoints</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, <a href="classes/App-Cards-Cards.html"><abbr title="\App\Cards\Cards">Cards</abbr></a>&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$cards</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -368,71 +704,11 @@ and returns the points calculated for game 21</p>
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$data</span>
+                <span class="phpdocumentor-signature__argument__name">$cards</span>
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, <a href="classes/App-Cards-Cards.html"><abbr title="\App\Cards\Cards">Cards</abbr></a>&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><ul>
-<li>array holding card objects</li>
-</ul>
-</section>
-
-            </dd>
-            </dl>
-
-    
-
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">int</span>
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -private
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_game21CalculatePoints">
-        game21CalculatePoints()
-        <a href="classes/App-Cards-Games.html#method_game21CalculatePoints" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Cards/Games.php"><a href="files/src-cards-games.html"><abbr title="src/Cards/Games.php">Games.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">23</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">The function takes an array of integers.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">game21CalculatePoints</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, int&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <section class="phpdocumentor-description"><p>Checks if there's a 1 and if adding 13 would keep the sum under or equal to 21.
-Then returns the array sum as an integer.</p>
-</section>
-
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$data</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, int&gt;</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><ul>
-<li>an array with integers</li>
-</ul>
-</section>
-
+                
             </dd>
             </dl>
 
@@ -560,9 +836,14 @@ Then returns the array sum as an integer.</p>
             <li>
                 <ul class="phpdocumentor-list -clean">
                                             <li class=""><a href="classes/App-Cards-Games.html#method_determineWinner">determineWinner()</a></li>
-                                            <li class=""><a href="classes/App-Cards-Games.html#method_getGameData">getGameData()</a></li>
-                                            <li class=""><a href="classes/App-Cards-Games.html#method_getPoints">getPoints()</a></li>
                                             <li class=""><a href="classes/App-Cards-Games.html#method_game21CalculatePoints">game21CalculatePoints()</a></li>
+                                            <li class=""><a href="classes/App-Cards-Games.html#method_getAllCardValues">getAllCardValues()</a></li>
+                                            <li class=""><a href="classes/App-Cards-Games.html#method_getCardNames">getCardNames()</a></li>
+                                            <li class=""><a href="classes/App-Cards-Games.html#method_getCurrentGameState">getCurrentGameState()</a></li>
+                                            <li class=""><a href="classes/App-Cards-Games.html#method_getEndGameState">getEndGameState()</a></li>
+                                            <li class=""><a href="classes/App-Cards-Games.html#method_getGameData">getGameData()</a></li>
+                                            <li class=""><a href="classes/App-Cards-Games.html#method_getGameState">getGameState()</a></li>
+                                            <li class=""><a href="classes/App-Cards-Games.html#method_getPoints">getPoints()</a></li>
                                     </ul>
             </li>
                     </ul>

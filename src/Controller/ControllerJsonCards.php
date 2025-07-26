@@ -3,9 +3,12 @@
 namespace App\Controller;
 
 use App\Cards\Cards;
-use App\Cards\DeckOfCards;
 use App\Cards\Games;
 use App\Cards\Hand;
+use App\JsonHelper\JsonHelper;
+use App\SessionHandlers\GameSessionHandler;
+use App\SessionHandlers\CardSessionHandler;
+use App\SessionHandlers\CardSessionJsonHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,59 +18,6 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class ControllerJsonCards extends AbstractController
 {
-    #[Route("/api", name: "start")]
-    public function startApi(): Response
-    {
-        return $this->render('json_api.html.twig');
-    }
-
-    #[Route("/api/deck", name: "api_deck", methods: ['GET'])]
-    public function apiDeck(): Response
-    {
-        $deck = new DeckOfCards();
-        $json = array();
-        foreach ($deck->deck as $card) {
-            array_push($json, $card->getName());
-        }
-
-        $data = [
-            'deck' => $json,
-        ];
-
-        $responseJson = new JsonResponse($data);
-        $responseJson->setEncodingOptions(
-            $responseJson->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-
-        return $responseJson;
-    }
-
-    #[Route("/api/deck/shuffle", name: "api_shuffle_post", methods: ['POST'])]
-    public function apiShufflePost(): Response
-    {
-        return $this->redirectToRoute('api_shuffle_get');
-    }
-
-    #[Route("/api/deck/shuffle", name: "api_shuffle_get", methods: ['GET'])]
-    public function apiShuffleGet(): Response
-    {
-        $deck = new DeckOfCards();
-        $deck->shuffleDeck();
-        $json = array();
-        foreach ($deck->deck as $card) {
-            array_push($json, $card->getName());
-        }
-        $data = [
-            'deck' => $json,
-        ];
-
-        $responseJson = new JsonResponse($data);
-        $responseJson->setEncodingOptions(
-            $responseJson->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-
-        return $responseJson;
-    }
     #[Route("/api/deck/draw", name: "api_draw_post", methods: ['POST'])]
     public function drawOnePost(
         SessionInterface $sessionJson
@@ -106,11 +56,8 @@ class ControllerJsonCards extends AbstractController
             ];
         }
 
-        $responseJson = new JsonResponse($data);
-        $responseJson->setEncodingOptions(
-            $responseJson->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-
+        $jsonHelper = new JsonHelper();
+        $responseJson = $jsonHelper->getJsonPrettyPrint($data);
         $sessionJson->set('deck', $deck);
 
         return $responseJson;
@@ -130,10 +77,9 @@ class ControllerJsonCards extends AbstractController
             $sessionJson->set('deck', $deck);
         }
 
-        /** @var int $numCards */
-        $numCards = $requestJson->request->get('num_cards');
-        $sessionJson->set('amount', $numCards);
-
+        /** @var int $drawThisManyCards */
+        $drawThisManyCards = $requestJson->request->get('num_cards');
+        $sessionJson->set('amount', $drawThisManyCards);
         return $this->redirectToRoute('api_draw_more_get');
     }
 
@@ -141,56 +87,36 @@ class ControllerJsonCards extends AbstractController
     public function drawMoreGet(
         SessionInterface $sessionJson
     ): Response {
+        $cardSessionHelper = new CardSessionJsonHandler();
+        $cardSessionHelper->setSessionJsonAmountDrawCards($sessionJson);
         /** @var Hand $deck */
         $deck = $sessionJson->get('deck');
-        $card = array();
-        $json = array();
 
-        /** @var int $cardsLeft */
-        $cardsLeft = $deck->howManyLeft();
-
-        if ($cardsLeft == 0) {
-            $json = "You have drawn all cards";
-
+        if ($deck->howManyLeft() == 0) {
             $data = [
-                'card' => $json,
-                'cards_left' => $deck->howManyLeft(),
+                'card' => "You have drawn all cards, reset to get a new deck.",
+                'cards_left' => "0",
             ];
 
-            $responseJson = new JsonResponse($data);
-            $responseJson->setEncodingOptions(
-                $responseJson->getEncodingOptions() | JSON_PRETTY_PRINT
-            );
+            $jsonHelper = new JsonHelper();
+            $responseJson = $jsonHelper->getJsonPrettyPrint($data);
 
             return $responseJson;
         }
 
-        /** @var int $amount */
-        $amount = $sessionJson->get('amount');
+        $cardSessionHelper->setSessionJsonDeckDrawCards($sessionJson);
+        $cardsByName = $cardSessionHelper->getDrawnCardsByName($sessionJson);
 
-        if ($cardsLeft < $amount) {
-            $sessionJson->set('amount', $cardsLeft);
-        }
-
-        for ($x = 0; $x < $amount; $x++) {
-            $deck->drawAndDiscard();
-        }
-
-        $card = $deck->getDrawnByIndex($amount);
-
-        foreach ($card as $card) {
-            array_push($json, $card->getName());
-        }
+        /** @var Hand $deck */
+        $deck = $sessionJson->get('deck');
 
         $data = [
-            'card' => $json,
+            'card' => $cardsByName,
             'cards_left' => $deck->howManyLeft(),
         ];
 
-        $responseJson = new JsonResponse($data);
-        $responseJson->setEncodingOptions(
-            $responseJson->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
+        $jsonHelper = new JsonHelper();
+        $responseJson = $jsonHelper->getJsonPrettyPrint($data);
 
         $sessionJson->set('amount', 0);
         $sessionJson->set('deck', $deck);
@@ -198,67 +124,27 @@ class ControllerJsonCards extends AbstractController
         return $responseJson;
     }
 
-    #[Route("/api/deck/resetter", name: "resetter", methods: ['POST'])]
-    public function resetter(
-        SessionInterface $sessionJson
-    ): Response {
-        $deck = new Hand();
-        $deck->shuffle();
-        $sessionJson->set('deck', $deck);
-        $sessionJson->set('amount', 0);
-        return $this->render('json_api.html.twig');
-    }
-
-
     #[Route("/api/game", name: "game_21", methods: ['GET'])]
     public function jsonGame21(
         SessionInterface $gameSession
     ): Response {
+        $gameSessionHandler = new GameSessionHandler();
         if (!$gameSession->has('21_deck')) {
-            $hand = new Hand();
-            $hand->shuffle();
-            $gameSession->set('21_deck', $hand);
-            $gameSession->set('player', []);
-            $gameSession->set('bank', []);
+            $gameSessionHandler->setNewGame($gameSession);
         }
+
         $game = new Games();
         /** @var array<string,Hand|Cards[]> $gameData */
         $gameData = [
-            'hand' => $gameSession->get('21_deck'),
             'player' => $gameSession->get('player'),
             'bank' => $gameSession->get('bank'),
         ];
 
         $data = $game->getGameData($gameData);
-        /** @var Cards[] $playerCards */
-        $playerCards = $data['player'];
-        /** @var Cards[] $bankCards */
-        $bankCards = $data['bank'];
-        $player = [];
-        $bank = [];
+        $jsonData = $game->getCurrentGameState($data);
 
-        foreach ($playerCards as $card) {
-            $player[] = $card->getName();
-        }
-        foreach ($bankCards as $card) {
-            $bank[] = $card->getName();
-        }
-
-        $jsonData = [
-            'player' => $player,
-            'bank' => $bank,
-            'playerScore' => $data['playerScore'],
-            'bankScore' => $data['bankScore'],
-            'playersTurn' => $data['playersTurn'],
-            'playerGotMoreThan21' => $data['playerGotMoreThan21'],
-            'gameOngoing' => $data['gameOngoing'],
-            'winner' => $data['winner'],
-        ];
-
-        $responseJson = new JsonResponse($jsonData);
-        $responseJson->setEncodingOptions(
-            $responseJson->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
+        $jsonHelper = new JsonHelper();
+        $responseJson = $jsonHelper->getJsonPrettyPrint($jsonData);
 
         return $responseJson;
     }

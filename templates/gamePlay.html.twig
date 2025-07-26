@@ -3,6 +3,7 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
+<div class="cardholder">
     <h1>Spela kortspelet 21</h1>
     {% include "gameNavbar.html.twig" %}
     <form method="post" action="">
@@ -20,7 +21,7 @@
                 {% endif %}
             </ul>
         </nav>
-        <div class="cardholder">
+        
             <div class="pointHolder">
                 <h2>Player points: {{playerScore}}</h2>
                 {% if (playerGotMoreThan21 == true) %}
