@@ -235,72 +235,205 @@
     Jag tror att öka coverage med enhetstester, refaktorera koden så den blir mindre komplicerad och fixa till diverse fel kommer minska CRAP värdet och öka maintainability index.
 
     <h3>Förbättringsanalys</h3>
-    <img class="metrics images" src="{{ asset('img/metrics/complexBeforeAfter.png') }}" alt="Scrutinizer Before And After">
+    <p>
+        <b>Phpmetrics-rapporten</b> visar att majoriteten av metrics mätvärdena har förbättrats efter refaktorering. 
+        Klasserna har blivit fler, vi hade 17 och nu har vi 24, och mindre vilket har minskat komplexiteten och ökat läsbarheten. 
+        <br>
+        Cohesion har generellt fått högre värden vilket tyder på att cohesion har minskat - det är mindre sammanhängande och klasserna gör fortfarande för mycket. 
+        Cohesion är fortsatt ett förbättringsområde. 
+        <br><br>
+        För de klasserna som förbättrades har maintainability index ökat och cyclomatic complexity minskat. 
+        <br>
+        ControllerCards boll ändrades från röd till gul medan de andras färger är oförändrade. 
+        <br>
+        Inga nya enhetstester gjordes men enhetstesterna för Games refaktorerades. 
+        Hade jag implementerat enhetstester för controllers så kanske vi hade haft fler gula bollar.
+        <br>
+        <br>
+    </p>
+    <img class="metrics images" src="{{ asset('img/metrics/complexBeforeAfter.png') }}" alt="Phpmetrics Before And After">
+
     <table class="complex">
         <tr>
-            <th></th>
-            <th>Klass</th>
-            <th>Cyclomatic Complexity</th>
-            <th>Maintainability Index</th>
-        <th>Färg</th>
+            <th>Complexity Metrics</th>
+            <th>Före</th>
+            <th>Efter</th>
+            <th>Analys</th>
         </tr>
         <tr>
-            <td>Före</td>
-            <td>App\Controller\ControllerJsonCards</td>
-            <td>13</td>
-            <td>55.48</td>
-        <td>Röd</td>
-        </tr>
-            <tr>
-            <td>Efter</td>
-            <td>App\Controller\ControllerJsonCards</td>
-            <td>6</td>
-            <td>66.06</td>
-            <td>Röd</td>
+            <td>Average CC by class</td>
+            <td>4.24</td>
+            <td>3.17</td>
+            <td>Mindre komplexa klasser. Generellt har klasserna blivit mer fokuserade.</td>
         </tr>
         <tr>
-            <td>Före</td>
-            <td>App\Cards\Games</td>
-            <td>10</td>
-            <td>80.76</td>
-            <td>Gul</td>
+            <td>Average WMC by class</td>
+            <td>7.76</td>
+            <td>6.13</td>
+            <td>Klasserna är mindre röriga och använder färre metoder, 
+                <br>vilket gör dem mindre komplexa och lättare att förstå och underhålla.</td>
         </tr>
         <tr>
-            <td>Efter</td>
-            <td>App\Cards\Games</td>
-            <td>12</td>
-            <td>73.31</td>
-            <td>Gul</td>
+            <td>Average RSC</td>
+            <td>105.91</td>
+            <td>81.37</td>
+            <td>Komplexiteten har reducerats vilket tyder på att klasser och metoder 
+                <br>har blivit enklare och mer fokuserade.</td>
         </tr>
         <tr>
-            <td></td>
-            <td>App\Controller\ControllerCards</td>
-            <td>9</td>
-            <td>64.06</td>
-            <td>Röd</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>App\Cards\Cards</td>
-            <td>9</td>
-            <td>82.69</td>
-            <td>Gul</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>App\Controller\LibraryController</td>
-            <td>8</td>
-            <td>61.24</td>
-            <td>Röd</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>App\Controller\ControllerGame</td>
-            <td>7</td>
-            <td>71.69</td>
-            <td>Gul</td>
+            <td>Average Difficulty</td>
+            <td>7.19</td>
+            <td>6.32</td>
+            <td>Det är nu något lättare att förstå klasserna och metoderna.</td>
         </tr>
     </table>
+    <br><br>
+    
+    <br><br>
+    <table class="complex">
+    <tr>
+        <th>Coupling Metrics</th>
+        <th>Före</th>
+        <th>Efter</th>
+        <th>Analys</th>
+    </tr>
+    <tr>
+        <td>Average afferent coupling</td>
+        <td>0.76</td>
+        <td>1</td>
+        <td>Ökat då vi har fler klasser och metoder som blivit
+            <br> deligerade uppgifter för att minska komplexiteten 
+            <br> och öka läsbarheten i andra klasser.
+        </td>
+    </tr>
+    <tr>
+        <td>Average efferent coupling</td>
+        <td>2.53</td>
+        <td>2.58</td>
+        <td> Försumbar ökning, troligen normalt när ett projekt växer i storlek.
+            </td>
+    </tr>
+    <tr>
+        <td>Average instability</td>
+        <td>0.61</td>
+        <td>0.63</td>
+        <td>Försummbar ökning av instabiliteten, fortsatt inom ett OK gränsvärde</td>
+    </tr>
+    <tr>
+        <td>Depth of inheritance Tree</td>
+        <td>1.44</td>
+        <td>1.29</td>
+        <td>Minskat, vilket tyder på mindre stark coupling.
+            <br> Kan tyda på bätte kodstruktur vilket gör det lättare
+            <br> Att underhåll och enhetstestning.
+        </td>
+    </tr>
+    </table>
+    <br><br>
+
+    <br><br>
+    <table class="complex">
+    <tr>
+        <th>OOP Metrics</th>
+        <th>Före</th>
+        <th>Efter</th>
+        <th>Analys</th>
+    </tr>
+    <tr>
+        <td>Classes</td>
+        <td>17</td>
+        <td>24</td>
+        <td>Antalet klasser har ökat och blivit mindre
+            <br><b>(LLOC per class före: 53, LLOC efter: 42)</b>
+            <br>Vilket talar för att klasserna är mindre komplexa
+            <br> och har färra ansvarsområden. Detta gör att klasserna
+            <br> är lättare att förstå, underhålla och enhetstesta.
+        </td>
+    </tr>
+    <tr>
+        <td>Methods</td>
+        <td>77</td>
+        <td>95</td>
+        <td>Antalet har metoder har ökat i samband med att vi har fler klasser
+            <br>
+        </td>
+    </tr>
+    <tr>
+        <td>Methods by class</td>
+        <td>4.53</td>
+        <td>3.96</td>
+        <td>Antalet metoder per klass har minskat, 
+            <br> vilket innebär att de har färre ansvarsområden och gör klasserna 
+            <br> mer fokuserade. Detta ökar cohesion.
+            <br> <b>(LLOC per method före: 12, efter: 11)</b>
+        </td>
+    </tr>
+    <tr>
+        <td>Lack of cohesion of methods</td>
+        <td>1.88</td>
+        <td>2.04</td>
+        <td>Cohesion har minskat och det kan vara värt att titta på klasser
+            <br> med hög LCOM och refaktorera dem. 
+            <br> Idealt är om detta mätvärde är närmare 1.0.
+            <br> I detta fall så beror det ökade värdet nog på att klasser handlar
+            <br> brutits upp i mindre klasser. 
+            <br> Kan indikera att några klasser kan gynnas av att få färre ansvarsområden
+            <br> och på så vis bli mer fokuserade.
+        </td>
+    </tr>
+    </table>
+    <br><br>
+    <p>
+        <b>Scrutinizer-rapporten</b>
+        <br>
+        Scrutinizer rapporten visar att samtliga klasser och metoder har fått betyget A. Betyget har ökat från 9.89 till 10.00.
+        De tre metoderna med högst CRAP värde har fått betydligt bättre betyg. 
+        <br>
+        Rapporterna visar att refaktoreringen har lett till en positiv förändring.
+    <br>
+    <br>
+        <table class="complex">
+    <tr>
+        <th>CRAP metrics</th>
+        <th>Före</th>
+        <th>Efter</th>
+    </tr>
+    <tr>
+        <td>Controller\ControllerGame::newGame()</td>
+        <td>42</td>
+        <td>20</td>
+    </tr>
+    <tr>
+        <td>Controller\ControllerJsonCards::drawMoreGet()</td>
+        <td>30</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>Controller\ControllerJsonCards::drawPart2()</td>
+        <td>30</td>
+        <td>2</td>
+    </tr>
+    </table>
+    <br><br>
+        <img class="metrics images" src="{{ asset('img/metrics/beforeAfterScrutinizer.png') }}" alt="Scrutinizer Before And After">
+    </p>
     <h2>Diskussion</h2>
+    <p>
+        Jag hade som mål att få de röda bollarna att bli gröna - men lyckades inte med det. Jag refaktorerade de metoder som fick höga CRAP värden och jag refaktorerade flera router och klasser för att öka läsbarheten. Scrutinizer är nu 10/10 och alla klasser/metoder har nu ett A - vilket är väldigt trevligt att se. 
+        Det tog lång tid att arbeta igenom äldre kod, kmom01 och 02 koden är ju från två år sen när jag var riktigt ny på programmering så vissa lösningar var inte optimala. De metoder med högst CRAP doftar nu mycket bättre.
+        <br><br>
+        Att spara alla clean kod tester till sista momentet är inte optimalt - det kan bli väldigt mycket att göra då. Jag tror därför att det är viktigt att implementera enhetstester, checka kod kvaliteten och code style tidigt och ofta. 
+        Det allra bästa är nog att få in ett regelbundet flöde där man kollar sin kod stil med ex. phpmd, phpstan, phpmetrics och scrutinizer så man fångar upp problem tidigt och fixar dem istället för att bygga vidare på en icke optimal grund. 
+        <br><br>
+        Det är väldigt trevligt att det finns verktyg som kan granska (och ibland fixa) kod kvaliteten. 
+        Phpmetrics och Scrutinizer ger inte bara en massa mätdata utan också en visuell överblick av vad som är bra och mindre bra med dina klasser och metoder. En nackdel som jag kan se med detta är att om man inte riktigt förstår vad dessa mätvärden står för och hur de beräknas så kan man missförstå dem. Exempelvis klagade dessa rapporter på cardGraphic klassen som egentligen inte gör så mycket mer än att ge ett individuellt kort från Card klassen ett unicode nummer. Eftersom alla dessa unicode nummer fanns i en lista så tyckte gransknings verktyget att detta var väldigt kompakt och övermäktigt - när den egentligen inte gör så mycket. Man kanske också blir alltför fokuserad på att göra röda bollar gröna och modulerar i mindre och mindre klasser och metoder - vilket kan eventuellt sänka cohesion.
+        Förståelse för vad som är viktigt att åtgärda och vad som kan vara är också viktigt. Jag tycker phpmetrics, scrutinizer och phpmd/phpstan är väldigt hjälpsamma. 
+        <br><br>
+        Även om du arbetar ensam på ett projekt så arbetar du i ett team. 
+        Du arbetar med dig själv från igår och ditt framtida jag. 
+        <i>That's futures me's problem. Past me was an idiot.</i>
+        Arbeta med clean code så du underlättar för ditt framtida jag :D
+        <br>
+    </p>
 </div>
 {% endblock %}

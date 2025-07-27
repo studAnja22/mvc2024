@@ -189,10 +189,6 @@ final class LibraryController extends AbstractController
     ): Response {
         $books = $libraryRepository->findOneBySomeField($isbn);
 
-        $data = [
-            'books' => $books
-        ];
-
         return $this->json($books);
     }
 }

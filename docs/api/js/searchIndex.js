@@ -131,6 +131,31 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Cards-DeckOfCards.html#property_deck"
         },                {
+            "fqsen": "\\App\\Cards\\Game21Data",
+            "name": "Game21Data",
+            "summary": "The\u0020game\u0020class\u0020helps\u0020with\u0020calculating\u0020and\u0020comparing\u0020values\nas\u0020well\u0020as\u0020checking\u0020winning\u0020conditions\u0020of\u0020a\u0020game\nand\u0020gets\u0020the\u0020values\u0020needed\u0020to\u0020render\u0020the\u0020game\u0020page.",
+            "url": "classes/App-Cards-Game21Data.html"
+        },                {
+            "fqsen": "\\App\\Cards\\Game21Data\u003A\u003AdetermineWinner\u0028\u0029",
+            "name": "determineWinner",
+            "summary": "Returns\u0020a\u0020string\u0020declaring\u0020the\u0020winner\u0020of\u0020the\u0020game",
+            "url": "classes/App-Cards-Game21Data.html#method_determineWinner"
+        },                {
+            "fqsen": "\\App\\Cards\\Game21Data\u003A\u003AgetGameState\u0028\u0029",
+            "name": "getGameState",
+            "summary": "",
+            "url": "classes/App-Cards-Game21Data.html#method_getGameState"
+        },                {
+            "fqsen": "\\App\\Cards\\Game21Data\u003A\u003AgetEndGameState\u0028\u0029",
+            "name": "getEndGameState",
+            "summary": "",
+            "url": "classes/App-Cards-Game21Data.html#method_getEndGameState"
+        },                {
+            "fqsen": "\\App\\Cards\\Game21Data\u003A\u003AgetCurrentGameState\u0028\u0029",
+            "name": "getCurrentGameState",
+            "summary": "",
+            "url": "classes/App-Cards-Game21Data.html#method_getCurrentGameState"
+        },                {
             "fqsen": "\\App\\Cards\\Games",
             "name": "Games",
             "summary": "The\u0020game\u0020class\u0020helps\u0020with\u0020calculating\u0020and\u0020comparing\u0020values\nas\u0020well\u0020as\u0020checking\u0020winning\u0020conditions\u0020of\u0020a\u0020game\nand\u0020gets\u0020the\u0020values\u0020needed\u0020to\u0020render\u0020the\u0020game\u0020page.",
@@ -146,30 +171,10 @@ Search.appendIndex(
             "summary": "Method\u0020takes\u0020an\u0020array\u0020with\u0020card\u0020objects,\u0020collects\u0020the\u0020cards\u0020value\u0020as\u0020an\u0020integer\u0020in\u0020another\u0020array",
             "url": "classes/App-Cards-Games.html#method_getAllCardValues"
         },                {
-            "fqsen": "\\App\\Cards\\Games\u003A\u003AdetermineWinner\u0028\u0029",
-            "name": "determineWinner",
-            "summary": "Returns\u0020a\u0020string\u0020declaring\u0020the\u0020winner\u0020of\u0020the\u0020game",
-            "url": "classes/App-Cards-Games.html#method_determineWinner"
-        },                {
             "fqsen": "\\App\\Cards\\Games\u003A\u003AgetGameData\u0028\u0029",
             "name": "getGameData",
             "summary": "Method\u0020creates\u0020and\u0020updates\u0020variables\u0020used\u0020on\u0020the\u0020html.twig\u0020using\u0020session\u0020data.",
             "url": "classes/App-Cards-Games.html#method_getGameData"
-        },                {
-            "fqsen": "\\App\\Cards\\Games\u003A\u003AgetGameState\u0028\u0029",
-            "name": "getGameState",
-            "summary": "",
-            "url": "classes/App-Cards-Games.html#method_getGameState"
-        },                {
-            "fqsen": "\\App\\Cards\\Games\u003A\u003AgetEndGameState\u0028\u0029",
-            "name": "getEndGameState",
-            "summary": "",
-            "url": "classes/App-Cards-Games.html#method_getEndGameState"
-        },                {
-            "fqsen": "\\App\\Cards\\Games\u003A\u003AgetCurrentGameState\u0028\u0029",
-            "name": "getCurrentGameState",
-            "summary": "",
-            "url": "classes/App-Cards-Games.html#method_getCurrentGameState"
         },                {
             "fqsen": "\\App\\Cards\\Games\u003A\u003AgetCardNames\u0028\u0029",
             "name": "getCardNames",
@@ -336,26 +341,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-ControllerJsonCards.html"
         },                {
-            "fqsen": "\\App\\Controller\\ControllerJsonCards\u003A\u003AstartApi\u0028\u0029",
-            "name": "startApi",
-            "summary": "",
-            "url": "classes/App-Controller-ControllerJsonCards.html#method_startApi"
-        },                {
-            "fqsen": "\\App\\Controller\\ControllerJsonCards\u003A\u003AapiDeck\u0028\u0029",
-            "name": "apiDeck",
-            "summary": "",
-            "url": "classes/App-Controller-ControllerJsonCards.html#method_apiDeck"
-        },                {
-            "fqsen": "\\App\\Controller\\ControllerJsonCards\u003A\u003AapiShufflePost\u0028\u0029",
-            "name": "apiShufflePost",
-            "summary": "",
-            "url": "classes/App-Controller-ControllerJsonCards.html#method_apiShufflePost"
-        },                {
-            "fqsen": "\\App\\Controller\\ControllerJsonCards\u003A\u003AapiShuffleGet\u0028\u0029",
-            "name": "apiShuffleGet",
-            "summary": "",
-            "url": "classes/App-Controller-ControllerJsonCards.html#method_apiShuffleGet"
-        },                {
             "fqsen": "\\App\\Controller\\ControllerJsonCards\u003A\u003AdrawOnePost\u0028\u0029",
             "name": "drawOnePost",
             "summary": "",
@@ -376,15 +361,40 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-ControllerJsonCards.html#method_drawMoreGet"
         },                {
-            "fqsen": "\\App\\Controller\\ControllerJsonCards\u003A\u003Aresetter\u0028\u0029",
-            "name": "resetter",
-            "summary": "",
-            "url": "classes/App-Controller-ControllerJsonCards.html#method_resetter"
-        },                {
             "fqsen": "\\App\\Controller\\ControllerJsonCards\u003A\u003AjsonGame21\u0028\u0029",
             "name": "jsonGame21",
             "summary": "",
             "url": "classes/App-Controller-ControllerJsonCards.html#method_jsonGame21"
+        },                {
+            "fqsen": "\\App\\Controller\\ControllerJsonDeck",
+            "name": "ControllerJsonDeck",
+            "summary": "",
+            "url": "classes/App-Controller-ControllerJsonDeck.html"
+        },                {
+            "fqsen": "\\App\\Controller\\ControllerJsonDeck\u003A\u003AstartApi\u0028\u0029",
+            "name": "startApi",
+            "summary": "",
+            "url": "classes/App-Controller-ControllerJsonDeck.html#method_startApi"
+        },                {
+            "fqsen": "\\App\\Controller\\ControllerJsonDeck\u003A\u003AapiDeck\u0028\u0029",
+            "name": "apiDeck",
+            "summary": "",
+            "url": "classes/App-Controller-ControllerJsonDeck.html#method_apiDeck"
+        },                {
+            "fqsen": "\\App\\Controller\\ControllerJsonDeck\u003A\u003AapiShufflePost\u0028\u0029",
+            "name": "apiShufflePost",
+            "summary": "",
+            "url": "classes/App-Controller-ControllerJsonDeck.html#method_apiShufflePost"
+        },                {
+            "fqsen": "\\App\\Controller\\ControllerJsonDeck\u003A\u003AapiShuffleGet\u0028\u0029",
+            "name": "apiShuffleGet",
+            "summary": "",
+            "url": "classes/App-Controller-ControllerJsonDeck.html#method_apiShuffleGet"
+        },                {
+            "fqsen": "\\App\\Controller\\ControllerJsonDeck\u003A\u003Aresetter\u0028\u0029",
+            "name": "resetter",
+            "summary": "",
+            "url": "classes/App-Controller-ControllerJsonDeck.html#method_resetter"
         },                {
             "fqsen": "\\App\\Controller\\ControllerTwig",
             "name": "ControllerTwig",
@@ -756,20 +766,25 @@ Search.appendIndex(
             "summary": "User\u0020wants\u0020to\u0020draw\u0020many\u0020cards.",
             "url": "classes/App-SessionHandlers-CardSessionHandler.html#method_setAmountOfCardsToBeDrawn"
         },                {
-            "fqsen": "\\App\\SessionHandlers\\CardSessionHandler\u003A\u003AgetDrawnCardsByName\u0028\u0029",
+            "fqsen": "\\App\\SessionHandlers\\CardSessionJsonHandler",
+            "name": "CardSessionJsonHandler",
+            "summary": "",
+            "url": "classes/App-SessionHandlers-CardSessionJsonHandler.html"
+        },                {
+            "fqsen": "\\App\\SessionHandlers\\CardSessionJsonHandler\u003A\u003AgetDrawnCardsByName\u0028\u0029",
             "name": "getDrawnCardsByName",
             "summary": "",
-            "url": "classes/App-SessionHandlers-CardSessionHandler.html#method_getDrawnCardsByName"
+            "url": "classes/App-SessionHandlers-CardSessionJsonHandler.html#method_getDrawnCardsByName"
         },                {
-            "fqsen": "\\App\\SessionHandlers\\CardSessionHandler\u003A\u003AsetSessionJsonAmountDrawCards\u0028\u0029",
+            "fqsen": "\\App\\SessionHandlers\\CardSessionJsonHandler\u003A\u003AsetSessionJsonAmountDrawCards\u0028\u0029",
             "name": "setSessionJsonAmountDrawCards",
             "summary": "",
-            "url": "classes/App-SessionHandlers-CardSessionHandler.html#method_setSessionJsonAmountDrawCards"
+            "url": "classes/App-SessionHandlers-CardSessionJsonHandler.html#method_setSessionJsonAmountDrawCards"
         },                {
-            "fqsen": "\\App\\SessionHandlers\\CardSessionHandler\u003A\u003AsetSessionJsonDeckDrawCards\u0028\u0029",
+            "fqsen": "\\App\\SessionHandlers\\CardSessionJsonHandler\u003A\u003AsetSessionJsonDeckDrawCards\u0028\u0029",
             "name": "setSessionJsonDeckDrawCards",
             "summary": "",
-            "url": "classes/App-SessionHandlers-CardSessionHandler.html#method_setSessionJsonDeckDrawCards"
+            "url": "classes/App-SessionHandlers-CardSessionJsonHandler.html#method_setSessionJsonDeckDrawCards"
         },                {
             "fqsen": "\\App\\SessionHandlers\\GameSessionHandler",
             "name": "GameSessionHandler",

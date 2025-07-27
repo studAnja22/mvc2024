@@ -180,12 +180,6 @@
 <dd>Checks if there&#039;s session &#039;hand&#039; exists and if there&#039;s enough cards to draw.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/App-SessionHandlers-CardSessionHandler.html#method_getDrawnCardsByName">getDrawnCardsByName()</a>
-    <span>
-                                &nbsp;: array&lt;string|int, string|null&gt;    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/App-SessionHandlers-CardSessionHandler.html#method_setAmountOfCardsToBeDrawn">setAmountOfCardsToBeDrawn()</a>
     <span>
                                 &nbsp;: void    </span>
@@ -212,18 +206,6 @@
                                 &nbsp;: void    </span>
 </dt>
 <dd>Clears session. Sets a new shuffled Hand() object to session.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/App-SessionHandlers-CardSessionHandler.html#method_setSessionJsonAmountDrawCards">setSessionJsonAmountDrawCards()</a>
-    <span>
-                                &nbsp;: void    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/App-SessionHandlers-CardSessionHandler.html#method_setSessionJsonDeckDrawCards">setSessionJsonDeckDrawCards()</a>
-    <span>
-                                &nbsp;: void    </span>
-</dt>
 
     </dl>
 
@@ -285,58 +267,6 @@
     
 
     
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_getDrawnCardsByName">
-        getDrawnCardsByName()
-        <a href="classes/App-SessionHandlers-CardSessionHandler.html#method_getDrawnCardsByName" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/SessionHandlers/CardSessionHandler.php"><a href="files/src-sessionhandlers-cardsessionhandler.html"><abbr title="src/SessionHandlers/CardSessionHandler.php">CardSessionHandler.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">80</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getDrawnCardsByName</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\HttpFoundation\Session\SessionInterface">SessionInterface</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$sessionJson</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, string|null&gt;</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$sessionJson</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\HttpFoundation\Session\SessionInterface">SessionInterface</abbr></span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, string|null&gt;</span>
-                    &mdash;
-                <section class="phpdocumentor-description"><p>$json</p>
-</section>
-
-            </section>
-
 </article>
                     <article
         class="phpdocumentor-element
@@ -529,94 +459,6 @@
 
     
 </article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_setSessionJsonAmountDrawCards">
-        setSessionJsonAmountDrawCards()
-        <a href="classes/App-SessionHandlers-CardSessionHandler.html#method_setSessionJsonAmountDrawCards" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/SessionHandlers/CardSessionHandler.php"><a href="files/src-sessionhandlers-cardsessionhandler.html"><abbr title="src/SessionHandlers/CardSessionHandler.php">CardSessionHandler.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">95</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">setSessionJsonAmountDrawCards</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\HttpFoundation\Session\SessionInterface">SessionInterface</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$sessionJson</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$sessionJson</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\HttpFoundation\Session\SessionInterface">SessionInterface</abbr></span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-    
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_setSessionJsonDeckDrawCards">
-        setSessionJsonDeckDrawCards()
-        <a href="classes/App-SessionHandlers-CardSessionHandler.html#method_setSessionJsonDeckDrawCards" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/SessionHandlers/CardSessionHandler.php"><a href="files/src-sessionhandlers-cardsessionhandler.html"><abbr title="src/SessionHandlers/CardSessionHandler.php">CardSessionHandler.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">109</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">setSessionJsonDeckDrawCards</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\HttpFoundation\Session\SessionInterface">SessionInterface</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$sessionJson</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$sessionJson</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\HttpFoundation\Session\SessionInterface">SessionInterface</abbr></span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-    
-
-    
-</article>
             </section>
 
         <div class="phpdocumentor-modal" id="source-view">
@@ -731,13 +573,10 @@
             <li>
                 <ul class="phpdocumentor-list -clean">
                                             <li class=""><a href="classes/App-SessionHandlers-CardSessionHandler.html#method_ensureHandIsAvailable">ensureHandIsAvailable()</a></li>
-                                            <li class=""><a href="classes/App-SessionHandlers-CardSessionHandler.html#method_getDrawnCardsByName">getDrawnCardsByName()</a></li>
                                             <li class=""><a href="classes/App-SessionHandlers-CardSessionHandler.html#method_setAmountOfCardsToBeDrawn">setAmountOfCardsToBeDrawn()</a></li>
                                             <li class=""><a href="classes/App-SessionHandlers-CardSessionHandler.html#method_setHandAfterUserDrewACard">setHandAfterUserDrewACard()</a></li>
                                             <li class=""><a href="classes/App-SessionHandlers-CardSessionHandler.html#method_setNewHand">setNewHand()</a></li>
                                             <li class=""><a href="classes/App-SessionHandlers-CardSessionHandler.html#method_setNewShuffledHand">setNewShuffledHand()</a></li>
-                                            <li class=""><a href="classes/App-SessionHandlers-CardSessionHandler.html#method_setSessionJsonAmountDrawCards">setSessionJsonAmountDrawCards()</a></li>
-                                            <li class=""><a href="classes/App-SessionHandlers-CardSessionHandler.html#method_setSessionJsonDeckDrawCards">setSessionJsonDeckDrawCards()</a></li>
                                     </ul>
             </li>
                     </ul>
