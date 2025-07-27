@@ -211,7 +211,96 @@
     <img class="metrics images" src="{{ asset('img/metrics/scrutinizer01.png') }}" alt="Scrutinizer Before">
 
     <h2>Förbättringar</h2>
+    <h3>Vad jag vill förbättra</h3>
+    PhpMetrics och Scrutinizer har nu visat flera förbättringsområden. De som jag väljer att fokusera på är följande:
+    <ol>
+        <li>
+            PhpMetrics och Scrutinizer har visat 6 violations respektive 7 issues - det ska vi fixa.
+        </li><br>
+        <li>
+            Det finns 3 funktioner som har ett CRAP värde på 30 eller mer - vilket betyder att de borde refaktoreras.
+        </li><br>
+        <li>
+            Öka maintainability index för de 3-5 klasserna med lägst värde. 
+            De tre största röda bollarna ska byta färg - helst till grönt! Refaktorering av kod, tillämpning av enhetstester eller någon annan lösning.
+        </li><br>
+        <li>
+            Vi har 3 operations som fick betyget B i scrutinizer - de ska vi ta en närmare titt på och se om vi inte kan fixa till dem så de också blir A klassade.
+        </li><br>
+        <li>
+            ControllerJsonCards() fick låga betyg både av phpmetrics och scrutinizer så den ska vi försöka fixa.
+        </li>
+    </ol>
+    <br>
+    Jag tror att öka coverage med enhetstester, refaktorera koden så den blir mindre komplicerad och fixa till diverse fel kommer minska CRAP värdet och öka maintainability index.
 
+    <h3>Förbättringsanalys</h3>
+    <img class="metrics images" src="{{ asset('img/metrics/complexBeforeAfter.png') }}" alt="Scrutinizer Before And After">
+    <table class="complex">
+        <tr>
+            <th></th>
+            <th>Klass</th>
+            <th>Cyclomatic Complexity</th>
+            <th>Maintainability Index</th>
+        <th>Färg</th>
+        </tr>
+        <tr>
+            <td>Före</td>
+            <td>App\Controller\ControllerJsonCards</td>
+            <td>13</td>
+            <td>55.48</td>
+        <td>Röd</td>
+        </tr>
+            <tr>
+            <td>Efter</td>
+            <td>App\Controller\ControllerJsonCards</td>
+            <td>6</td>
+            <td>66.06</td>
+            <td>Röd</td>
+        </tr>
+        <tr>
+            <td>Före</td>
+            <td>App\Cards\Games</td>
+            <td>10</td>
+            <td>80.76</td>
+            <td>Gul</td>
+        </tr>
+        <tr>
+            <td>Efter</td>
+            <td>App\Cards\Games</td>
+            <td>12</td>
+            <td>73.31</td>
+            <td>Gul</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>App\Controller\ControllerCards</td>
+            <td>9</td>
+            <td>64.06</td>
+            <td>Röd</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>App\Cards\Cards</td>
+            <td>9</td>
+            <td>82.69</td>
+            <td>Gul</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>App\Controller\LibraryController</td>
+            <td>8</td>
+            <td>61.24</td>
+            <td>Röd</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>App\Controller\ControllerGame</td>
+            <td>7</td>
+            <td>71.69</td>
+            <td>Gul</td>
+        </tr>
+    </table>
     <h2>Diskussion</h2>
 </div>
 {% endblock %}

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Cards\Cards;
 use App\Cards\Games;
+use App\Cards\Game21Data;
 use App\Cards\Hand;
 use App\JsonHelper\JsonHelper;
 use App\SessionHandlers\GameSessionHandler;
@@ -134,6 +135,7 @@ class ControllerJsonCards extends AbstractController
         }
 
         $game = new Games();
+        $game21Data = new Game21Data();
         /** @var array<string,Hand|Cards[]> $gameData */
         $gameData = [
             'player' => $gameSession->get('player'),
@@ -141,7 +143,7 @@ class ControllerJsonCards extends AbstractController
         ];
 
         $data = $game->getGameData($gameData);
-        $jsonData = $game->getCurrentGameState($data);
+        $jsonData = $game21Data->getCurrentGameState($data);
 
         $jsonHelper = new JsonHelper();
         $responseJson = $jsonHelper->getJsonPrettyPrint($jsonData);
