@@ -83,6 +83,7 @@
             TIL att a href inte skickar vidare till post så sessioner sparas inte. det är viktigt att hålla koll på vad man har i sina variablar. att jag är bättre på git.  
         </p>
         <h2 id="kmom03">Kmom03</h2>
+        <h3>Skriven VT25</h3>
         <h3>Intro</h3>
         <p>
             Då var det dags att dyka ner i mvc kursen igen! Att återbesöka kod man skrev VT22 när man var ‘super ny’ på att koda var lärorikt. Det är så viktigt att kommentera vad poängen med vissa funktioner är, vad olika variabler innehåller och dess syfte. Jag försökte vara bättre på att kommentera min kod den här gången så det är betydligt lättare att hoppa in i.
@@ -202,5 +203,34 @@
             Doctrine var väldigt trevligt att arbeta med och smidigt att den har stöd för flera olika database leverantörer. Jätteroligt att få lära sig nya användbara verktyg som man kan lägga i verktygslådan. :D
         </p>
         <h2 id="kmom06">Kmom06</h2>
-        <p>TEXT</p>
+        <h3>
+            Hur uppfattade du verktyget phpmetrics och fann du några särskilda bitar mer värdefulla än andra? 
+            <br>Var det några särskilda metrics eller bilder du uppskattade?
+        </h3>
+        <p>
+        Phpmetrics - Jag uppskattade listan med mätvärden man fick i terminalen/ubuntu, cirklarna som representerade maintainability index och CC och jag gillade de olika tabellerna. Jag tyckte object relations grafen var lite rörig, men jag har många klasser så det är inte så konstigt. Jag tycker phpmetrics är ett väldigt bra verktyg för att få en översikt av hur kod kvaliteten är. Men man får också tänka på att klasser får högre betyg om det finns enhetstester - även om enhetstesterna är riktigt kassa. Och det kanske är okey om en klass är lite komplex ibland, allt behöver inte vara grönt. 
+        </p>
+        <h3>
+            Berätta hur det gick att integrera med Scrutinizer och vilken är din första känsla av verktyget och dess badges? 
+            <br>Vilken kodtäckning och kodkvalitet fick du efter första bygget?
+        </h3>
+        <p>
+        Scrutinizer - Jag hade lite problem med att integrera Scrutinizer, jag var lite snabb och missade “Ensure that the file docs/coverage.clover is generated.”. Så jag fick avbryta, slänga och börja om från början. Efter det missödet så var det bara lugna vindar på havet. Scrutinizer gav mig oväntat höga betyg 9.89 och endast 3 metoder hade betyget B, resten hade ett A och en kodtäckning på 23% och 7 issues. Jag var riktigt imponerad av scrutinizer - framför allt att den visar för coverage vad i koden som testades. Där kunde jag lätt se att ett utfall i min kod aldrig skulle uppnås och var onödig att behålla. 
+        </p>
+        <h3>
+            Hur är din egen syn på kodkvalitet, berätta lite om den? 
+            <br>Tror du man kan man påvisa kodkvalitet i någon viss mån med badges eller vad tror du?
+        </h3>
+        <p>
+        Det är absolut viktigt att arbeta enligt best practice och sträva mot att ha en god kodkvalitet. Jag kommer inte ihåg om det var Emil som nämnde Green Coding eller Eco friendly coding; Att om koden har en god kvalitet så tar det mindre energi att processa vilket är miljövänligt. Det här är tredje gången jag går kursen och jag har mer kunskap i bagaget denna gång - det har varit väldigt intressant att läsa igenom kod jag skrev under första vårterminen. Jag har lärt mig att även om du arbetar ensam på ett projekt så jobbar du fortfarande i ett team. Med dig själv från igår och ditt framtida jag. Det är verkligen viktigt att både dokumentera sin kod och göra det väldigt tydligt vad den ska göra - och se till att den inte gör allt på en gång! 
+        Medan scrutinizer och phpmetrics är oerhört användbara verktyg så är de begränsade till utvecklarens förståelse för hur man bäst använder dessa verktyg. Blir man allt fokuserad på ‘rött dåligt, grönt bra’ så kanske man skaffar sig andra problem som hög coupling, eller så kanske man försöker få bättre mätdata genom att implementera enhetstester som inte gör meningsfulla tester. Ett av verktygen flaggade cardGraphic klassen (som ger en unicode till korten) som extra komplex - när den egentligen bara har en lång lista med unicodes vilket fick verktyget att tro att den var jätte komplex.
+        Jag tror absolut att badges kan påvisa någon mån av kodkvalitet - men man får samtidigt vara medveten om de begränsningar verktygen har och hur den bedömer och räknar ut de olika mätdata värdena. 
+        </p>
+        <h3>
+            Vilken är din TIL för detta kmom?
+        </h3>
+        <p>
+        TIL - Jag har lärt mig en hel del om olika mätvärden och verktyg (scrutinizer, phpmetrics, phpmd, phpstan) som används vid granskning av kodkvalitet. Om man arbetar enligt standard, de olika kodnings principerna (KISS, DRY, SOLID, YAGNI etc), 7C, testar och checkar kodstilen ofta så blir ditt framtida jag lite gladare att arbeta med dig igen :D
+        </p>
+        <br><br><br><br>
 {% endblock %}
