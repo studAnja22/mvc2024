@@ -1,0 +1,17 @@
+<div class="adventure-box">
+    <img class="adventure-image" src="{{ asset('img/project/room' ~ roomNumber ~ '.jpg') }}" alt="Room illustration">
+</div>
+    <div class="description">
+        <h3>
+            {{ room.getName }}<br>
+        </h3>
+        {{ room.getDescription }}
+        <br><br>
+        <div class="adventure-story">
+            Adventure story dialog<br><br>
+            {% if roomNumber == 5 %}
+                You have made your way to your friend! Hope you have a wonderful day with them. [The End]<br><br>
+            {% endif %}
+            {{ interaction }}
+        </div>
+    </div>

@@ -5,7 +5,7 @@
 {% block body %}
     <div class="cardholder">
         <h1>Cards in the deck</h1>
-        {% include "deckNavbar.html.twig" %}
+        {% include "navbar/deckNavbar.html.twig" %}
         <h3>Here you can look at all the cards without resetting the session.</h3>
         {% for card in deck %}
         <div title='{{ card.getName }}'class='{{ card.getColor }}'> &#{{ card.getUnicode }};</div>

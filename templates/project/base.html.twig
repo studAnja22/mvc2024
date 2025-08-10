@@ -14,14 +14,16 @@
         {% endblock %}
     </head>
     <body>
-        <header class="site-header" style="background-image: url({{ asset('img/header.jpg') }})">
-            <span class="site-title">My Symfony Site</span>
-        </header>
+        <div class="project-grid">
+            <header class="project-header" style="background-image: url({{ asset('img/project/banner.jpg') }})">
+                <span class="site-title">Adventure Game</span>
+            </header>
 
-        {% include "navbar/mainNavbar.html.twig" %}
+            {% include "project/projectNavbar.html.twig" %}
 
-        <main>{% block body %}Main{% endblock %}</main>
+            <main class="project-content">{% block body %}Main{% endblock %}</main>
 
-        <footer>{% block footer %}<p>Footer with interesting data and stuff</p>{% endblock %}</footer>
+            {# <footer class="project-footer">{% block footer %}<p>Footer with interesting data and stuff</p>{% endblock %}</footer> #}
+        </div>
     </body>
 </html>

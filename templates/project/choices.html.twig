@@ -1,0 +1,11 @@
+<div class="choice-options">
+        Choices<br>
+        {% for choice in choices %}
+        <form action="{{ path('interact') }}" method="POST">
+            {% if choice.getRequire() is null or choice.getRequire() in inventory %}
+                <input type="hidden" name="item" value="{{ choice.getItem }}">
+                <button type="submit" >{{ choice.getChoice }}</button><br>
+            {% endif %}
+        </form>
+    {% endfor %}
+</div>

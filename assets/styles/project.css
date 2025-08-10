@@ -1,0 +1,151 @@
+.project-grid {
+    min-height: 100vh;
+    max-height: 100vh;
+    /* overflow-y: auto; */
+    display: grid;
+    grid-template-areas:
+        "project-menu project-header project-header"
+        "project-menu project-content project-content"
+        "project-menu project-content project-content"
+        "project-menu project-footer project-footer";
+    grid-template-columns: 1fr 8fr;
+    /* grid-template-rows: 1fr 6fr 1fr; */
+    font-family: monospace;
+    font-size: x-large;
+}
+
+.project-grid > header.project-header {
+    grid-area: project-header;
+    text-align: center;
+    padding: 1em;
+    color: whitesmoke;
+}
+
+.project-grid > div.project-menu {
+    grid-area: project-menu;
+    align-self: stretch;
+    border-right-style: solid;
+}
+
+.project-grid > main.project-content {
+    background-color: #39736c;
+    grid-area: project-content;
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr;
+    grid-template-rows: auto 200px;
+    grid-template-areas:
+        "adventure-box backpack"
+        "path-options backpack"
+        "choice-options choice-options";
+    min-width: 100%;
+}
+
+.adventure-box {
+    background-color: #39736c;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    grid-column: 1;
+    grid-row: 1;
+    /* display: flex;
+    flex-direction: row-reverse; */
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+img.adventure-image {
+    margin: auto;
+    overflow: hidden;
+}
+
+.backpack {
+    background-color: #374f51;
+    grid-column: 3;
+    grid-row: 1;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.adventure-story {
+    background-color: #4b977a;
+    min-height: 300px;
+    border: solid 1px;
+    padding: 20px;
+}
+
+.description {
+    grid-row: 1;
+    grid-column: 2;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-right-style: solid;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.path-options {
+    background-color: #f9f871;
+    grid-column: 3;
+    grid-row: 2;
+    border-right-style: solid;
+    border-bottom-style: solid;
+}
+
+.choice-options {
+    background-color: #73bb7c;
+    grid-column: 1/span 2;
+    grid-row: 2;
+    border-right-style: solid;
+    border-bottom-style: solid;
+}
+
+/* .project-grid > footer.project-footer {
+    all: unset;
+    background-color: pink;
+    max-height: 8em;
+    grid-area: project-footer;
+} */
+/**Navbar */
+.project-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    color: whitesmoke;
+    background-color: #374f51;
+}
+.project-menu li {
+    all: unset;
+    background-color: #374f51;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+}
+.project-menu li a {
+    all: unset;
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.project-menu li a:hover {
+    background-color: goldenrod;
+}
+.project-menu .project-button {
+    all: unset;
+    background-color: #374f51;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    padding: 14px 0px;
+    width: 100%;
+}
+.project-menu .project-button:hover {
+    background-color: goldenrod;
+}

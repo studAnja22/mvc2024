@@ -51,13 +51,13 @@ final class LibraryController extends AbstractController
     }
 
     /** [CREATE] Create library object routes */
-    #[Route('library/create', name: 'library_create_get', methods: ['GET'])]//2 Active
+    #[Route('library/create', name: 'library_create_get', methods: ['GET'])]
     public function createStart(): Response
     {
         return $this->render('library/create.html.twig');
     }
 
-    #[Route('library/create', name: 'library_create_post', methods: ['POST'])]//3 Active
+    #[Route('library/create', name: 'library_create_post', methods: ['POST'])]
     public function createLibrary(
         LibraryRepository $libraryRepository,
         ManagerRegistry $doctrine,

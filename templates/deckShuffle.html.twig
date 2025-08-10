@@ -5,7 +5,7 @@
 {% block body %}
     <div class="cardholder">
         <h1>Shuffle the deck</h1>
-        {% include "deckNavbar.html.twig" %}
+        {% include "navbar/deckNavbar.html.twig" %}
         <h3>Get a shuffled deck for draw and draw MORE.</h3>
             {% for card in shuffle %}
             <div title='{{ card.getName }}'class='{{ card.getColor }}'> &#{{ card.getUnicode }};</div>
