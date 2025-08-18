@@ -7,6 +7,8 @@ use App\Project\ItemsHelper;
 use App\Project\PathHelper;
 use App\Project\RoomsHelper;
 
+use App\Project\CheckDb;
+
 use App\SessionHandlers\CardSessionHandler;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -29,17 +31,23 @@ class ControllerProject extends AbstractController
 {
     #[Route("/project", name: "project", methods: ['GET'] )]
     public function main(
+        CheckDb $checkDb,
         ChoicesRepository $choicesRepository,
         ItemsRepository $itemsRepository,
         PathRepository $pathRepository,
         RoomsRepository $roomsRepository,
-        SessionInterface $projectSession
+        SessionInterface $projectSession,
+        ManagerRegistry $doctrine
     ): Response
     {
         if (!$projectSession->has('room')) {
             $projectSession->set('room', 1);//Starter room.
+            $projectSession->set('backpack', []);
+            $projectSession->set('inventory', []);
+            $projectSession->set('interact', "");
+            $checkDb->checkAllDb($choicesRepository, $itemsRepository, $pathRepository, $roomsRepository, $doctrine);
         }
-        // $projectSession->set('room', 1); //Dev tool :) remove later.
+
         $paths = [
             'paths' => $pathRepository->findBy(['fromRoom' => $projectSession->get('room')]),
             'room' => $roomsRepository->findOneBy(['id' => $projectSession->get('room')]),
@@ -54,34 +62,10 @@ class ControllerProject extends AbstractController
         return $this->render('project/project.html.twig', $paths);
     }
 
-    #[Route("/project/initiate", name: "initiate", methods: ['POST'])]
+    #[Route("/project/reset", name: "reset", methods: ['POST'])]
     public function init(
-        ChoicesRepository $choicesRepository,
-        ItemsRepository $itemsRepository,
-        PathRepository $pathRepository,
-        RoomsRepository $roomRepository,
-        SessionInterface $projectSession,
-        ManagerRegistry $doctrine
+        SessionInterface $projectSession
     ): Response {
-        if ($pathRepository->count([]) === 0) {
-            $path = new PathHelper();
-            $path->createPaths($doctrine);
-        }
-
-        if ($roomRepository->count([]) === 0) {
-            $room = new RoomsHelper();
-            $room->createRooms($doctrine);
-        }
-
-        if ($itemsRepository->count([]) === 0) {
-            $items = new ItemsHelper();
-            $items->createItems($doctrine);
-        }
-
-        if ($choicesRepository->count([]) === 0) {
-            $choices = new ChoicesHelper();
-            $choices->createChoices($doctrine);
-        }
         $projectSession->clear();
         $projectSession->set('room', 1);
         $projectSession->set('backpack', []);

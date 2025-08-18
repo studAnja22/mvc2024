@@ -91,6 +91,11 @@ img.adventure-image {
     grid-row: 2;
     border-right-style: solid;
     border-bottom-style: solid;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: space-around;
+    justify-content: space-around;
 }
 
 .choice-options {
@@ -99,6 +104,11 @@ img.adventure-image {
     grid-row: 2;
     border-right-style: solid;
     border-bottom-style: solid;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-content: space-around;
 }
 
 /* .project-grid > footer.project-footer {
@@ -107,6 +117,45 @@ img.adventure-image {
     max-height: 8em;
     grid-area: project-footer;
 } */
+
+/** Buttons */
+button.option {
+    font-family: monospace;
+    font-size: x-large;
+}
+
+button.option.path {
+    border: none;
+    background-color: #f9f871;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+button.option.choice {
+    border: solid 2px;
+    background-color: #afdc77;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+button.option.path:hover {
+    background-color: #afdc77;
+}
+
+button.option.choice:hover {
+    background-color: #4b977a;
+}
+
 /**Navbar */
 .project-menu ul {
     list-style-type: none;
