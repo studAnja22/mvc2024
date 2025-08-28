@@ -1,10 +1,19 @@
 <div class="project-menu" style="background-image: url({{ asset('img/project/banner.jpg') }})">
     <ul>
         <li><a href="{{ path('home') }}">Return Home...</a></li>
+        <li><a href="{{ path('project') }}">Play</a></li>
         <form action="{{ path('reset') }}" method="POST">
             <button class="project-button" type="submit">Reset</button>
         </form>
-        <li><a href="https://github.com/dbwebb-se/mvc">Kursrepo GitHub</a></li>
-        <li><a href="https://github.com/studAnja22/mvc2024">My github</a></li>
+        <li><a href="{{ path('about') }}">About</a></li>
+        <li><a href="{{ path('api') }}">Json Api</a></li>
+        <li><a href="{{ path('cheat') }}">
+            {% if cheat == true %} Disable {% endif %}
+            {% if cheat == false %} Enable {% endif %}
+            Cheat Sheet
+        </a></li>
     </ul>
+    {% if cheat == true %}
+        {% include "project/cheat.html.twig" %}
+    {% endif %}
 </div>

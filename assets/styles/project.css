@@ -1,3 +1,7 @@
+body.proj {
+    background-color: #39736c;
+}
+
 .project-grid {
     min-height: 100vh;
     max-height: 100vh;
@@ -25,6 +29,7 @@
     grid-area: project-menu;
     align-self: stretch;
     border-right-style: solid;
+    min-width: 12em;
 }
 
 .project-grid > main.project-content {
@@ -46,8 +51,6 @@
     border-bottom-style: solid;
     grid-column: 1;
     grid-row: 1;
-    /* display: flex;
-    flex-direction: row-reverse; */
     overflow-y: hidden;
     overflow-x: hidden;
 }
@@ -91,11 +94,6 @@ img.adventure-image {
     grid-row: 2;
     border-right-style: solid;
     border-bottom-style: solid;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-content: space-around;
-    justify-content: space-around;
 }
 
 .choice-options {
@@ -122,6 +120,7 @@ img.adventure-image {
 button.option {
     font-family: monospace;
     font-size: x-large;
+    cursor: pointer;
 }
 
 button.option.path {
@@ -133,7 +132,6 @@ button.option.path {
     display: inline-block;
     width: 100%;
     padding: 10px;
-    margin-top: 5px;
 }
 
 button.option.choice {
@@ -164,6 +162,7 @@ button.option.choice:hover {
     overflow: hidden;
     color: whitesmoke;
     background-color: #374f51;
+    cursor: pointer;
 }
 .project-menu li {
     all: unset;
@@ -197,4 +196,39 @@ button.option.choice:hover {
 }
 .project-menu .project-button:hover {
     background-color: goldenrod;
+}
+
+/**About page*/
+.about {
+    padding: 1em;
+}
+
+/** Json page*/
+input[type=submit].project_submit {
+    all: unset;
+    text-align: center;
+    font-family: monospace;
+    color: black;
+    background-color: #b1709e;
+    width: 100%;
+    max-width: 8em;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit].project_submit:hover {
+    color: whitesmoke;
+    background-color: #8a76ad;
+}
+
+/**Cheater*/
+.cheat.box {
+    background-color: #afdc77;
+}
+
+.cheat {
+    color: red;
 }

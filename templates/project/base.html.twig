@@ -13,7 +13,7 @@
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
-    <body>
+    <body class="proj">
         <div class="project-grid">
             <header class="project-header" style="background-image: url({{ asset('img/project/banner.jpg') }})">
                 <span class="site-title">Adventure Game</span>
@@ -21,7 +21,7 @@
 
             {% include "project/projectNavbar.html.twig" %}
 
-            <main class="project-content">{% block body %}Main{% endblock %}</main>
+            {% block body %}Main{% endblock %}
 
             {# <footer class="project-footer">{% block footer %}<p>Footer with interesting data and stuff</p>{% endblock %}</footer> #}
         </div>

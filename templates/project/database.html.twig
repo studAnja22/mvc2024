@@ -1,0 +1,40 @@
+{% extends "project/base.html.twig" %}
+
+{% block title %}About{% endblock %}
+
+{% block body %}
+    <div class="about">
+        <h3>ORM Database Q&A</h3>
+        <h4>What database does this adventure game have?</h4>
+        The game uses an SQLite database. 
+        <h4>Tell us a bit about whats in the db?</h4>
+        This game has 4 tables in the db.<br>
+        <b>Rooms</b><br>
+        Stores all the rooms in the game - including their id, name and their room description.
+        <br>
+        <b>Path</b><br>
+        Stores all possible path from any room, that paths direction and which room it connects to as well as if that path requires an item.
+        <br>
+        <b>Choices</b><br>
+        Stores every single choice in the game - which room they're available in, if that choice yields an item, 
+        if the player needs an item to see this choice and, of course, the dialogue the player gets when interacting with this choice.
+        <br>
+        <b>Item</b>
+        Stores a list of items available in the game - just their id, name and their description.
+        <h4>How about that Entity Relationship - how are the tables connected?</h4>
+        Well, in short: A Room have paths and choices connected to it. Choices sometimes require an item to be interacted. Choices sometimes rewards an item.
+        <br>
+        A Room have an <i>id</i> that connects to a Paths <i>'from_room'</i> and to a Choices <i>'room'</i>.
+        <br>
+        A Room can har zero or many Paths (0..N) while each Path leads from one Room to another.
+        <br>
+        A Room have one or more Choices (1..N), every Choice belongs to exactly one Room.
+        Some Choices requires an item before they become available to interact with.
+        <br>
+        Some Choices rewards an Item, each Items are connected to exactly one Choice.
+    </div>
+    <div class="about"><h3>ER Diagram</h3><br>
+        <img src="{{ asset('img/project/mvcERdiagram.png') }}" alt="ER Diagram">
+        <h4>Did you do the unittests?</h4>
+    </div>
+{% endblock %}

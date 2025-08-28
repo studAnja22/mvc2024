@@ -4,6 +4,7 @@
     <div class="description">
         <h3>
             {{ room.getName }}<br>
+            {% if cheat == true %} Room: ({{ room.getId }}) {% endif %}
         </h3>
         {{ room.getDescription }}
         <br><br>

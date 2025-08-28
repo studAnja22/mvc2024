@@ -3,7 +3,7 @@
     {% for path in paths %}
         <form action="{{ path('move') }}" method="POST">
             <input type="hidden" name="to_room" value="{{ path.getToRoom }}">
-            <button class="option path" type="submit" {% if path.getRequiredItem() is not null and path.getRequiredItem() not in inventory %} disabled {% endif %}>{{ path.getDirection }}</button>
+            <button class="option path" type="submit" {% if path.getRequiredItem() is not null and path.getRequiredItem() not in inventory %} disabled {% endif %}>{{ path.getDirection }}{% if cheat == true %} ({{path.getToRoom}}) {% endif %}</button>
             {% if path.getRequiredItem is not null and path.getRequiredItem() not in inventory %}<br> Seems you need {{path.getRequiredItem}} to go here... {% endif %}
         </form>
     {% endfor %}

@@ -1,0 +1,35 @@
+{% extends "project/base.html.twig" %}
+
+{% block title %}About{% endblock %}
+
+{% block body %}
+    <div class="about">
+        Here in the Json API you can take a peak at everything that's in the sqlite database.
+        <br>
+        You can also navigate around the rooms from here to check what's in every room.
+        <br>
+        You can also also check the current session data for fun.
+        <br><br>
+        Use the GET options to get all data from the different tables in the database.
+        <br>
+        Use the POST options to get everything connected to that room, save from the items.
+        <br>
+        Use the Bonus to check what's saved in the current came session.
+        <h3>JSON API</h3>
+        <a href="{{ path('all_rooms') }}">GET all rooms</a> <br><br>
+        <a href="{{ path('all_paths') }}">GET all paths</a> <br><br>
+        <a href="{{ path('all_items') }}">GET all items</a> <br><br>
+        <a href="{{ path('all_choices') }}">GET all choices</a> <br><br>
+        <form method="post" action="">
+            <input type="number" name="room_number_post" min="1" max="5" value="1"><br>
+                <input type="submit" name="post_it" class="project_submit" value="POST"
+                onClick="this.form.action='{{ path('post_this_room')}}';"> <br>Select room number (1-5) <br>
+            <br>
+                <input type="number" name="room_number_prg" min="1" max="5" value="1"><br>
+                <input type="submit" class="project_submit" name="show_it" value="Post-R-Get"
+                onClick="this.form.action='{{ path('see_this_room')}}';"> <br>Select room number (1-5) <br>
+        </form>
+        <br><br>
+        <a href="{{ path('adventure_session') }}">Bonus: Check current session</a> <br><br>
+    </div>
+{% endblock %}
