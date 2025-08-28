@@ -115,10 +115,10 @@ class ControllerProject extends AbstractController
         /** @var string $choice The choice option user picked */
         $choice = (string) $request->request->get('item');
 
-        /** @var ItemsRepository $item */
+        /** @var Items|null $item */
         $item = $itemsRepository->findOneBy(['name' => $choice]);
 
-        /** @var ChoicesRepository $dialogue */
+        /** @var Choices|null $dialogue */
         $dialogue = $choicesRepository->findOneBy([
             'item' => $choice,
             'room' => $projectSession->get('room')
