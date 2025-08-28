@@ -124,9 +124,12 @@ class ControllerProject extends AbstractController
             'room' => $projectSession->get('room')
         ]);
 
-        $projectSession->set('interact', $dialogue->getDialogue());
+        if ($dialogue) {
+            $projectSession->set('interact', $dialogue->getDialogue());
+        }
 
         if ($item) {
+            /** @var string $itemName - items name */
             $itemName = $item->getName();
         }
         /**

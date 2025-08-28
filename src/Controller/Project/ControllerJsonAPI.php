@@ -4,6 +4,7 @@ namespace App\Controller\Project;
 
 use App\Project\CheckDb;
 use App\Project\ApiHelper;
+use App\Project\ApiFindByHelper;
 use App\JsonHelper\JsonHelper;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -98,8 +99,8 @@ class ControllerJsonAPI extends AbstractController
         RoomsRepository $roomsRepository,
         Request $requestJson
     ): Response {
-        /** @var ApiHelper $apiHelper helps sort objects into json friendly arrays  */
-        $apiHelper = new ApiHelper();
+        /** @var ApiFindByHelper $ApiFindByHelper helps sort objects into json friendly arrays  */
+        $apiHelper = new ApiFindByHelper();
         /** @var int $roomNumber */
         $roomNumber = $requestJson->request->getInt('room_number_post');
         $roomData = [
@@ -133,8 +134,8 @@ class ControllerJsonAPI extends AbstractController
         RoomsRepository $roomsRepository,
         SessionInterface $sessionProjectJson
     ): Response {
-        /** @var ApiHelper $apiHelper helps sort objects into json friendly arrays  */
-        $apiHelper = new ApiHelper();
+        /** @var ApiFindByHelper $ApiFindByHelper helps sort objects into json friendly arrays  */
+        $apiHelper = new ApiFindByHelper();
 
         $roomNumber = $sessionProjectJson->get('show_room');
 
@@ -152,15 +153,13 @@ class ControllerJsonAPI extends AbstractController
 
     #[Route("/proj/api/check/session", name: "adventure_session", methods: ['GET'])]
     public function checkSession(
-        CheckDb $checkDb,
         ChoicesRepository $choicesRepository,
         PathRepository $pathRepository,
         RoomsRepository $roomsRepository,
         SessionInterface $projectSession,
-        ManagerRegistry $doctrine
     ): Response {
-        /** @var ApiHelper $apiHelper helps sort objects into json friendly arrays  */
-        $apiHelper = new ApiHelper();
+        /** @var ApiFindByHelper $ApiFindByHelper helps sort objects into json friendly arrays  */
+        $apiHelper = new ApiFindByHelper();
         /** @var int $roomNumber represents the current room in session */
         $roomNumber = $projectSession->get('room');
         /** @var array $paths Holds data needed to render HTML pages */
