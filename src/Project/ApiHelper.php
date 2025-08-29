@@ -22,7 +22,7 @@ class ApiHelper
     public function getAllRoomsData(
         RoomsRepository $roomsRepository,
     ): array {
-        /** @var RoomsRepository $item */
+        /** @var RoomsRepository $rooms */
         $rooms = $roomsRepository->findAll();
         $allRooms = [];
 
@@ -43,7 +43,7 @@ class ApiHelper
     public function getAllPathsData(
         PathRepository $pathRepository,
     ): array {
-        /** @var PathRepository $item */
+        /** @var PathRepository $path */
         $path = $pathRepository->findAll();
         $allPaths = [];
 
@@ -85,7 +85,7 @@ class ApiHelper
     public function getAllChoicesData(
         ChoicesRepository $choicesRepository,
     ): array {
-        /** @var ChoicesRepository $item */
+        /** @var ChoicesRepository $choices */
         $choices = $choicesRepository->findAll();
         $allChoices = [];
 

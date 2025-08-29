@@ -99,7 +99,7 @@ class ControllerJsonAPI extends AbstractController
         RoomsRepository $roomsRepository,
         Request $requestJson
     ): Response {
-        /** @var ApiFindByHelper $ApiFindByHelper helps sort objects into json friendly arrays  */
+        /** @var ApiFindByHelper $apiHelper helps sort objects into json friendly arrays  */
         $apiHelper = new ApiFindByHelper();
         /** @var int $roomNumber */
         $roomNumber = $requestJson->request->getInt('room_number_post');
@@ -134,7 +134,7 @@ class ControllerJsonAPI extends AbstractController
         RoomsRepository $roomsRepository,
         SessionInterface $sessionProjectJson
     ): Response {
-        /** @var ApiFindByHelper $ApiFindByHelper helps sort objects into json friendly arrays  */
+        /** @var ApiFindByHelper $apiHelper helps sort objects into json friendly arrays  */
         $apiHelper = new ApiFindByHelper();
 
         $roomNumber = $sessionProjectJson->get('show_room');
@@ -158,7 +158,7 @@ class ControllerJsonAPI extends AbstractController
         RoomsRepository $roomsRepository,
         SessionInterface $projectSession,
     ): Response {
-        /** @var ApiFindByHelper $ApiFindByHelper helps sort objects into json friendly arrays  */
+        /** @var ApiFindByHelper $apiHelper helps sort objects into json friendly arrays  */
         $apiHelper = new ApiFindByHelper();
         /** @var int $roomNumber represents the current room in session */
         $roomNumber = $projectSession->get('room');

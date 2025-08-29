@@ -53,17 +53,19 @@ class ControllerProject extends AbstractController
             $projectSession->set('cheat', false);
             $checkDb->checkAllDb($choicesRepository, $itemsRepository, $pathRepository, $roomsRepository, $doctrine);
         }
-        /** @var array $paths Holds data needed to render HTML pages */
+        /** @var array<string> $inventory holds the names of the items in the backpack */
+        $inventory = $projectSession->get('inventory');
+        /** @var array<string,mixed> $paths Holds objects, and session data (string,int) needed to render HTML pages */
         $paths = [
             'paths' => $pathRepository->findBy(['fromRoom' => $projectSession->get('room')]),
             'room' => $roomsRepository->findOneBy(['id' => $projectSession->get('room')]),
             'items' => $projectSession->get('backpack'),
             'choices' => $choicesRepository->findBy(['room' => $projectSession->get('room')]),
             'roomNumber' => $projectSession->get('room'),
-            'inventory' => $projectSession->get('inventory'),
+            'inventory' => $inventory,
             'interaction' => $projectSession->get('interact'),
             'cheat' => $projectSession->get('cheat'),
-            'keyLimePie' => !array_diff(['key', 'lime', 'pie'], $projectSession->get('inventory'))
+            'keyLimePie' => !array_diff(['key', 'lime', 'pie'], $inventory)
         ];
 
         return $this->render('project/project.html.twig', $paths);

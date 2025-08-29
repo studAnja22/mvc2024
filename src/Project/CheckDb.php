@@ -90,7 +90,7 @@ class CheckDb
     /**
      * Checks if the rooms table is empty and fills it if it is.
      * 
-     * @param RoomsRepository $roomsRepository
+     * @param RoomsRepository $roomRepository
      * @param ManagerRegistry $doctrine
      *  @return void
      */

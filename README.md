@@ -59,4 +59,5 @@ php -S localhost:8889
 - PHPUnit ^11
 
 ## Development
-The app is under development and has currently started kmom05 where we will add support for the database and ORM.
+The app has now been concluded with it's final entry - the project. It's a mini adventure game.
+It uses an SQLite database.

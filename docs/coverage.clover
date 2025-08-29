@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1756469168">
-  <project timestamp="1756469168" name="Clover Coverage">
+<coverage generated="1756469655">
+  <project timestamp="1756469655" name="Clover Coverage">
     <package name="App\Cards">
       <file name="/home/anna/dbwebb-kurser/mvc/me/report/src/Cards/CardGraphic.php">
         <class name="App\Cards\CardGraphic" namespace="App\Cards">

@@ -13,8 +13,10 @@
             <li><a href="#kmom03">kmom04</a></li>
             <li><a href="#kmom05">kmom05</a></li>
             <li><a href="#kmom06">kmom06</a></li>
+            <li><a href="#kmom10">Projekt</a></li>
         </ul>
         </aside>
+        <div class="report">
         <h2 id="kmom01">Kmom01</h2>
         <h3>Skriven VT23</h3>
         <p>Har inte programmerat innan jag började på BTH.
@@ -232,5 +234,108 @@
         <p>
         TIL - Jag har lärt mig en hel del om olika mätvärden och verktyg (scrutinizer, phpmetrics, phpmd, phpstan) som används vid granskning av kodkvalitet. Om man arbetar enligt standard, de olika kodnings principerna (KISS, DRY, SOLID, YAGNI etc), 7C, testar och checkar kodstilen ofta så blir ditt framtida jag lite gladare att arbeta med dig igen :D
         </p>
+        <br><br>
+
+        <h1 id="kmom10">Redovisning av Projektet</h1>
+        <h2>1 - Krav 1-6 </h2>
+        <h3>Krav 1-3 - Webbplats, Innehåll och utseende, Repo och dokumentation</h3>
+        <h4>Webbplats, Innehåll och utseende</h4>
+        Jag valde att föra ett litet retro äventyrsspel. <br>
+        Spelet använder sig av sessions för att hålla koll på vilket av de 5 rum vi ska hämta data från databasens olika tabeller och vad användaren har sparat undan i ryggsäcken. <br>
+        Spelets upplägg liknar en single page-app i den mån att vi stannar på samma sida, men renderar ny data när vi interagerar med rummen. <br>
+        Det finns lite logik i templates som styr ifall något hemligt val ska synas eller inte, eller om en knapp ska fungera eller inte.<br>
+        Exempelvis så finns inte samtliga val tillgängliga - spelaren behöver hitta ett specifikt föremål för att kunna se det valet eller kunna gå den specifika vägen.<br>
+        Jag ville att det skulle kännas lite som ett spel, så man kan visa upp de föremål som man samlat på sig för vissa karaktärer man träffar i spelet.<br>
+        <br>
+        För att skapa en helt ny stil och layout så fick jag strukturera om min base template lite - utan att förstöra resten av min symfony sida.<br>
+        Jag valde att lägga min nya stylesheet i assets/styles/project.css och importera in project.css i app.css. Bilderna är royalty free och är hämtade från pixabay (konstnär: betidraws).
+        <br><br>
+        Jag använde mig av my color space i kombination med webb tillägget hex färgväljaren där jag plockade en färg från headerns bild och använde den för att hitta en trevlig färgkarta.<br>
+        Knappar ändrar färg om man hovrar över dem, en knapp som är disabled har en annan färg…
+        <br><br>
+        Jag bråkade en hel del med display: grid som hade några egna idéer på hur layouten skulle bli, samma med samtliga knappar… <br>
+        Men jag tycker layouten och stilen blev riktigt trevlig tillsist.
+        <br><br>
+        <h4>Repo och dokumentation</h4>
+        Jag tycker jag tidigare gjorde en gedigen readme sida i github. <br>
+        Jag noterade nu i veckan att scrutinizer hade då och då 503 host error och då fungerade inte de klickbara badges på readme sidan.
+        <br>
+        Jag försökte sikta på en högre kodtäckning än vad jag fick. <br>
+        I min tests/project/DataTest.php så har jag tester som testar om jag får den arrayen med data, som senare ska in i databasen, som jag förväntar mig. <br>
+        De testerna fungerade bra. Jag testade databasen med mock och det tyckte både scrutinizer och phpmetrics att det inte är samma sak som att testa direkt mot databasen, <br>
+        men jag ville inte riskera att förstöra databasen så jag valde mock. Hm, vet därför inte riktigt hur stor kodtäckning jag har eftersom scrut / phpmet räknade bort en del. <br>
+        Och jag visste inte riktigt hur jag skulle gå tillväga för att testa mina kontrollers.
+
+        <h3>Krav 4 - JSON API</h3>
+        Jag tolkade det som att mina GET och POST skulle testa spelets API - inte spelets aktuella tillstånd. <br>
+        Så, jag skapade 4 GET routes som hämtar allt från respektive tabell som finns i databasen och 2 varianter på POST route. <br>
+        En ren POST route som returnerar ett JSON svar och en Post Redirect Get route (PRG) som liknar det vi gjort i tidigare kursmoment. <br>
+        Jag var inte säker på vilken som skulle föredras så jag valde att göra båda. Det finns också en bonus JSON som visar spelets aktuella data. Jag berättar mer om den i krav 6.
+
+        <h3>Krav 5 - ORM </h3>
+        SQLite databasen har 4 tabeller som innehåller relevant data för äventyrsspelet. Under spelets gång så modifierar vi inte databasen på något sätt, utan vi <br>
+        1. hämtar data baserat på vilket rum vi är i <br>
+        2. filtrerar bort data vi inte vill visa ännu (om användaren saknar 'nyckel' föremål) <br>
+        3. sparar undan föremål spelaren plockar upp i en session ryggsäck<br>
+        <br>
+        <br>
+        Att hitta på en idé om vad äventyret skulle handla om, hitta lämpliga bilder och hur spel logiken skulle se ut - <b>det tog tid</b>.<br> 
+        Till sist landade jag på att vi har ett rum, ett rum har ett namn och en beskrivning. Ett rum har också flera val och dessa val kan leda till att spelaren får ett föremål. <br>
+        Spelaren kan gå från rummet till andra rum. Allting, utöver föremålen, är kopplade till själva rummet. <br>
+        Rummets id sparas undan i sessionen och vi hämtar data från APIt baserat på vilket rum som är sparat i sessionen. <br>
+        Hur får man ett föremål då? Jo, valen håller namnet på ett föremål som sedan hämtas ut ur föremåls tabellen och spelaren får en kopia av den att lägga i sin ryggsäck.<br>
+        <br>
+        Jag fick rita upp det här flera gånger med papper och penna. Det tog ganska lång tid att hitta en lösning som kändes rimlig och inte för komplicerad.
+        <br>
+        Själva tabellerna skapade jag via terminalen såsom vi gjorde i tidigare kursmoment <br>
+        (och jag fick flera gånger radera innehållet i tabellen via sqlite kommandon i terminalen i vscode då jag bestämde mig för att lägga till eller ta bort saker).
+        <br>
+        Jag gjorde några mock tester som testade både entity och repository, men scrutinizer och phpmetrics tycker tydligen att man ska testa mot den riktiga databasen. <br>
+        Men det vågade jag inte göra.
+
+        <h3>Krav 6 - Avancerade features</h3>
+        Utöver att styling, databastabeller och spellogik tog lång tid att finslipa så försökte jag koda DRY, <br>
+        modulera och göra det lätt att expandera projektet i framtiden med hjälp av project/helpers. <br>
+
+        <h4>Dynamisk Cheat Sheet</h4>
+        I äventyrsspelet efterfrågades ett cheat sheet - men inte hur eller var man skulle kunna se den. <br>
+        I vår navbar har vi en knapp där man kan enable/disable cheat sheet. <br>
+        När man klickar på den så kan man dels se en div med instruktioner om hur man skulle kunna ta sig till sista rummet på snabbast sätt. <br>
+        Samtidigt så får alla vägval en siffra som visar vilket rum de leder till (mycket hjälpsamt även för mig) och vi får se vilket rum nummer rummen har. <br>
+        Man kan sedan disable cheat sheet och då går spelet tillbaka till sitt ordinarie tillstånd och visar inte vilket rumsnummer du är i eller vilket rum de olika vägarna leder till.<br>
+
+        <h4>Sessioner</h4>
+        Jag läste inget i kraven om sessioner, men visst jobbade vi med sessioner i kortspelet så det måste vi ju inkludera. <br>
+        Spelflödet är styrt av sessioner. När spelet startar så har vi sparat undan rum 1 till session - som sedan hämtar all data från de olika tabellerna som är relaterade till det rummet.<br>
+        Om användaren interagerar med ett val som ger ett föremål så får spelaren en kopia av det föremålet som de kan ha i sin sessions ryggsäck. 
+        <br>
+        Jag tyckte att det var en bättre lösning än att spelaren får tillgång till ett crud api, hämtar och sparar undan saker i en ryggsäck tabell…
+        Med denna sessions lösning så förändras inte databasen, vi bara hämtar data och eventuellt sparar undan lite i sessioner. Lätt att städa upp när vi är klara!
+
+        <h4>JSON spel data</h4>
+        I proj/api så har vi en bonus feature där vi kan se spelets aktuella data.<br>
+        Jag tolkade krav 4 som att vi bara skulle testa vårt API och hämta allt med GET findAll() och POST findBy(). <br>
+        Men det som jag gjorde först var såklart något som antagligen var utanför kraven - hur ser det aktuella spelet ut nu? <br>
+        Det är ju en blandning av session och findBy(). Jag modulerade upp den klassen så den inte skulle bli allt för stor - <br>
+        den hade ju ganska mycket data att hämta från flera ställen och eftersom de är objekt så måste de skrivas ut i en tjusig array innan den kan bli finare med json pretty print. 
+
+        <h4>Databas helpers</h4>
+        Vet inte om det här kan räknas hit eller inte. Jag valde att skapa två helpers för varje databas entity/repository. <br>
+        En där vi har all data som vi vill mata in i databasen och en helper som hjälper till att bearbeta den datan och matar in den i databasen. <br>
+        Vi har en checkDb som kollar om någon databas tabell är tom och isåfall fyller den med data. Den hade kunnat göras bättre, <br>
+        eftersom den inte kollar vad vi har i databasens tabeller - bara om den är tom eller inte. 
+
+        <h2>2 - allmänt stycke om hur projektet gick att genomföra </h2>
+        Jag har ju adhd/autism och hEDS som gör att allt går lite extra långsamt ibland. <br>
+        Jag satt över sommaren med projektet och kände att jag tog mer tid än vad vi egentligen skulle göra. <br>
+        Men om jag tar extra tid, så ska det se snyggt ut i alla fall! Och det tycker jag att jag har uppnått. <br>
+        Det som tog tid var framför allt att visualisera hur spel logiken skulle se ut, vilka tabeller jag behövde och vad som skulle in i dom, <br>
+        hur styling och layout skulle se ut, vad spelet skulle handla om etc etc. Mitt under projektet så bestämde sig vscode för att radera sig själv från min dator, <br>
+        det var spännande. Att göra betydelsefulla tester var klurigt och att försöka uppnå 90% kodtäckning var svårt. Jag tycker det var ett lagom utmanande projekt. <br>
+        Jag tror jag gjorde det lite för ambitiöst och kanske komplicerade det mer än vad jag hade behövt. Men det var ett riktigt roligt projekt.
+
+        <h2>3 - tankar om kursen</h2>
+        Jag tycker att den här kursen har varit riktigt rolig och lärorik. Det var riktigt roligt att bli introducerad till OOPHP via att skapa kortspel och jag gillar kod granskningen och feedback från verktygen scrutinizer och phpmetrics. Jag är riktigt nöjd med kursen och jag är faktiskt lite ledsen att kursen är slut nu. Jag kan varmt rekommendera kursen till mina vänner. 9-10/10 (hur enhetstestar man sina kontrollers?). 
         <br><br><br><br>
+    </div>
 {% endblock %}

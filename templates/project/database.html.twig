@@ -32,11 +32,31 @@
         Some Choices requires an item before they become available to interact with.
         <br>
         Some Choices rewards an Item, each Items are connected to exactly one Choice.
+
+        <h4>Compare ORM with raw SQLite?</h4>
+        Hm, vi tar det här på svenska tror jag. Det var ett tag sedan jag var i databas kursen. <br>
+        Både att jobba med databaser som SQLite och mariadb 'raw' har sin inlärningskurva precis som verktyget doctrine.
+        <br>
+        Jag tyckte ändå att symfonys doctrine var relativt smidig att använda, lite svårt om man ville lägga till en column - då fick jag göra en drop table i terminalen.<br>
+        Jag kommer tyvärr inte ihåg så pass mycket att jag kan jämföra de olika sätten på ett rättvist sätt.<br>
+        Jag vill minnas att det kändes som att jag hade direkt kontakt med databasen via bash script (om jag inte missminner mig) och därav ganska mycket kontroll över vad som hände med den.
+        <br>
+        ORM är väldigt smidigt som kan gör detta åt mig, men det känns som att jag släpper kontrollen och låter magin leva sitt eget liv - vilket kan göra det svårt att felsöka innan man bemästrat magin.
+        <br>
+        Båda arbetar mot tabell databaser, jag kan tänka att ORM anses vara smidigt eftersom man kan snabbt skapa och använda databastabeller. Medan 'raw' SQLite tar mera tid att skapa - men att man har mer kontroll över vad som gör och kanske lättare att se vad queries gör?
     </div>
     <div class="about"><h3>ER Diagram</h3><br>
         <img src="{{ asset('img/project/mvcERdiagram.png') }}" alt="ER Diagram">
         <h4>Did you test the database?</h4>
-        I did! I managed to make a mock object of Doctrine, the entity and repository. 
-        Then I made a 'stub' to test the methods. It wasn't easy to wrap my head around, but I tried to make meaningful tests.
+        I did! I managed to make a mock object of <br>
+        the entity and repository.<br> 
+        Then I made a 'stub' to test the methods. <br>
+        It wasn't easy to wrap my head around,<br>
+        but I tried to make meaningful tests.<br>
+        It doesn't seem like Scrutinizer acknowledge<br>
+        mock tests as testing the database <br>
+        - so it's a big fat 0% testing there...<br>
+        The mock test does test the logic of the db repositories<br>
+        and entities without affecting the actual database.
     </div>
 {% endblock %}
