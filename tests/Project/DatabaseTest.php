@@ -10,7 +10,7 @@ use App\Entity\Path;
 use App\Repository\PathRepository;
 use App\Entity\Rooms;
 use App\Repository\RoomsRepository;
-use Doctrine\Persistence\ManagerRegistry;
+// use Doctrine\Persistence\ManagerRegistry;
 use PHPUnit\Framework\TestCase;
 
 class DatabaseTest extends TestCase
@@ -20,7 +20,7 @@ class DatabaseTest extends TestCase
      */
     public function testChoices(): void
     {
-        $mockDoctrine = $this->createMock(ManagerRegistry::class);
+        // $mockDoctrine = $this->createMock(ManagerRegistry::class);
         $mockChoices = $this->createMock(Choices::class);
         $mockChoicesRepo = $this->createMock(ChoicesRepository::class);
         $mockChoicesData = [
@@ -47,7 +47,7 @@ class DatabaseTest extends TestCase
      */
     public function testPath(): void
     {
-        $mockDoctrine = $this->createMock(ManagerRegistry::class);
+        // $mockDoctrine = $this->createMock(ManagerRegistry::class);
         $mockPath = $this->createMock(Path::class);
         $mockPathRepo = $this->createMock(PathRepository::class);
         $mockPathData = [
@@ -75,7 +75,7 @@ class DatabaseTest extends TestCase
      */
     public function testRooms(): void
     {
-        $mockDoctrine = $this->createMock(ManagerRegistry::class);
+        // $mockDoctrine = $this->createMock(ManagerRegistry::class);
         $mockRooms = $this->createMock(Rooms::class);
         $mockRoomsRepo = $this->createMock(RoomsRepository::class);
         $mockRoomsData = [
@@ -97,7 +97,7 @@ class DatabaseTest extends TestCase
      */
     public function testItems(): void
     {
-        $mockDoctrine = $this->createMock(ManagerRegistry::class);
+        // $mockDoctrine = $this->createMock(ManagerRegistry::class);
         $mockItems = $this->createMock(Items::class);
         $mockItemsRepo = $this->createMock(ItemsRepository::class);
         $mockItemsData = [

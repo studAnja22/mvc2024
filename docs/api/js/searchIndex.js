@@ -1036,30 +1036,35 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Kernel.html"
         },                {
+            "fqsen": "\\App\\Project\\ApiFindByHelper",
+            "name": "ApiFindByHelper",
+            "summary": "",
+            "url": "classes/App-Project-ApiFindByHelper.html"
+        },                {
+            "fqsen": "\\App\\Project\\ApiFindByHelper\u003A\u003AgetPathData\u0028\u0029",
+            "name": "getPathData",
+            "summary": "",
+            "url": "classes/App-Project-ApiFindByHelper.html#method_getPathData"
+        },                {
+            "fqsen": "\\App\\Project\\ApiFindByHelper\u003A\u003AgetChoiceData\u0028\u0029",
+            "name": "getChoiceData",
+            "summary": "",
+            "url": "classes/App-Project-ApiFindByHelper.html#method_getChoiceData"
+        },                {
+            "fqsen": "\\App\\Project\\ApiFindByHelper\u003A\u003AgetRoomsData\u0028\u0029",
+            "name": "getRoomsData",
+            "summary": "",
+            "url": "classes/App-Project-ApiFindByHelper.html#method_getRoomsData"
+        },                {
+            "fqsen": "\\App\\Project\\ApiFindByHelper\u003A\u003AgetItemsData\u0028\u0029",
+            "name": "getItemsData",
+            "summary": "",
+            "url": "classes/App-Project-ApiFindByHelper.html#method_getItemsData"
+        },                {
             "fqsen": "\\App\\Project\\ApiHelper",
             "name": "ApiHelper",
             "summary": "",
             "url": "classes/App-Project-ApiHelper.html"
-        },                {
-            "fqsen": "\\App\\Project\\ApiHelper\u003A\u003AgetPathData\u0028\u0029",
-            "name": "getPathData",
-            "summary": "",
-            "url": "classes/App-Project-ApiHelper.html#method_getPathData"
-        },                {
-            "fqsen": "\\App\\Project\\ApiHelper\u003A\u003AgetChoiceData\u0028\u0029",
-            "name": "getChoiceData",
-            "summary": "",
-            "url": "classes/App-Project-ApiHelper.html#method_getChoiceData"
-        },                {
-            "fqsen": "\\App\\Project\\ApiHelper\u003A\u003AgetRoomsData\u0028\u0029",
-            "name": "getRoomsData",
-            "summary": "",
-            "url": "classes/App-Project-ApiHelper.html#method_getRoomsData"
-        },                {
-            "fqsen": "\\App\\Project\\ApiHelper\u003A\u003AgetItemsData\u0028\u0029",
-            "name": "getItemsData",
-            "summary": "",
-            "url": "classes/App-Project-ApiHelper.html#method_getItemsData"
         },                {
             "fqsen": "\\App\\Project\\ApiHelper\u003A\u003AgetAllRoomsData\u0028\u0029",
             "name": "getAllRoomsData",
